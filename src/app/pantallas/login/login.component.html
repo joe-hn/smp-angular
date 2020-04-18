@@ -1,0 +1,28 @@
+<body class="text-center">
+
+    <form class="form-signin">
+        <h1 class="display-3 mb-3 font-weight-normal">SMP</h1>
+
+        <img class="mb-4 ContenedorLogo" src="assets/img/planificacion_monitoreo.jpg" width="300" height="210">
+
+        <h1 class="h3 mb-3 font-weight-normal">Ingrese sus credenciales</h1>
+        <label for="inputEmail" class="sr-only">Usuario</label>
+        <input type="text" name="usuario" #usaurio="ngModel" [(ngModel)]="modelo.USUARIO" class="form-control"
+            placeholder="Eje. xxxxxx" required autofocus>
+        <label for="inputPassword" class="sr-only">Clave</label>
+        <input type="password" name="pass" #pass="ngModel" [(ngModel)]="modelo.PASS" class="form-control"
+            placeholder="Eje. @@***" required>
+
+        <button class="btn btn-lg btn-secondary btn-block" (click)="login()">Ingresar</button>
+
+        <p class="mt-5 mb-3 text-muted">&copy; SSIS - 2020</p>
+
+        <div *ngIf="validacion" class="alert alert-danger" role="alert">
+            !Complete el ingreso de sus credenciales¡
+        </div>
+
+        <div *ngIf="noUsuario" class="alert alert-danger" role="alert">
+            !Las credenciales no son validas, Ingrese nuevamente¡
+        </div>
+    </form>
+</body>
