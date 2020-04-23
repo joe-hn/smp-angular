@@ -9,16 +9,16 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" [routerLink]="['/iniciooperacion']">
+                            <a class="nav-link active h5" [routerLink]="['/iniciooperacion']">
                                 Operaciones <span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item h5">
                             <a class="nav-link" [routerLink]="['/iniciocatalogo']">
                                 Catalogos
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item h5">
                             <a class="nav-link" [routerLink]="['/inicioseguridad']">
                                 Seguridad
                             </a>
@@ -38,7 +38,13 @@
                     <div class="card-body">
                         <p class="card-text">En esta sección se pueden crear nuevas operaciones.
                         </p>
-                        <a href="#" class="btn btn-secondary btn-sm">Crear una nueva Operación</a>
+
+                        <div class="btn-toolbar mb-2 mb-md-0">
+                            <div class="btn-group mr-2">
+                                <button type="button" class="btn btn-sm btn-outline-secondary" [routerLink]="['/opr-a']">Crear una nueva Operación</button>                                
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -57,10 +63,11 @@
 
                             <div class="btn-toolbar mb-2 mb-md-0">
                                 <div class="btn-group mr-2">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Estructura de la Operación</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Estructura de la
+                                        Operación</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary">Planificar</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Ejecutar</button>                                    
-                                </div>                               
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Ejecutar</button>
+                                </div>
                             </div>
                         </div>
                     </div>
