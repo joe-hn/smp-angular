@@ -23,4 +23,8 @@ export class InicioOperacionComponent implements OnInit {
     })
   }
 
+  onRegresar(){
+    
+  }
+
 }

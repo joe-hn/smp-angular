@@ -1,0 +1,9 @@
+<mat-dialog-content class="mat-typography">
+    <p>Confirme si el registro será eliminado</p>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <!--  <button mat-button mat-dialog-close>Cerrar</button> -->
+    <button mat-button [mat-dialog-close]="false">Cerrar</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial color="warn">Eliminar</button>
+</mat-dialog-actions>

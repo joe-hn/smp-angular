@@ -12,4 +12,8 @@ export class InicioseguridadComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  onRegresar(){
+    
+  }
+
 }

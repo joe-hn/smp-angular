@@ -1,10 +1,12 @@
-export class componente{
+export class componente {
     constructor(
         public ID: number,
         public OPERACION_ID: number,
         public EDT: number,
         public EDT_DESCRIPCION: string,
         public NOMBRE: string,
+        public EDT_SC: number,
+        public COMPONENTE_ID: number,
         public OPERACION: string,
         public EDT_NOMBRE: string,
         public PROGRAMA_ID: number,
@@ -14,6 +16,7 @@ export class componente{
         public USR: string,
         public TIPO_RESPONSABLE: string,
         public RESPONSABLE_ID: number,
-        public RESPONSABLE: string
-    ){}
+        public RESPONSABLE: string,
+        public COMPOMENTE_PADRE: string
+    ) { }
 }

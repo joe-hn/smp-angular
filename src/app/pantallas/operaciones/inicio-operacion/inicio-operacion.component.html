@@ -1,7 +1,5 @@
 <body>
-    <nav class="navbar navbar-dark bg-primary fixed-top flex-md-nowrap p-0 shadow">
-        <span class="navbar-brand mb-0 h1 col-sm-3 col-md-2">SMP</span>
-    </nav>
+    <app-cabecera (regresar)="onRegresar()"></app-cabecera>
 
     <div class="container-fluid">
         <div class="row">
@@ -13,13 +11,20 @@
                                 Operaciones <span class="sr-only">(current)</span>
                             </a>
                         </li>
-                        <li class="nav-item h5">
-                            <a class="nav-link" [routerLink]="['/iniciocatalogo']">
+
+                        <li class="nav-item">
+                            <a class="nav-link h6" [routerLink]="['/iniciooperacion']">
+                                Crear una nueva Operación <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link h5" [routerLink]="['/iniciocatalogo']">
                                 Catalogos
                             </a>
                         </li>
-                        <li class="nav-item h5">
-                            <a class="nav-link" [routerLink]="['/inicioseguridad']">
+                        <li class="nav-item">
+                            <a class="nav-link h5" [routerLink]="['/inicioseguridad']">
                                 Seguridad
                             </a>
                         </li>
@@ -41,7 +46,8 @@
 
                         <div class="btn-toolbar mb-2 mb-md-0">
                             <div class="btn-group mr-2">
-                                <button type="button" class="btn btn-sm btn-outline-secondary" [routerLink]="['/opr-a']">Crear una nueva Operación</button>                                
+                                <button type="button" class="btn btn-sm btn-outline-secondary"
+                                    [routerLink]="['/opr-a']">Crear una nueva Operación</button>
                             </div>
                         </div>
 
@@ -63,7 +69,8 @@
 
                             <div class="btn-toolbar mb-2 mb-md-0">
                                 <div class="btn-group mr-2">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Estructura de la
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                                        [routerLink]="['/componente', a.ID]">Estructura de la
                                         Operación</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary">Planificar</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary">Ejecutar</button>

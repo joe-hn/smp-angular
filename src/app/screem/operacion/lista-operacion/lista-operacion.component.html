@@ -1,0 +1,44 @@
+<body>
+
+    <app-cabecera></app-cabecera>
+
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <app-menu [lista]="menu" (regresar)="onRegresar()"></app-menu>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h5">Lista de Operaciónes</h1>
+                </div>
+
+                <ng-container *ngFor="let a of modelo">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <p class="card-title h5">Operacion: {{a.CODIGO}}</p>
+                            <p class="card-text">Fuente: {{a.FUENTE}}</p>
+                            <p class="card-text">Monto: {{a.MONTO | currency:'$'}}</p>
+                            <p class="card-text">Nombre: {{a.NOMBRE}}</p>
+                            <p class="card-text">Fecha Inicio: {{a.INICIO_DESCRIPCION}}</p>
+                            <p class="card-text">Fecha Finalización: {{a.FINALIZACION_DESCRIPCION}}</p>
+
+
+                            <div class="btn-toolbar mb-2 mb-md-0">
+                                <div class="btn-group mr-2">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                                        [routerLink]="['/lista-componente', a.ID]">Estructura de la
+                                        Operación</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Planificar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary">Ejecutar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+            </main>
+        </div>
+    </div>
+</body>

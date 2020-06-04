@@ -34,12 +34,24 @@ export class ApiComponenteService {
     return this.http.get(this.url + 'operacion/' + id, this.httpOptions).pipe(map(this.extractData));
   }
 
+  GetOperacionSubComponente(id): Observable<any> {
+    return this.http.get(this.url + 'operacion/sub/componente/' + id, this.httpOptions).pipe(map(this.extractData));
+  }
+
+  GetSubComponente(id): Observable<any> {    
+    return this.http.get(this.url + 'componente/subcomponente/' + id, this.httpOptions).pipe(map(this.extractData));
+  }
+
   GetId(id): Observable<any> {
     return this.http.get(this.url + id, this.httpOptions).pipe(map(this.extractData));
   }
 
-  GetMaxCount(id): Observable<any>{
+  GetMaxCount(id): Observable<any> {
     return this.http.get(this.url + 'maxc/' + id, this.httpOptions).pipe(map(this.extractData));
+  }
+
+  GetMaxCountSubComponente(id, componenteid): Observable<any> {
+    return this.http.get(this.url + 'maxc-sc/' + id + '/' + componenteid, this.httpOptions).pipe(map(this.extractData));
   }
 
   Post(modelo): Observable<any> {
@@ -50,7 +62,7 @@ export class ApiComponenteService {
     return this.http.patch(this.url + id, JSON.stringify(modelo), this.httpOptions).pipe();
   }
 
-  Delete(id, usr): Observable<any> {    
+  Delete(id, usr): Observable<any> {
     return this.http.delete(this.url + id + "/" + usr, this.httpOptions).pipe();
   }
 

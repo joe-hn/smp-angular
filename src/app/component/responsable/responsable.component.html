@@ -1,0 +1,48 @@
+<div class="container">
+    <div class="row" *ngIf="isEdicion">
+        <mat-checkbox name="chkSinResponsable" (change)="onchkSinResponsable($event)">Quitar Responsable
+        </mat-checkbox>
+    </div>
+
+    <div class="row" *ngIf="!sinResponsable">
+        <mat-checkbox name="chkresponsable" #chkresponsable="ngModel" [(ngModel)]="responsable"
+            (change)="onChkResponsable()">{{texto}}
+        </mat-checkbox>
+    </div>
+
+    <div class="row" *ngIf="responsable && !sinResponsable">
+        <div class="col">
+            <form class="example-form">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Dirección</mat-label>
+                    <mat-select placeholder="-- Lista de Direcciones --" name="direccion" #direccion="ngModel"
+                        [(ngModel)]="direccionResponsable" required>
+                        <mat-option *ngFor='let a of modelodireccion' [value]='a.ID' (click)="onSelectDireccion()">
+                            {{a.NOMBRE}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Cargo</mat-label>
+                    <mat-select placeholder="-- Lista de Cargos --" name="cargo" #cargo="ngModel"
+                        [(ngModel)]="cargoResponsable" required>
+                        <mat-option *ngFor='let a of modelocargo' [value]='a.ID' (click)="onSelectCargo()">
+                            {{a.NOMBRE}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Empleado</mat-label>
+                    <mat-select placeholder="-- Lista de Empleados --" name="empleado" #empleado="ngModel"
+                        [(ngModel)]="empleadoResponsable" required>
+                        <mat-option *ngFor='let a of modeloempleado' [value]='a.ID' (click)="onSelectEmpleado()">
+                            {{a.NOMBRE}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<body>
+    <app-cabecera (regresar)="onRegresar()"></app-cabecera>
+
+    <div class="container-fluid">
+        <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active h5" [routerLink]="['/componente', modelo.OPERACION_ID]">
+                                Componentes <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item h5">
+                            <a class="nav-link" [routerLink]="['/indicador']">
+                                Indicadores
+                            </a>
+                        </li>
+                        <li class="nav-item h5">
+                            <a class="nav-link" [routerLink]="['/producto']">
+                                Productos
+                            </a>
+                        </li>
+                    </ul>
+
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+               
+
+
+            </main>
+
+        </div>
+    </div>
+
+</body>

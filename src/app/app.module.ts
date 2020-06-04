@@ -22,6 +22,26 @@ import { ProgramaAComponent } from './pantallas/catalogos/pantallas/programa/pro
 import { ProgramaEComponent } from './pantallas/catalogos/pantallas/programa/programa-e/programa-e.component';
 import { FuenteAComponent } from './pantallas/catalogos/pantallas/fuente/fuente-a/fuente-a.component';
 import { FuenteEComponent } from './pantallas/catalogos/pantallas/fuente/fuente-e/fuente-e.component';
+import { EstructuraOperacionComponent } from './pantallas/operaciones/pantallas/estructura/estructura-operacion/estructura-operacion.component';
+import { ResponsableComponent } from './component/responsable/responsable.component';
+import { ComponenteComponent } from './pantallas/operaciones/pantallas/componente/componente.component';
+import { IndicadorComponent } from './pantallas/operaciones/pantallas/indicador/indicador.component';
+import { ProductoComponent } from './pantallas/operaciones/pantallas/producto/producto.component';
+import { MenuComponent } from './component/menu/menu.component';
+import { ListaOperacionComponent } from './screem/operacion/lista-operacion/lista-operacion.component';
+import { NuevaOperacionComponent } from './screem/operacion/nueva-operacion/nueva-operacion.component';
+import { ListaComponenteComponent } from './screem/operacion/lista-componente/lista-componente.component';
+import { NuevoComponenteComponent } from './screem/operacion/nuevo-componente/nuevo-componente.component';
+import { ListaIndicadorComponent } from './screem/operacion/lista-indicador/lista-indicador.component';
+import { NuevoIndicadorComponent } from './screem/operacion/nuevo-indicador/nuevo-indicador.component';
+import { ListaProductoComponent } from './screem/operacion/lista-producto/lista-producto.component';
+import { NuevoProductoComponent } from './screem/operacion/nuevo-producto/nuevo-producto.component';
+import { EditarComponenteComponent } from './screem/operacion/editar-componente/editar-componente.component';
+import { EditarIndicadorComponent } from './screem/operacion/editar-indicador/editar-indicador.component';
+import { ModalEliminarComponent } from './component/modal-eliminar/modal-eliminar.component';
+import { ListaSubcomponenteComponent } from './screem/operacion/lista-subcomponente/lista-subcomponente.component';
+import { NuevoSubcomponenteComponent } from './screem/operacion/nuevo-subcomponente/nuevo-subcomponente.component';
+import { EditarSubcomponenteComponent } from './screem/operacion/editar-subcomponente/editar-subcomponente.component';
 
 
 registerLocaleData(localesHN, 'es-HN');
@@ -40,7 +60,28 @@ registerLocaleData(localesHN, 'es-HN');
     ProgramaAComponent,
     ProgramaEComponent,
     FuenteAComponent,
-    FuenteEComponent
+    FuenteEComponent,
+    EstructuraOperacionComponent,
+    ResponsableComponent,
+    ComponenteComponent,
+    IndicadorComponent,
+    ProductoComponent,
+    MenuComponent,
+    ListaOperacionComponent,
+    NuevaOperacionComponent,
+    ListaComponenteComponent,
+    NuevoComponenteComponent,
+    ListaIndicadorComponent,
+    NuevoIndicadorComponent,
+    ListaProductoComponent,
+    NuevoProductoComponent,
+    EditarComponenteComponent,
+    EditarIndicadorComponent,
+    ModalEliminarComponent,
+    ListaSubcomponenteComponent,
+    NuevoSubcomponenteComponent,
+    EditarSubcomponenteComponent
+    
   ],
   imports: [
     BrowserModule,

@@ -21,9 +21,9 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login() {
+  login() {    
     if (this.modelo.USUARIO && this.modelo.PASS) {
-      this.api.Login(this.modelo).subscribe(res => {
+      this.api.Login(this.modelo).subscribe(res => {        
 
         if (!res.error_estado) {
 
@@ -36,14 +36,14 @@ export class LoginComponent implements OnInit {
           this.api.usuarioId(this.modelo.ID).subscribe(res => {
             localStorage.setItem('_user', JSON.stringify(res.modelo));
 
-            this.router.navigate(['/iniciooperacion']);
+            this.router.navigate(['/lista-operaciones']);
           })
 
         } else {
           this.noUsuario = true;
         }
       }, error => {
-        this.router.navigate(['/error']);
+        this.router.navigate(['/error']);        
       })
 
     } else {

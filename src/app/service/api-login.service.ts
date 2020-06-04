@@ -26,7 +26,7 @@ export class ApiLoginService {
     return body || {};
   }
 
-  Login(modelo): Observable<any> {    
+  Login(modelo): Observable<any> {            
     return this.http.post<any>(this.url + 'login', JSON.stringify(modelo), this.httpOptions).pipe();
   }
 

@@ -16,7 +16,7 @@ export class indicador{
         public EDT_COMPONENTE: string,
         public OPERACION: string,
         public OPERACION_ID: number,
-        public EDT_nombre: string,
+        public EDT_NOMBRE: string,
         public PROGRAMA_ID: number,
         public USR: string,
         public TIPO_RESPONSABLE: string,
