@@ -18,6 +18,7 @@ export class ListaComponenteComponent implements OnInit {
   menu: menu[];
 
   lista: componente[];
+  reporte: componente[];
   modelo: componente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '', 0, 0);
   modelooperacion: operacion = new operacion(0, 0, '', '', '', '', '', 0, '', '', '', 0, '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
@@ -34,6 +35,8 @@ export class ListaComponenteComponent implements OnInit {
     this.menu = [{ nombre: 'Componentes', url: '/lista-componente/' + this.modelo.OPERACION_ID, N: true, active: 'active' },
     { nombre: 'Crear Nueva Componente', url: '/nuevo-componente/' + this.modelo.OPERACION_ID, N: false, active: '' },
     { nombre: 'Cambiar Orden del EDT', url: '/edt-componente/' + this.modelo.OPERACION_ID, N: false, active: '' },
+    { nombre: 'Exportar a Excell', BotonReporte: true },
+
     { nombre: 'Sub Componente', url: '/lista-subcomponente/' + this.modelo.OPERACION_ID, N: true, active: '' },
     { nombre: 'Inidicadores', url: '/lista-indicador/' + this.modelo.OPERACION_ID, N: true, active: '' },
     { nombre: 'Productos', url: '/lista-producto/' + this.modelo.OPERACION_ID, N: true, active: '' }];
@@ -70,7 +73,11 @@ export class ListaComponenteComponent implements OnInit {
   }
 
   onReporte() {
-    this.apixlsx.exportToExcel(this.lista, 'Prueba de excell');
+    this.api.ReporteOperacionComponente(this.modelo.OPERACION_ID).subscribe(res => {
+      this.reporte = res.modelo;
+
+      this.apixlsx.exportToExcel(this.reporte, 'Lista de Componentes de la Operacion ' + this.modelooperacion.OPERACION);
+    })
   }
 
 }

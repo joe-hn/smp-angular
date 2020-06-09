@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalEliminarComponent } from 'src/app/component/modal-eliminar/modal-eliminar.component';
 import { ApiOperacionService } from 'src/app/service/api-operacion.service';
 import { operacion } from 'src/app/model/operacion';
+import { ApiXlsxService } from 'src/app/service/api-xlsx.service';
 
 @Component({
   selector: 'app-lista-producto',
@@ -17,11 +18,13 @@ export class ListaProductoComponent implements OnInit {
   modelo: poaProducto = new poaProducto(0, 0, 0, 0, 0, '', '', 0, '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0);
   modelooperacion: operacion = new operacion(0, 0, '', '', '', '', '', 0, '', '', '', 0, '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
   lista: poaProducto[];
+  reporte: poaProducto[];
   dialog: any;
 
   constructor(
     private api: ApiPoaProductoService,
     private apioperacion: ApiOperacionService,
+    private apixlsx: ApiXlsxService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -34,7 +37,8 @@ export class ListaProductoComponent implements OnInit {
     { nombre: 'Productos', url: '/lista-producto/' + this.modelo.OPERACION_ID, N: true, active: 'active' },
     { nombre: 'Crear Nuevo Producto de Indicador de Componente', url: '/nuevo-producto/' + this.modelo.OPERACION_ID, N: false, active: '' },
     { nombre: 'Crear Nuevo Producto de Indicador de Sub Componente', url: '/nuevo-producto-subcomponente/' + this.modelo.OPERACION_ID, N: false, active: '' },
-    { nombre: 'Cambiar Orden de EDT', url: '/edt-producto/' + this.modelo.OPERACION_ID, N: false, active: '' }];
+    { nombre: 'Cambiar Orden de EDT', url: '/edt-producto/' + this.modelo.OPERACION_ID, N: false, active: '' },
+    { nombre: 'Exportar a Excell', BotonReporte: true }];
   }
 
   ngOnInit(): void {
@@ -53,6 +57,14 @@ export class ListaProductoComponent implements OnInit {
 
   onRegresar() {
     this.router.navigate(['/lista-operaciones'])
+  }
+
+  onReporte() {
+    this.api.ReporteOperacionIndicador(this.modelo.OPERACION_ID).subscribe(res => {
+      this.reporte = res.modelo;
+
+      this.apixlsx.exportToExcel(this.reporte, 'Productos de la Operación ' + this.modelooperacion.OPERACION);
+    })
   }
 
   onEliminar(valor) {

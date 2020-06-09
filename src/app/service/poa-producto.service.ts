@@ -58,4 +58,6 @@ export class PoaProductoService {
     return this.http.delete(this.url + id + "/" + usr, this.httpOptions).pipe();
   }
 
+ 
+
 }

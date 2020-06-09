@@ -62,4 +62,8 @@ export class ApiIndicadorService {
     return this.http.patch(this.url + 'edt/modificar/0', JSON.stringify(modelo), this.httpOptions).pipe();
   }
 
+  ReporteOperacionIndicador(id): Observable<any> {
+    return this.http.get(this.url + 'reporte/indicador/operacion/' + id, this.httpOptions).pipe(map(this.extractData));
+  }
+
 }

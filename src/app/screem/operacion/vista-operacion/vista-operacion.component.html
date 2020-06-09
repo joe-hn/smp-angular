@@ -1,0 +1,99 @@
+<body>
+
+    <app-cabecera></app-cabecera>
+
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <app-menu [lista]="menu" (regresar)="onRegresar()" (reporte)="onReporte()"></app-menu>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h5">Vista de la Operación {{operacionmodelo.OPERACION}}</h1>
+                </div>
+
+                <div class="container">
+                    <div class="table">
+                        <tbody>
+                            <ng-container *ngFor="let A of componentemodelo">
+                                <!--  COMPONENTE      -->
+                                <tr>
+                                    <td class="titulo-item table-primary"></td>
+                                    <td style="width: 100%;">
+                                        <p><strong>Componente: </strong>{{A.EDT_NOMBRE}}</p>
+                                    </td>
+                                </tr>
+
+                                <ng-container *ngFor="let B of subcomponentemodelo">
+                                    <!--  SUB COMPONENTE  -->
+                                    <tr *ngIf="B.COMPONENTE_ID == A.ID">
+                                        <td class="titulo-item table-info"></td>
+                                        <td>
+                                            <p style="padding-left: 20px;"><strong>Sub Componente:</strong> {{B.EDT_NOMBRE}}</p>
+                                        </td>
+                                    </tr>
+
+                                    <ng-container *ngFor="let BB of indicadormodelo">
+                                        <!--  INDICADOR SUB COMPONENTE      -->
+
+                                        <tr *ngIf="BB.COMPONENTE_ID == B.ID && B.COMPONENTE_ID == A.ID">
+                                            <td class="titulo-item table-secondary"></td>
+                                            <td>
+                                                <p style="padding-left: 30px;"><strong>Indicador: </strong>{{BB.EDT_NOMBRE}}</p>
+                                            </td>
+                                        </tr>
+
+                                        <ng-container *ngFor="let BBB of productomodelo">
+                                            <!--  PRODUCTO INDICADOR SUB PRODUCTO    -->
+
+                                            <tr
+                                                *ngIf="BBB.INDICADOR_ID == BB.ID && BB.COMPONENTE_ID == B.ID && B.COMPONENTE_ID == A.ID">
+                                                <td class="titulo-item table-danger"></td>
+                                                <td>
+                                                    <p style="padding-left: 40px;"><strong>Producto: </strong>{{BBB.EDT_NOMBRE}}</p>
+                                                </td>
+                                            </tr>
+
+                                        </ng-container>
+
+                                    </ng-container>
+
+                                </ng-container>
+
+                                <ng-container *ngFor="let C of indicadormodelo">
+                                    <!--  INDICADOR    -->
+
+                                    <tr *ngIf="C.COMPONENTE_ID == A.ID">
+                                        <td class="titulo-item table-success"></td>
+                                        <td>
+                                            <p style="padding-left: 5px;"><strong>Indicador: </strong>{{C.EDT_NOMBRE}}</p>
+                                        </td>
+                                    </tr>
+
+                                    <ng-container *ngFor="let D of productomodelo">
+                                        <!--  PRODUCTO    -->
+
+                                        <tr *ngIf="D.INDICADOR_ID == C.ID && C.COMPONENTE_ID == A.ID">
+                                            <td class="titulo-item table-warning"></td>
+                                            <td>
+                                                <p style="padding-left: 10px;"><strong>Producto: </strong>{{D.EDT_NOMBRE}}</p>
+                                            </td>
+                                        </tr>
+
+                                    </ng-container>
+
+                                </ng-container>
+
+                            </ng-container>
+                        </tbody>
+                    </div>
+                </div>
+
+
+
+            </main>
+        </div>
+    </div>
+</body>

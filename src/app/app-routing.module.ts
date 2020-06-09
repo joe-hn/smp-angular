@@ -24,6 +24,7 @@ import { NuevoProductoSubcomponenteComponent } from './screem/operacion/nuevo-pr
 import { EditarProductoComponent } from './screem/operacion/editar-producto/editar-producto.component';
 import { EdtIndicadorComponent } from './screem/operacion/edt-indicador/edt-indicador.component';
 import { EdtProductoComponent } from './screem/operacion/edt-producto/edt-producto.component';
+import { VistaOperacionComponent } from './screem/operacion/vista-operacion/vista-operacion.component';
 
 /*
 import { InicioComponent } from './pantallas/inicio/inicio.component';
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'error', component: ErrorComponent },
 
+  { path: 'vista-operacion/:id', component: VistaOperacionComponent },
   { path: 'lista-operaciones', component: ListaOperacionComponent },
   { path: 'nueva-operacion', component: NuevaOperacionComponent },
   { path: 'lista-componente/:id', component: ListaComponenteComponent },

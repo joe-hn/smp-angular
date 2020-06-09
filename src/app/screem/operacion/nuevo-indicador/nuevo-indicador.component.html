@@ -56,6 +56,12 @@
                                     [(ngModel)]="modelo.BASE_DATOS" maxlength="1000"></textarea>
                             </mat-form-field>
 
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Fecha que se realiza el reporte</mat-label>
+                                <textarea matInput placeholder="....." name="fechaReporte" #fechaReporte="ngModel"
+                                    [(ngModel)]="modelo.FECHA_REPORTE" maxlength="1000"></textarea>
+                            </mat-form-field>
+
                         </div>
 
                         <div class="col-sm">

@@ -49,6 +49,7 @@ import { NuevoProductoSubcomponenteComponent } from './screem/operacion/nuevo-pr
 import { EditarProductoComponent } from './screem/operacion/editar-producto/editar-producto.component';
 import { EdtIndicadorComponent } from './screem/operacion/edt-indicador/edt-indicador.component';
 import { EdtProductoComponent } from './screem/operacion/edt-producto/edt-producto.component';
+import { VistaOperacionComponent } from './screem/operacion/vista-operacion/vista-operacion.component';
 
 registerLocaleData(localesHN, 'es-HN');
 
@@ -93,7 +94,8 @@ registerLocaleData(localesHN, 'es-HN');
     NuevoProductoSubcomponenteComponent,
     EditarProductoComponent,
     EdtIndicadorComponent,
-    EdtProductoComponent
+    EdtProductoComponent,
+    VistaOperacionComponent
     
   ],
   imports: [

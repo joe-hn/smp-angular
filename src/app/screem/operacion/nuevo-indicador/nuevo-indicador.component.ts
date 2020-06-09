@@ -100,6 +100,8 @@ export class NuevoIndicadorComponent implements OnInit {
     this.modelo.EDT_DESCRIPCION = '';
     this.modelo.FRECUENCIA_MEDICION = '';
     this.modelo.FECHA_REPORTE = '';
+    this.modelo.BASE_DATOS = '';
+    this.modelo.COMENTARIOS = '';
   }
 
   onresponsable(event) {

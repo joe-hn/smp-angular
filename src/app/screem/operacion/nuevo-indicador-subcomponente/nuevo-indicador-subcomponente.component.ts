@@ -91,7 +91,7 @@ export class NuevoIndicadorSubcomponenteComponent implements OnInit {
         this.alert = false;
 
         this.modelo.USR = localStorage.getItem('_u');
-        this.modelo.EDT_DESCRIPCION = this.modelocomponente.EDT_SC.toString() + '.' + this.modelo.EDT.toString();
+        this.modelo.EDT_DESCRIPCION = this.modelocomponente.EDT_DESCRIPCION + '.' + this.modelo.EDT.toString();
         this.api.Post(this.modelo).subscribe(res => {
           this.onCancelar();
           this.GET();
@@ -112,6 +112,8 @@ export class NuevoIndicadorSubcomponenteComponent implements OnInit {
     this.modelo.EDT_DESCRIPCION = '';
     this.modelo.FRECUENCIA_MEDICION = '';
     this.modelo.FECHA_REPORTE = '';
+    this.modelo.BASE_DATOS = '';
+    this.modelo.COMENTARIOS = '';
   }
 
   onresponsable(event) {

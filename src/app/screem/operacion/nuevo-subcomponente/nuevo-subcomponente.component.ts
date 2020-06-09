@@ -77,7 +77,7 @@ export class NuevoSubcomponenteComponent implements OnInit {
         this.modelo.USR = localStorage.getItem('_u');
         this.modelo.EDT = this.modeloC.EDT;
 
-        this.modelo.EDT_DESCRIPCION = this.modelo.EDT.toString() + '' + this.modelo.EDT_SC.toString();
+        this.modelo.EDT_DESCRIPCION = this.modelo.EDT.toString() + '.' + this.modelo.EDT_SC.toString();
 
         this.api.Post(this.modelo).subscribe(res => {
           this.onCancelar();

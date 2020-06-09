@@ -6,7 +6,7 @@
     <div class="container-fluid">
         <div class="row">
 
-            <app-menu [lista]="menu" (regresar)="onRegresar()"></app-menu>
+            <app-menu [lista]="menu" (regresar)="onRegresar()" (reporte)="onReporte()"></app-menu>
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <div
@@ -30,8 +30,8 @@
                                     <button type="button" class="btn btn-sm btn-outline-secondary"
                                         [routerLink]="['/lista-componente', a.ID]">Estructura de la
                                         Operación</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Planificar</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Ejecutar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                                        [routerLink]="['/vista-operacion', a.ID]">Vista de la Operación</button>
                                 </div>
                             </div>
                         </div>

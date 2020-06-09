@@ -3,7 +3,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <app-menu [lista]="menu" (regresar)="onRegresar()"></app-menu>
+            <app-menu [lista]="menu" (regresar)="onRegresar()" (reporte)="onReporte()"></app-menu>
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <div
@@ -19,6 +19,13 @@
                                 {{a.SUB_COMPONENTE}}</p>
                             <p class="card-title"><strong>Nombre del Indicador: {{a.EDT_NOMBRE}}</strong></p>
                             <p class="card-text">Responsable: {{a.RESPONSABLE}}</p>
+
+                            <p class="card-text">Descripción Conceptual del Indicador: {{a.DESCRIPCION_CONCEPTUAL}}</p>
+                            <p class="card-text">Descripción de la Formula del Indicador: {{a.DESCRIPCION_FORMULA}}</p>
+                            <p class="card-text">Frecuencia de Medición del Indicador: {{a.FRECUENCIA_MEDICION}}</p>
+                            <p class="card-text">Descripción Técnica del Indicador: {{a.DESCRIPCION_TECNICA}}</p>
+                            <p class="card-text">Base de datos Usada en la Información del Indicador: {{a.BASE_DATOS}}</p>
+                            <p class="card-text">Comentarios: {{a.COMENTARIOS}}</p>
 
                             <div class="btn-toolbar mb-2 mb-md-0">
                                 <div class="btn-group mr-2">

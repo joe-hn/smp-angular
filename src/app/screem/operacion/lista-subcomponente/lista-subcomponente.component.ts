@@ -7,6 +7,7 @@ import { ApiComponenteService } from 'src/app/service/api-componente.service';
 import { ApiOperacionService } from 'src/app/service/api-operacion.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ModalEliminarComponent } from 'src/app/component/modal-eliminar/modal-eliminar.component';
+import { ApiXlsxService } from 'src/app/service/api-xlsx.service';
 
 @Component({
   selector: 'app-lista-subcomponente',
@@ -17,6 +18,7 @@ export class ListaSubcomponenteComponent implements OnInit {
   menu: menu[];
 
   lista: componente[];
+  reporte: componente[];
   modelo: componente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '', 0, 0);
   modelooperacion: operacion = new operacion(0, 0, '', '', '', '', '', 0, '', '', '', 0, '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
@@ -24,6 +26,7 @@ export class ListaSubcomponenteComponent implements OnInit {
     private dialog: MatDialog,
     private api: ApiComponenteService,
     private apioperacion: ApiOperacionService,
+    private apixlsx: ApiXlsxService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -33,6 +36,8 @@ export class ListaSubcomponenteComponent implements OnInit {
     { nombre: 'Sub Componente', url: '/lista-subcomponente/' + this.modelo.OPERACION_ID, N: true, active: 'active' },
     { nombre: 'Crear Nuevo Sub Componente', url: '/nuevo-subcomponente/' + this.modelo.OPERACION_ID, N: false, active: '' },
     { nombre: 'Cambiar Orden del EDT', url: '/edt-subcomponente/' + this.modelo.OPERACION_ID, N: false, active: '' },
+    { nombre: 'Exportar a Excell', BotonReporte: true },
+
     { nombre: 'Inidicadores', url: '/lista-indicador/' + this.modelo.OPERACION_ID, N: true, active: '' },
     { nombre: 'Productos', url: '/lista-producto/' + this.modelo.OPERACION_ID, N: true, active: '' }];
   }
@@ -55,10 +60,17 @@ export class ListaSubcomponenteComponent implements OnInit {
     this.router.navigate(['/lista-operaciones']);
   }
 
+  onReporte() {
+    this.api.ReporteOperacionSubComponente(this.modelo.OPERACION_ID).subscribe(res => {
+      this.reporte = res.modelo;
+      this.apixlsx.exportToExcel(this.reporte, 'Sub Componentes de la Operacion ' + this.modelooperacion.OPERACION);
+    })
+  }
+
   onEliminar(valor) {
     const dialogRef = this.dialog.open(ModalEliminarComponent);
 
-    dialogRef.afterClosed().subscribe(res => {     
+    dialogRef.afterClosed().subscribe(res => {
       if (res) {
         this.api.Delete(valor.ID, localStorage.getItem('_u')).subscribe(res => {
           this.GET();

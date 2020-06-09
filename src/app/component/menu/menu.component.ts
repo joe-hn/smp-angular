@@ -12,15 +12,20 @@ export class MenuComponent implements OnInit {
   lista: menu[];
 
   @Output() regresar = new EventEmitter();
+  @Output() reporte = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
-  
+
   }
 
   emitir_regresar() {
     this.regresar.emit('');
+  }
+
+  onReporte() {
+    this.reporte.emit('');
   }
 
 }

@@ -38,7 +38,7 @@ export class ApiComponenteService {
     return this.http.get(this.url + 'operacion/sub/componente/' + id, this.httpOptions).pipe(map(this.extractData));
   }
 
-  GetSubComponente(id): Observable<any> {    
+  GetSubComponente(id): Observable<any> {
     return this.http.get(this.url + 'componente/subcomponente/' + id, this.httpOptions).pipe(map(this.extractData));
   }
 
@@ -66,12 +66,20 @@ export class ApiComponenteService {
     return this.http.delete(this.url + id + "/" + usr, this.httpOptions).pipe();
   }
 
-  ModificarEdt(modelo): Observable<any>{
+  ModificarEdt(modelo): Observable<any> {
     return this.http.patch(this.url + 'edt/modificar/0', JSON.stringify(modelo), this.httpOptions).pipe();
   }
 
-  ModificarEdtsubComponente(modelo): Observable<any>{
+  ModificarEdtsubComponente(modelo): Observable<any> {
     return this.http.patch(this.url + 'edt/modificar/subcomponente/0', JSON.stringify(modelo), this.httpOptions).pipe();
+  }
+
+  ReporteOperacionComponente(id): Observable<any> {
+    return this.http.get(this.url + 'reporte/componente/operacion/' + id, this.httpOptions).pipe(map(this.extractData));
+  }
+
+  ReporteOperacionSubComponente(id): Observable<any> {
+    return this.http.get(this.url + 'reporte/sub/componente/operacion/' + id, this.httpOptions).pipe(map(this.extractData));
   }
 
 }

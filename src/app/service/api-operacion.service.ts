@@ -50,4 +50,12 @@ export class ApiOperacionService {
     return this.http.delete(this.url + id + "/" + usr, this.httpOptions).pipe();
   }
 
+  ReporteOperacion(): Observable<any> {
+    return this.http.get(this.url + 'reporte/operacion/0', this.httpOptions).pipe(map(this.extractData));
+  }
+
+  ReporteOperacionEstructura(id): Observable<any> {
+    return this.http.get(this.url + 'reporte/operacion/estructura/' + id, this.httpOptions).pipe(map(this.extractData));
+  }
+
 }
