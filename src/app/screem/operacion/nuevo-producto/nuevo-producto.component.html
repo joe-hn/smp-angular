@@ -1,1 +1,98 @@
 <p>nuevo-producto works!</p>
+
+<body>
+    <app-cabecera></app-cabecera>
+
+    <div class="container-fluid">
+        <div class="row">
+            <app-menu [lista]="menu" (regresar)="onRegresar()"></app-menu>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h5">Nuevo Producto de Indicador de Componente</h1>
+                </div>
+
+                <form class="example-form">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Componentes</mat-label>
+                        <mat-select placeholder="-- Lista de Componentes --" name="componente" #componente="ngModel"
+                            [(ngModel)]="modelo.COMPONENTE_ID" required>
+                            <mat-option *ngFor='let a of listacomponente' [value]='a.ID'
+                                (click)="onSeleccionComponente()">
+                                {{a.EDT_NOMBRE}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Indicadores</mat-label>
+                        <mat-select placeholder="-- Lista de Indicadores --" name="indicador" #indicador="ngModel"
+                            [(ngModel)]="modelo.INDICADOR_ID" required>
+                            <mat-option *ngFor='let a of listaindicador' [value]='a.ID'
+                                (click)="onSeleccionIndicador()">
+                                {{a.EDT_NOMBRE}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>EDT</mat-label>
+                        <input matInput name="edt" #edt="ngModel" [(ngModel)]="modelo.EDT" required maxlength="3">
+                        <mat-error *ngIf="edt.touched">
+                            Ingrese el EDT
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Nombre del Componente</mat-label>
+                        <input matInput placeholder="Ejem. Fortalecimiento Institucional" name="nombre"
+                            #nombre="ngModel" [(ngModel)]="modelo.NOMBRE" required maxlength="150">
+                        <mat-error *ngIf="nombre.touched">
+                            Ingrese el nombre del componente
+                        </mat-error>
+                    </mat-form-field>                   
+
+                    <app-responsable (onResponsable)="onresponsable($event)"></app-responsable>
+
+                    <hr class="mb-4">
+
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group mr-2">
+                            <button type="button" class="btn btn-sm btn-outline-success"
+                                (click)="onGuardar()">Guardar</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                (click)="onCancelar()">Cancelar</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h5">Productos</h1>
+                </div>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">EDT</th>
+                            <th scope="col">Nombre del Producto</th>
+                            <th scope="col">Nombre del Componente</th>
+                            <th scope="col">Nombre del Indicador</th>
+                            <th scope="col">Responsable</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let a of lista">
+                            <td>{{a.EDT}}</td>
+                            <td>{{a.EDT_NOMBRE}}</td>
+                            <td>{{a.COMPONENTE}}</td>
+                            <td>{{a.INDICADOR}}</td>
+                            <td>{{a.RESPONSABLE}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
+</body>

@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EditarComponenteComponent implements OnInit {
   menu: menu[];
 
-  modelo: componente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '');
+  modelo: componente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '', 0, 0);
   responsable: boolean = false;
   sinResponsable: boolean = false;
   alert: boolean = false;

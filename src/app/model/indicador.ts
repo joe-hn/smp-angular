@@ -21,8 +21,9 @@ export class indicador{
         public USR: string,
         public TIPO_RESPONSABLE: string,
         public RESPONSABLE_ID: number,
-        public RESPONSABLE: string
-        
+        public RESPONSABLE: string,
+        public SUB_COMPONENTE: string,
+        public EDT_M: number        
        
     ){}
 }

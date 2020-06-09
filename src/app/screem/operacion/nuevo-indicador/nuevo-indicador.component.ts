@@ -13,8 +13,8 @@ import { componente } from 'src/app/model/componente';
 })
 export class NuevoIndicadorComponent implements OnInit {
   menu: menu[];
-  modelo: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '');
-  modelocomponente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '');
+  modelo: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0);
+  modelocomponente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '', 0, 0);
   listacomponente: componente[];
   lista: indicador[];
   edt: number;
@@ -43,6 +43,8 @@ export class NuevoIndicadorComponent implements OnInit {
       } else {
         this.modelo.EDT = 1;
       }
+
+      this.edt = this.modelo.EDT;
 
       this.apicomponente.GetId(this.modelo.COMPONENTE_ID).subscribe(res => {
         this.modelocomponente = res.modelo;

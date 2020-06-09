@@ -11,17 +11,7 @@
                     <h1 class="h6">Edición de Sub Componente</h1>
                 </div>
 
-                <form class="example-form">
-                    <mat-form-field class="example-full-width">
-                        <mat-label>Componentes</mat-label>
-                        <mat-select placeholder="-- Lista de Componentes --" name="componente" #componente="ngModel"
-                            [(ngModel)]="modelo.COMPONENTE_ID" required>
-                            <mat-option *ngFor='let a of modelocomponente' [value]='a.ID'>
-                                {{a.EDT_NOMBRE}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    
+                <form class="example-form">                                       
                     <mat-form-field class="example-full-width">
                         <mat-label>EDT</mat-label>
                         <input matInput name="edt" #edt="ngModel" [(ngModel)]="modelo.EDT_SC" required maxlength="3">

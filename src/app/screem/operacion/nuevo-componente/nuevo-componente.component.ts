@@ -12,7 +12,7 @@ import { ApiComponenteService } from 'src/app/service/api-componente.service';
 export class NuevoComponenteComponent implements OnInit {
   menu: menu[];
 
-  modelo: componente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '');
+  modelo: componente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '', 0, 0);
 
   lista: componente[];
   edt: number;

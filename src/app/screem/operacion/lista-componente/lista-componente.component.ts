@@ -7,6 +7,7 @@ import { operacion } from 'src/app/model/operacion';
 import { ApiOperacionService } from 'src/app/service/api-operacion.service';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalEliminarComponent } from 'src/app/component/modal-eliminar/modal-eliminar.component';
+import { ApiXlsxService } from 'src/app/service/api-xlsx.service';
 
 @Component({
   selector: 'app-lista-componente',
@@ -17,13 +18,14 @@ export class ListaComponenteComponent implements OnInit {
   menu: menu[];
 
   lista: componente[];
-  modelo: componente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '');
+  modelo: componente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '', 0, 0);
   modelooperacion: operacion = new operacion(0, 0, '', '', '', '', '', 0, '', '', '', 0, '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
   constructor(
     private dialog: MatDialog,
     private api: ApiComponenteService,
     private apioperacion: ApiOperacionService,
+    private apixlsx: ApiXlsxService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -31,6 +33,7 @@ export class ListaComponenteComponent implements OnInit {
 
     this.menu = [{ nombre: 'Componentes', url: '/lista-componente/' + this.modelo.OPERACION_ID, N: true, active: 'active' },
     { nombre: 'Crear Nueva Componente', url: '/nuevo-componente/' + this.modelo.OPERACION_ID, N: false, active: '' },
+    { nombre: 'Cambiar Orden del EDT', url: '/edt-componente/' + this.modelo.OPERACION_ID, N: false, active: '' },
     { nombre: 'Sub Componente', url: '/lista-subcomponente/' + this.modelo.OPERACION_ID, N: true, active: '' },
     { nombre: 'Inidicadores', url: '/lista-indicador/' + this.modelo.OPERACION_ID, N: true, active: '' },
     { nombre: 'Productos', url: '/lista-producto/' + this.modelo.OPERACION_ID, N: true, active: '' }];
@@ -57,13 +60,17 @@ export class ListaComponenteComponent implements OnInit {
   onEliminar(valor) {
     const dialogRef = this.dialog.open(ModalEliminarComponent);
 
-    dialogRef.afterClosed().subscribe(res => {     
+    dialogRef.afterClosed().subscribe(res => {
       if (res) {
         this.api.Delete(valor.ID, localStorage.getItem('_u')).subscribe(res => {
           this.GET();
         })
       }
     })
+  }
+
+  onReporte() {
+    this.apixlsx.exportToExcel(this.lista, 'Prueba de excell');
   }
 
 }

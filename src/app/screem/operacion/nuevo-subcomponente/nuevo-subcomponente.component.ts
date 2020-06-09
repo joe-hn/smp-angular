@@ -12,8 +12,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class NuevoSubcomponenteComponent implements OnInit {
   menu: menu[];
 
-  modelo: componente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '');
-  modeloC: componente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '');
+  modelo: componente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '', 0, 0);
+  modeloC: componente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '', 0, 0);
   modelocomponente: componente[];
 
   lista: componente[];
@@ -51,9 +51,7 @@ export class NuevoSubcomponenteComponent implements OnInit {
           this.lista = res.modelo;
         })
       })
-
     })
-
   }
 
   onSeleccionComponente() {
@@ -77,9 +75,9 @@ export class NuevoSubcomponenteComponent implements OnInit {
       if (flag) {
         this.alert = false;
         this.modelo.USR = localStorage.getItem('_u');
-        this.modelo.EDT_DESCRIPCION = this.modelo.EDT.toString();
+        this.modelo.EDT = this.modeloC.EDT;
 
-        this.modelo.EDT_DESCRIPCION = this.modeloC.EDT.toString() + '.' + this.modelo.EDT_SC.toString();
+        this.modelo.EDT_DESCRIPCION = this.modelo.EDT.toString() + '' + this.modelo.EDT_SC.toString();
 
         this.api.Post(this.modelo).subscribe(res => {
           this.onCancelar();
@@ -89,7 +87,6 @@ export class NuevoSubcomponenteComponent implements OnInit {
       } else {
         this.alert = true;
       }
-
     }
   }
 

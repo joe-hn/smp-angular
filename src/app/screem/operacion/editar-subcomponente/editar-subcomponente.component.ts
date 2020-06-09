@@ -13,8 +13,7 @@ export class EditarSubcomponenteComponent implements OnInit {
 
   menu: menu[];
 
-  modelo: componente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '');
-  modelocomponente: componente[];
+  modelo: componente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '', 0, 0);
 
   responsable: boolean = false;
   sinResponsable: boolean = false;
@@ -30,11 +29,7 @@ export class EditarSubcomponenteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.api.GetOperacion(this.modelo.OPERACION_ID).subscribe(res => {
-      this.modelocomponente = res.modelo;
-
-      this.GET();
-    })    
+    this.GET();
   }
 
   GET() {

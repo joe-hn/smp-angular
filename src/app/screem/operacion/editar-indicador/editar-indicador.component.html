@@ -11,21 +11,7 @@
                     <h1 class="h5">Edición de Indicador</h1>
                 </div>
 
-
-                <form class="example-form">                 
-                    <div class="row">
-                        <mat-form-field class="example-full-width">
-                            <mat-label>Componentes</mat-label>
-                            <mat-select placeholder="-- Lista de Componentes --" name="componente" #componente="ngModel"
-                                [(ngModel)]="modelo.COMPONENTE_ID" required>
-                                <mat-option *ngFor='let a of listacomponente' [value]='a.ID'
-                                    (click)="onSeleccionComponente()">
-                                    {{a.EDT_NOMBRE}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-
+                <form class="example-form">                                    
                     <div class="row">
                         <div class="col-sm">
                             <mat-form-field class="example-full-width">
@@ -109,12 +95,7 @@
                                 (click)="onCancelar()">Cancelar</button>
                         </div>
                     </div>
-                </form>
-
-                <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h5">Inidicador</h1>
-                </div>                
+                </form>                      
             </main>
         </div>
     </div>

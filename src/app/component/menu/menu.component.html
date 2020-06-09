@@ -5,7 +5,8 @@
             <ng-container *ngFor="let i of lista">
                 <ng-container *ngIf="i.N; else nivel2">
                     <li class="nav-item">
-                        <a class="nav-link h4 {{i.active}}" [routerLink]="[i.url]">
+                        <a class="nav-link h4 {{i.active}}" style="font-weight: bold; font-size:small;"
+                            [routerLink]="[i.url]">
                             {{i.nombre}}
                         </a>
                     </li>
@@ -13,7 +14,7 @@
 
                 <ng-template #nivel2>
                     <li class="nav-item" style="padding-left: 12px;">
-                        <a class="nav-link h5 {{i.active}}" [routerLink]="[i.url]">
+                        <a class="nav-link h5 {{i.active}}" style="font-style: italic;" [routerLink]="[i.url]">
                             {{i.nombre}}
                         </a>
                     </li>
@@ -21,9 +22,11 @@
             </ng-container>
 
             <li class="nav-item">
-                <a class="nav-link h4" style="cursor: pointer; color:darkgreen; background-color: #fcf3cf;" (click)="emitir_regresar()">Regresar</a>
+                <a class="nav-link h4"
+                    style="cursor: pointer; color:darkgreen; font-weight: bold; padding-top: 20px; font-size: large;"
+                    (click)="emitir_regresar()">Regresar</a>
             </li>
-            
+
         </ul>
 
     </div>

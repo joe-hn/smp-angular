@@ -42,7 +42,13 @@ import { ModalEliminarComponent } from './component/modal-eliminar/modal-elimina
 import { ListaSubcomponenteComponent } from './screem/operacion/lista-subcomponente/lista-subcomponente.component';
 import { NuevoSubcomponenteComponent } from './screem/operacion/nuevo-subcomponente/nuevo-subcomponente.component';
 import { EditarSubcomponenteComponent } from './screem/operacion/editar-subcomponente/editar-subcomponente.component';
-
+import { EdtComponenteComponent } from './screem/operacion/edt-componente/edt-componente.component';
+import { EdtSubcomponenteComponent } from './screem/operacion/edt-subcomponente/edt-subcomponente.component';
+import { NuevoIndicadorSubcomponenteComponent } from './screem/operacion/nuevo-indicador-subcomponente/nuevo-indicador-subcomponente.component';
+import { NuevoProductoSubcomponenteComponent } from './screem/operacion/nuevo-producto-subcomponente/nuevo-producto-subcomponente.component';
+import { EditarProductoComponent } from './screem/operacion/editar-producto/editar-producto.component';
+import { EdtIndicadorComponent } from './screem/operacion/edt-indicador/edt-indicador.component';
+import { EdtProductoComponent } from './screem/operacion/edt-producto/edt-producto.component';
 
 registerLocaleData(localesHN, 'es-HN');
 
@@ -80,7 +86,14 @@ registerLocaleData(localesHN, 'es-HN');
     ModalEliminarComponent,
     ListaSubcomponenteComponent,
     NuevoSubcomponenteComponent,
-    EditarSubcomponenteComponent
+    EditarSubcomponenteComponent,
+    EdtComponenteComponent,
+    EdtSubcomponenteComponent,
+    NuevoIndicadorSubcomponenteComponent,    
+    NuevoProductoSubcomponenteComponent,
+    EditarProductoComponent,
+    EdtIndicadorComponent,
+    EdtProductoComponent
     
   ],
   imports: [

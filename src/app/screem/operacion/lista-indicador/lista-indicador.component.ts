@@ -5,6 +5,7 @@ import { ApiIndicadorService } from 'src/app/service/api-indicador.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { operacion } from 'src/app/model/operacion';
 import { ApiOperacionService } from 'src/app/service/api-operacion.service';
+import { ModalEliminarComponent } from 'src/app/component/modal-eliminar/modal-eliminar.component';
 
 @Component({
   selector: 'app-lista-indicador',
@@ -14,9 +15,10 @@ import { ApiOperacionService } from 'src/app/service/api-operacion.service';
 export class ListaIndicadorComponent implements OnInit {
   menu: menu[];
 
-  modelo: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '');
+  modelo: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0);
   lista: indicador[];
   modelooperacion: operacion = new operacion(0, 0, '', '', '', '', '', 0, '', '', '', 0, '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+  dialog: any;
 
   constructor(
     private api: ApiIndicadorService,
@@ -27,8 +29,13 @@ export class ListaIndicadorComponent implements OnInit {
     this.modelo.OPERACION_ID = this.route.snapshot.params.id;
 
     this.menu = [{ nombre: 'Componentes', url: '/lista-componente/' + this.modelo.OPERACION_ID, N: true, active: '' },    
+    { nombre: 'Sub Componente', url: '/lista-subcomponente/' + this.modelo.OPERACION_ID, N: true, active: '' },
+
     { nombre: 'Inidicadores', url: '/lista-indicador/' + this.modelo.OPERACION_ID, N: true, active: 'active' },
-    { nombre: 'Crear Nuevo Indicador', url: '/nuevo-indicador/' + this.modelo.OPERACION_ID, N: false, active: '' },
+    { nombre: 'Crear Nuevo Indicador de Componente', url: '/nuevo-indicador/' + this.modelo.OPERACION_ID, N: false, active: '' },
+    { nombre: 'Crear Nuevo Indicador de Sub Componente', url: '/nuevo-indicador-subcomponente/' + this.modelo.OPERACION_ID, N: false, active: '' },
+    { nombre: 'Cambiar Orden de EDT', url: '/edt-indicador/' + this.modelo.OPERACION_ID, N: false, active: '' },
+
     { nombre: 'Productos', url: '/lista-producto/' + this.modelo.OPERACION_ID, N: true, active: '' }];
   }
 
@@ -51,7 +58,15 @@ export class ListaIndicadorComponent implements OnInit {
   }
 
   onEliminar(valor) {
+    const dialogRef = this.dialog.open(ModalEliminarComponent);
 
+    dialogRef.afterClosed().subscribe(res => {
+      if (res) {
+        this.api.Delete(valor.ID, localStorage.getItem('_u')).subscribe(res => {
+          this.GET();
+        })
+      }
+    })
   }
 
 }

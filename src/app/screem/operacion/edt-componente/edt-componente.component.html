@@ -1,0 +1,57 @@
+<body>
+    <app-cabecera></app-cabecera>
+
+    <div class="container-fluid">
+        <div class="row">
+            <app-menu [lista]="menu" (regresar)="onRegresar()"></app-menu>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h6">Cambiar orden del EDT</h1>
+                </div>
+
+                <form class="example-form">
+                    <table class="table">
+                        <thead>
+                            <tr style="text-align: center;">
+                                <th scope="col">EDT</th>
+                                <th scope="col">Nuevo EDT</th>
+                                <th scope="col">Nombre del Componente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let a of lista; index as i" style="background-color: whitesmoke;">
+                                <td style="width: 10px;">{{a.EDT}}</td>
+
+                                <td style="width: 30px; background-color: white;">
+                                    <mat-form-field style="width: 50px; height: 8px;">
+                                        <input matInput name="edt" #edt="ngModel" [(ngModel)]="lista[i].EDT_M"
+                                            maxlength="3">
+                                    </mat-form-field>
+                                </td>
+
+                                <td style="width: 100%;">{{a.EDT_NOMBRE}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div *ngIf="validacion" class="alert alert-success" role="alert">
+                        El EDT fue modificado y actualizado en la estructura de la operación 
+                      </div>
+
+                    <hr class="mb-4">
+
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group mr-2 btn-group-sm">
+                            <button type="button" class="btn btn-sm btn-outline-success"
+                                (click)="onGuardar()">Guardar</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                (click)="onCancelar()">Cancelar</button>
+                        </div>
+                    </div>
+                </form>
+            </main>
+        </div>
+    </div>
+</body>

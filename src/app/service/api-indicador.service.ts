@@ -58,4 +58,8 @@ export class ApiIndicadorService {
     return this.http.delete(this.url + id + "/" + usr, this.httpOptions).pipe();
   }
 
+  ModificarEdt(modelo): Observable<any>{
+    return this.http.patch(this.url + 'edt/modificar/0', JSON.stringify(modelo), this.httpOptions).pipe();
+  }
+
 }

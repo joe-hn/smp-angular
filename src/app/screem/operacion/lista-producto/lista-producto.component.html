@@ -1,1 +1,47 @@
-<p>lista-producto works!</p>
+<body>
+    <app-cabecera></app-cabecera>
+
+    <div class="container-fluid">
+        <div class="row">
+            <app-menu [lista]="menu" (regresar)="onRegresar()"></app-menu>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h5">Indicadores de la Operacion: {{modelooperacion.OPERACION}}</h1>
+                </div>
+
+                <ng-container *ngFor="let a of lista; index as i">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <p class="card-title">Nombre del Componente: {{a.COMPONENTE}}</p>
+                            <p class="card-title" *ngIf="a.SUB_COMPONENTE">Nombre del Sub Componente:
+                                {{a.SUB_COMPONENTE}}</p>
+                            <p class="card-title">Nombre del Indicador: {{a.INDICADOR}}</p>
+                            <p class="card-title"><strong>Nombre del Producto: {{a.EDT_NOMBRE}}</strong></p>
+                            <p class="card-text">Responsable: {{a.RESPONSABLE}}</p>
+
+                            <div class="btn-toolbar mb-2 mb-md-0">
+                                <div class="btn-group mr-2">
+                                    <ng-template [ngIf]="a.SUB_COMPONENTE" [ngIfElse]="SC">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                                            [routerLink]="['/editar-producto-subcomponente', a.ID, modelo.OPERACION_ID]">Editar</button>
+                                    </ng-template>
+
+                                    <ng-template #SC>
+                                        <button type="button" class="btn btn-sm btn-outline-secondary"
+                                            [routerLink]="['/editar-producto', a.ID, modelo.OPERACION_ID]">Editar</button>
+                                    </ng-template>
+
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                                        (click)="onEliminar(lista[i])">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+            </main>
+        </div>
+    </div>
+</body>

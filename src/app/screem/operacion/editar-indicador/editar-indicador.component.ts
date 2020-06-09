@@ -14,8 +14,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EditarIndicadorComponent implements OnInit {
   menu: menu[];
 
-  modelo: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '');
-  listacomponente: componente[];
+  modelo: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0);
+
   responsable: boolean = false;
   sinResponsable: boolean = false;
   alert: boolean = false;
@@ -31,11 +31,7 @@ export class EditarIndicadorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apicomponente.GetOperacion(this.modelo.OPERACION_ID).subscribe(res => {
-      this.listacomponente = res.modelo;
-
-      this.GET();
-    })
+    this.GET();
   }
 
   GET() {

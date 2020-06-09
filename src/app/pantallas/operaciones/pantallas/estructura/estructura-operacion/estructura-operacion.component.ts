@@ -11,9 +11,9 @@ import { indicador } from 'src/app/model/indicador';
   styleUrls: ['./estructura-operacion.component.css']
 })
 export class EstructuraOperacionComponent implements OnInit {
-  modelocomponente: componente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '');
+  modelocomponente: componente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '', 0, 0);
   listacomponente: componente[];
-  modeloindicador: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '');
+  modeloindicador: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0);
   listaindicador: indicador[];
 
   constructor(

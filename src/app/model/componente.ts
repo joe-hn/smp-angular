@@ -17,6 +17,8 @@ export class componente {
         public TIPO_RESPONSABLE: string,
         public RESPONSABLE_ID: number,
         public RESPONSABLE: string,
-        public COMPOMENTE_PADRE: string
+        public COMPOMENTE_PADRE: string,
+        public EDT_M : number,
+        public EDT_SC_M: number
     ) { }
 }

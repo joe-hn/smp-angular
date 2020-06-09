@@ -17,6 +17,13 @@ import { EditarIndicadorComponent } from './screem/operacion/editar-indicador/ed
 import { ListaSubcomponenteComponent } from './screem/operacion/lista-subcomponente/lista-subcomponente.component';
 import { NuevoSubcomponenteComponent } from './screem/operacion/nuevo-subcomponente/nuevo-subcomponente.component';
 import { EditarSubcomponenteComponent } from './screem/operacion/editar-subcomponente/editar-subcomponente.component';
+import { EdtComponenteComponent } from './screem/operacion/edt-componente/edt-componente.component';
+import { EdtSubcomponenteComponent } from './screem/operacion/edt-subcomponente/edt-subcomponente.component';
+import { NuevoIndicadorSubcomponenteComponent } from './screem/operacion/nuevo-indicador-subcomponente/nuevo-indicador-subcomponente.component';
+import { NuevoProductoSubcomponenteComponent } from './screem/operacion/nuevo-producto-subcomponente/nuevo-producto-subcomponente.component';
+import { EditarProductoComponent } from './screem/operacion/editar-producto/editar-producto.component';
+import { EdtIndicadorComponent } from './screem/operacion/edt-indicador/edt-indicador.component';
+import { EdtProductoComponent } from './screem/operacion/edt-producto/edt-producto.component';
 
 /*
 import { InicioComponent } from './pantallas/inicio/inicio.component';
@@ -46,12 +53,20 @@ const routes: Routes = [
   { path: 'editar-componente/:id/:operacion', component: EditarComponenteComponent },
   { path: 'lista-indicador/:id', component: ListaIndicadorComponent },
   { path: 'nuevo-indicador/:id', component: NuevoIndicadorComponent },
+  { path: 'nuevo-indicador-subcomponente/:id', component: NuevoIndicadorSubcomponenteComponent },
   { path: 'editar-indicador/:id/:operacion', component: EditarIndicadorComponent },
   { path: 'lista-producto/:id', component: ListaProductoComponent },
-  { path: 'nuevo-producto', component: NuevoProductoComponent },
+  { path: 'nuevo-producto/:id', component: NuevoProductoComponent },
+  { path: 'nuevo-producto-subcomponente/:id', component: NuevoProductoSubcomponenteComponent },
+  { path: 'editar-producto/:id/:operacion', component: EditarProductoComponent },
   { path: 'lista-subcomponente/:id', component: ListaSubcomponenteComponent },
   { path: 'nuevo-subcomponente/:id', component: NuevoSubcomponenteComponent },
-  { path: 'editar-subcomponente/:id/:operacion', component: EditarSubcomponenteComponent }
+  { path: 'editar-subcomponente/:id/:operacion', component: EditarSubcomponenteComponent },
+
+  { path: 'edt-componente/:id', component: EdtComponenteComponent },
+  { path: 'edt-subcomponente/:id', component: EdtSubcomponenteComponent },
+  { path: 'edt-indicador/:id', component: EdtIndicadorComponent },
+  { path: 'edt-producto/:id', component: EdtProductoComponent }
 
   /*
     { path: 'iniciooperacion', component: InicioOperacionComponent },  

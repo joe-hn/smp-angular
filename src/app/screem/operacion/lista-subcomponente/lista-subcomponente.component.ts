@@ -17,7 +17,7 @@ export class ListaSubcomponenteComponent implements OnInit {
   menu: menu[];
 
   lista: componente[];
-  modelo: componente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '');
+  modelo: componente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '', 0, 0);
   modelooperacion: operacion = new operacion(0, 0, '', '', '', '', '', 0, '', '', '', 0, '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
 
   constructor(
@@ -32,6 +32,7 @@ export class ListaSubcomponenteComponent implements OnInit {
     this.menu = [{ nombre: 'Componentes', url: '/lista-componente/' + this.modelo.OPERACION_ID, N: true, active: '' },
     { nombre: 'Sub Componente', url: '/lista-subcomponente/' + this.modelo.OPERACION_ID, N: true, active: 'active' },
     { nombre: 'Crear Nuevo Sub Componente', url: '/nuevo-subcomponente/' + this.modelo.OPERACION_ID, N: false, active: '' },
+    { nombre: 'Cambiar Orden del EDT', url: '/edt-subcomponente/' + this.modelo.OPERACION_ID, N: false, active: '' },
     { nombre: 'Inidicadores', url: '/lista-indicador/' + this.modelo.OPERACION_ID, N: true, active: '' },
     { nombre: 'Productos', url: '/lista-producto/' + this.modelo.OPERACION_ID, N: true, active: '' }];
   }
