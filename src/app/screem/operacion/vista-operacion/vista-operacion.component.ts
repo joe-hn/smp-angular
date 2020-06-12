@@ -37,7 +37,7 @@ export class VistaOperacionComponent implements OnInit {
   ) {
     this.operacionmodelo.ID = +this.route.snapshot.params.id;
 
-    this.menu = [
+    this.menu = [{ nombre: 'Vista de la Operación', url: '/vista-operacion/' + this.operacionmodelo.ID, N: true, active: 'active' },
       { nombre: 'Exportar a Excell', BotonReporte: true }];
   }
 

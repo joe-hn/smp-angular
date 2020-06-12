@@ -27,17 +27,19 @@ export class ResponsableComponent implements OnInit {
 
   @Output() onResponsable = new EventEmitter<{ idResponsable: number, tipoResponsable: string, seleccionado: boolean, SinResponable: boolean }>();
   @Input() isEdicion: boolean = false;
+  @Input() isObligatorio?: boolean = false;
 
   constructor(
     private apidireccion: ApiDireccionService,
     private apiempleado: ApiEmpleadoService,
     private apicargo: ApiCargoService
   ) {
-    if(this.isEdicion){
+    if (this.isEdicion) {
       this.texto = 'Modificar Responsabe';
     } else {
       this.texto = 'Asignar Responsable';
-    }    
+    }
+   
   }
 
   ngOnInit(): void {
@@ -48,6 +50,10 @@ export class ResponsableComponent implements OnInit {
         this.modelocargo = res.modelo;
       })
     })
+
+    if (this.isObligatorio) {
+      this.responsable = true;
+    } 
   }
 
   onSelectDireccion() {

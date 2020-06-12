@@ -27,6 +27,8 @@ export class EdtSubcomponenteComponent implements OnInit {
     private router: Router
   ) {
     this.modelo.OPERACION_ID = +this.route.snapshot.params.id;
+
+    this.menu = [{ nombre: 'Cambiar Orden del EDT', url: '/edt-subcomponente/' + this.modelo.OPERACION_ID, N: true, active: 'active' }];
   }
 
   ngOnInit(): void {
@@ -35,7 +37,7 @@ export class EdtSubcomponenteComponent implements OnInit {
 
   GET() {
     this.api.GetOperacionSubComponente(this.modelo.OPERACION_ID).subscribe(res => {
-      this.lista = res.modelo;      
+      this.lista = res.modelo;
     })
   }
 
@@ -50,7 +52,7 @@ export class EdtSubcomponenteComponent implements OnInit {
     }
 
     this.api.ModificarEdtsubComponente(this.lista).subscribe(res => {
-      
+
       this.apiedt.Componente(this.modelo.OPERACION_ID, this.modelo).subscribe(res => {
         this.apiedt.SubComponente(this.modelo.OPERACION_ID, this.modelo).subscribe(res => {
           this.apiedt.ComponenteIndicador(this.modelo.OPERACION_ID, this.modelo).subscribe(res => {
@@ -71,7 +73,7 @@ export class EdtSubcomponenteComponent implements OnInit {
         })
 
       })
-      
+
     })
   }
 

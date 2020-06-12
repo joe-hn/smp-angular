@@ -25,6 +25,8 @@ export class EdtComponenteComponent implements OnInit {
     private router: Router
   ) {
     this.modelo.OPERACION_ID = this.route.snapshot.params.id;
+
+    this.menu = [{ nombre: 'Crear Nueva Componente', url: '/nuevo-componente/' + this.modelo.OPERACION_ID, N: true, active: 'active' }];
   }
 
   ngOnInit(): void {

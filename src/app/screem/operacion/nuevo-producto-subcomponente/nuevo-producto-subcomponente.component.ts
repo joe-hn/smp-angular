@@ -14,7 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./nuevo-producto-subcomponente.component.css']
 })
 export class NuevoProductoSubcomponenteComponent implements OnInit {
-  menu: menu;
+  menu: menu[];
   modelo: poaProducto = new poaProducto(0, 0, 0, 0, 0, '', '', 0, '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0);
   indicadormodelo: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0);
   listacomponente: componente[];
@@ -35,6 +35,8 @@ export class NuevoProductoSubcomponenteComponent implements OnInit {
     private router: Router
   ) {
     this.modelo.OPERACION_ID = this.route.snapshot.params.id;
+
+    this.menu = [{ nombre: 'Crear Nuevo Producto de Indicador de Sub Componente', url: '/nuevo-producto-subcomponente/' + this.modelo.OPERACION_ID, N: true, active: 'active' }];
   }
 
   ngOnInit(): void {

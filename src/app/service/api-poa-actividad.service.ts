@@ -30,8 +30,8 @@ export class ApiPoaActividadService {
     return this.http.get(this.url, this.httpOptions).pipe(map(this.extractData));
   }
 
-  GetProducto(id, poaid): Observable<any> {
-    return this.http.get(this.url + 'producto/' + id + '/' + poaid, this.httpOptions).pipe(map(this.extractData));
+  GetProducto(id, poaid, operacionid): Observable<any> {
+    return this.http.get(this.url + 'producto/' + id + '/' + poaid + '/' + operacionid, this.httpOptions).pipe(map(this.extractData));
   }
 
   GetOperacion(id): Observable<any> {
@@ -42,8 +42,8 @@ export class ApiPoaActividadService {
     return this.http.get(this.url + 'poa/' + id, this.httpOptions).pipe(map(this.extractData));
   }
 
-  GetId(id): Observable<any> {
-    return this.http.get(this.url + id, this.httpOptions).pipe(map(this.extractData));
+  GetId(id, operacionid): Observable<any> {
+    return this.http.get(this.url + id + '/' + operacionid, this.httpOptions).pipe(map(this.extractData));
   }
 
   GetMaxCount(id, poaid): Observable<any> {

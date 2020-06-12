@@ -31,6 +31,8 @@ export class NuevoIndicadorSubcomponenteComponent implements OnInit {
     private router: Router
   ) {
     this.modelo.OPERACION_ID = this.route.snapshot.params.id;
+
+    this.menu = [{ nombre: 'Crear Nuevo Indicador de Sub Componente', url: '/nuevo-indicador-subcomponente/' + this.modelo.OPERACION_ID, N: true, active: 'active' }];
   }
 
   ngOnInit(): void {
@@ -39,9 +41,9 @@ export class NuevoIndicadorSubcomponenteComponent implements OnInit {
     })
   }
 
-  GET_SUBCOMPONENTE(){
+  GET_SUBCOMPONENTE() {
     this.apicomponente.GetSubComponente(this.componente_id).subscribe(res => {
-      this.listasubcomponente = res.modelo;            
+      this.listasubcomponente = res.modelo;
     })
   }
 
@@ -66,10 +68,10 @@ export class NuevoIndicadorSubcomponenteComponent implements OnInit {
   }
 
   onSeleccionComponente() {
-    this.GET_SUBCOMPONENTE();   
+    this.GET_SUBCOMPONENTE();
   }
 
-  onSeleccionSubComponente(){
+  onSeleccionSubComponente() {
     this.GET();
   }
 

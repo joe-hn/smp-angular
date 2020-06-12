@@ -28,6 +28,8 @@ export class NuevoIndicadorComponent implements OnInit {
     private router: Router
   ) {
     this.modelo.OPERACION_ID = this.route.snapshot.params.id;
+
+    this.menu = [{ nombre: 'Crear Nuevo Indicador de Componente', url: '/nuevo-indicador/' + this.modelo.OPERACION_ID, N: true, active: 'active' }];
   }
 
   ngOnInit(): void {

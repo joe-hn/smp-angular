@@ -14,12 +14,19 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./nuevo-producto.component.css']
 })
 export class NuevoProductoComponent implements OnInit {
-  menu: menu;
+  menu: menu[];
   modelo: poaProducto = new poaProducto(0, 0, 0, 0, 0, '', '', 0, '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0);
   indicadormodelo: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0);
   listacomponente: componente[];
   listaindicador: indicador[];
   lista: poaProducto[];
+  
+  dateInicio: Date = new Date();
+  dateFinal: Date = new Date();
+  dateValidador: Date = new Date();
+  value: number = 0;
+  vMonto: boolean = false;
+  
   edt: number;
   responsable: boolean = false;
   alert: boolean = false;  
@@ -32,6 +39,8 @@ export class NuevoProductoComponent implements OnInit {
     private router: Router
   ) {
     this.modelo.OPERACION_ID = this.route.snapshot.params.id;
+
+    this.menu = [{ nombre: 'Crear Nuevo Producto de Indicador de Componente', url: '/nuevo-producto/' + this.modelo.OPERACION_ID, N: true, active: 'active' }];
   }
 
   ngOnInit(): void {

@@ -44,7 +44,9 @@ export class poaActividad {
         public USR: string,
         public EDT_NOMBRE: string,
         public DIFERENCIA_DISTRIBUCION: number,
-        public SUMA_PROYECCION: number
+        public SUMA_PROYECCION: number,
+        public SUB_COMPONENTE: string,
+        public EDT_M: number    
 
     ) { }
 }

@@ -27,6 +27,8 @@ export class NuevoSubcomponenteComponent implements OnInit {
     private router: Router
   ) {
     this.modelo.OPERACION_ID = +this.route.snapshot.params.id;
+
+    this.menu = [{ nombre: 'Crear Nuevo Sub Componente', url: '/nuevo-subcomponente/' + this.modelo.OPERACION_ID, N: true, active: 'active' }];
   }
 
   ngOnInit(): void {

@@ -159,6 +159,14 @@ body { margin: 0;
   }
   
 
+  /* TABLAS DE PROYECCION */
+.celda-proyeccion{
+  width: 56px;
+  height: 26px;
+  font-size: 11px;  
+  border-style: none;
+  background-color: whitesmoke;
+}
   
   
   

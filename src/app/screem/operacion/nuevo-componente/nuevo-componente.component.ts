@@ -25,6 +25,8 @@ export class NuevoComponenteComponent implements OnInit {
     private router: Router
   ) {
     this.modelo.OPERACION_ID = +this.route.snapshot.params.id;
+
+    this.menu = [{ nombre: 'Cambiar Orden del EDT', url: '/edt-componente/' + this.modelo.OPERACION_ID, N: true, active: 'active' }];
   }
 
   ngOnInit(): void {

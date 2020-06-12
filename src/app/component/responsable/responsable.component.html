@@ -6,7 +6,7 @@
 
     <div class="row" *ngIf="!sinResponsable">
         <mat-checkbox name="chkresponsable" #chkresponsable="ngModel" [(ngModel)]="responsable"
-            (change)="onChkResponsable()">{{texto}}
+            (change)="onChkResponsable()" [disabled]="isObligatorio">{{texto}}
         </mat-checkbox>
     </div>
 
