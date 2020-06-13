@@ -11,16 +11,7 @@
                     <h1 class="h5">Edición de Producto</h1>
                 </div>
 
-                <form class="example-form">                            
-                    <mat-form-field class="example-full-width">
-                        <mat-label>EDT</mat-label>
-                        <input matInput name="edt" #edt="ngModel" [(ngModel)]="modelo.EDT" required
-                            maxlength="3">
-                        <mat-error *ngIf="edt.touched">
-                            Ingrese el EDT
-                        </mat-error>
-                    </mat-form-field>
-
+                <form class="example-form">                                               
                     <mat-form-field class="example-full-width">
                         <mat-label>Nombre del Inidcador</mat-label>
                         <input matInput placeholder="Ejem. Fortalecimiento Institucional" name="nombre"

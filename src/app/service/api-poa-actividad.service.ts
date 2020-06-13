@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { _global } from '../_global';
+import { operacion } from '../model/operacion';
 
 @Injectable({
   providedIn: 'root'
@@ -38,8 +39,8 @@ export class ApiPoaActividadService {
     return this.http.get(this.url + 'operacion/' + id, this.httpOptions).pipe(map(this.extractData));
   }
 
-  GetPoa(id): Observable<any> {
-    return this.http.get(this.url + 'poa/' + id, this.httpOptions).pipe(map(this.extractData));
+  GetPoa(poaid, operacionid): Observable<any> {
+    return this.http.get(this.url + 'poa/' + poaid + '/' + operacionid, this.httpOptions).pipe(map(this.extractData));
   }
 
   GetId(id, operacionid): Observable<any> {
@@ -60,6 +61,10 @@ export class ApiPoaActividadService {
 
   Delete(id, usr): Observable<any> {
     return this.http.delete(this.url + id + "/" + usr, this.httpOptions).pipe();
+  }
+
+  ModificarEdt(modelo): Observable<any>{
+    return this.http.patch(this.url + 'edt/modificar/0', JSON.stringify(modelo), this.httpOptions).pipe();
   }
 
 }

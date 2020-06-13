@@ -26,7 +26,7 @@ export class NuevoComponenteComponent implements OnInit {
   ) {
     this.modelo.OPERACION_ID = +this.route.snapshot.params.id;
 
-    this.menu = [{ nombre: 'Cambiar Orden del EDT', url: '/edt-componente/' + this.modelo.OPERACION_ID, N: true, active: 'active' }];
+    this.menu = [{ nombre: 'Crear Nueva Componente', url: '/nuevo-componente/' + this.modelo.OPERACION_ID, N: true, active: 'active' }];
   }
 
   ngOnInit(): void {

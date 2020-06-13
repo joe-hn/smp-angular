@@ -11,7 +11,7 @@
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h5">Lista de Actividades de la Operación {{poamodelo.OPERACION}}</h1>
+                    <h1 class="h5">Programación {{poamodelo.OPERACION}}</h1>
                 </div>
 
                 <table class="table" style="font-size:smaller;">
@@ -31,7 +31,7 @@
                         <th scope="col">Oct</th>
                         <th scope="col">Nov</th>
                         <th scope="col">Dic</th>
-                        <th scope="col">Proyección</th>
+                        <th scope="col">Programación</th>
                         <th scope="col"></th>
                     </thead>
 
@@ -39,111 +39,56 @@
                         <ng-container *ngFor="let A of lista; index as x">
                             <tr>
                                 <td>
-                                    <p style="width: 30px; text-align: center; font-size: 10px;">{{A.EDT_DESCRIPCION}}</p>
-                                </td>
-
-                                <td>                                    
-                                    <a style="width: 150px; text-align: justify; cursor: pointer;" (click)="onInformacionGeneral(lista[x])">{{A.NOMBRE}}</a>
+                                    <p style="width: 30px; text-align: center; font-size: 10px;">{{A.EDT_DESCRIPCION}}
+                                    </p>
                                 </td>
 
                                 <td>
-                                    <p style="width: 50px; text-align: right; font-size: 11px;">{{A.PROYECCION | currency:'$'}}</p>
+                                    <a style="width: 150px; text-align: justify; cursor: pointer;"
+                                        (click)="onInformacionGeneral(lista[x])">{{A.NOMBRE}}</a>
+                                </td>
+
+                                <td>
+                                    <p style="width: 50px; text-align: right; font-size: 11px;">
+                                        {{A.PROYECCION | currency:'$'}}</p>
                                 </td>
 
                                 <ng-container *ngFor="let B of poadetallemodelo; index as i">
                                     <ng-container *ngIf="B.ACTIVIDAD_ID == A.ID">
-                                        <td *ngIf="B.MES == 1">
-                                            <input currencyMask name="monto" #monto="ngModel"
-                                                [(ngModel)]="poadetallemodelo[i].PROYECCION"
-                                                [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
-                                                class="celda-proyeccion" />
-                                        </td>
+                                        <ng-container *ngFor="let KEY of [1,2,3,4,5,6,7,8,9,10,11,12]">
+                                            <ng-container *ngIf="B.MES == KEY">
+                                                <ng-container
+                                                    *ngIf="B.MES >= A.MES && B.MES <= A.FMES; else sinprogramacion">
+                                                    <td>
+                                                        <input currencyMask name="monto" #monto="ngModel"
+                                                            [(ngModel)]="poadetallemodelo[i].PROYECCION"
+                                                            [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
+                                                            class="celda-proyeccion" style="background-color: white;" />
+                                                    </td>
+                                                </ng-container>
 
-                                        <td *ngIf="B.MES == 2">
-                                            <input currencyMask name="monto" #monto="ngModel"
-                                                [(ngModel)]="poadetallemodelo[i].PROYECCION"
-                                                [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
-                                                class="celda-proyeccion" />
-                                        </td>
+                                                <ng-template #sinprogramacion>
+                                                    <td>
+                                                        <input currencyMask
+                                                            [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
+                                                            class="celda-proyeccion" readonly />
+                                                    </td>
+                                                </ng-template>
 
-                                        <td *ngIf="B.MES == 3">
-                                            <input currencyMask name="monto" #monto="ngModel"
-                                                [(ngModel)]="poadetallemodelo[i].PROYECCION"
-                                                [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
-                                                class="celda-proyeccion" />
-                                        </td>
+                                            </ng-container>
+                                        </ng-container>
 
-                                        <td *ngIf="B.MES == 4">
-                                            <input currencyMask name="monto" #monto="ngModel"
-                                                [(ngModel)]="poadetallemodelo[i].PROYECCION"
-                                                [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
-                                                class="celda-proyeccion" />
-                                        </td>
-
-                                        <td *ngIf="B.MES == 5">
-                                            <input currencyMask name="monto" #monto="ngModel"
-                                                [(ngModel)]="poadetallemodelo[i].PROYECCION"
-                                                [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
-                                                class="celda-proyeccion" />
-                                        </td>
-
-                                        <td *ngIf="B.MES == 6">
-                                            <input currencyMask name="monto" #monto="ngModel"
-                                                [(ngModel)]="poadetallemodelo[i].PROYECCION"
-                                                [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
-                                                class="celda-proyeccion" />
-                                        </td>
-
-                                        <td *ngIf="B.MES == 7">
-                                            <input currencyMask name="monto" #monto="ngModel"
-                                                [(ngModel)]="poadetallemodelo[i].PROYECCION"
-                                                [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
-                                                class="celda-proyeccion" />
-                                        </td>
-
-                                        <td *ngIf="B.MES == 8">
-                                            <input currencyMask name="monto" #monto="ngModel"
-                                                [(ngModel)]="poadetallemodelo[i].PROYECCION"
-                                                [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
-                                                class="celda-proyeccion" />
-                                        </td>
-
-                                        <td *ngIf="B.MES == 9">
-                                            <input currencyMask name="monto" #monto="ngModel"
-                                                [(ngModel)]="poadetallemodelo[i].PROYECCION"
-                                                [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
-                                                class="celda-proyeccion" />
-                                        </td>
-
-                                        <td *ngIf="B.MES == 10">
-                                            <input currencyMask name="monto" #monto="ngModel"
-                                                [(ngModel)]="poadetallemodelo[i].PROYECCION"
-                                                [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
-                                                class="celda-proyeccion" />
-                                        </td>
-
-                                        <td *ngIf="B.MES == 11">
-                                            <input currencyMask name="monto" #monto="ngModel"
-                                                [(ngModel)]="poadetallemodelo[i].PROYECCION"
-                                                [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
-                                                class="celda-proyeccion" />
-                                        </td>
-
-                                        <td *ngIf="B.MES == 12">
-                                            <input currencyMask name="monto" #monto="ngModel"
-                                                [(ngModel)]="poadetallemodelo[i].PROYECCION"
-                                                [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
-                                                class="celda-proyeccion" />
-                                        </td>
                                     </ng-container>
                                 </ng-container>
 
                                 <td>
-                                    <p style="width: 50px; text-align: right; font-size: 11px;">{{A.PROYECCION_REAL | currency:'$'}}</p>
+                                    <p style="width: 50px; text-align: right; font-size: 11px;">
+                                        {{A.PROYECCION_REAL | currency:'$'}}</p>
                                 </td>
 
                                 <td>
-                                    <button class="btn btn-sm btn-outline-secondary" style="font-size: 11px;" (click)="onGuardar(lista[x])" >Actualizar</button>
+                                    <button class="btn btn-sm btn-outline-secondary" style="font-size: 11px;"
+                                        (click)="onGuardar(lista[x])">Actualizar</button>
                                 </td>
 
                             </tr>

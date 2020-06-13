@@ -57,6 +57,9 @@ import { PoaEjecucionComponent } from './screem/operacion/poa-ejecucion/poa-ejec
 import { NuevaActividadComponent } from './screem/operacion/nueva-actividad/nueva-actividad.component';
 import { NuevaActividadSubcomponenteComponent } from './screem/operacion/nueva-actividad-subcomponente/nueva-actividad-subcomponente.component';
 import { ModalInformacionGeneralComponent } from './component/modal-informacion-general/modal-informacion-general.component';
+import { EdtActividadComponent } from './screem/operacion/edt-actividad/edt-actividad.component';
+import { ListaActividadComponent } from './screem/operacion/lista-actividad/lista-actividad.component';
+import { EditarActividadComponent } from './screem/operacion/editar-actividad/editar-actividad.component';
 
 registerLocaleData(localesHN, 'es-HN');
 
@@ -109,7 +112,10 @@ registerLocaleData(localesHN, 'es-HN');
     PoaEjecucionComponent,
     NuevaActividadComponent,
     NuevaActividadSubcomponenteComponent,
-    ModalInformacionGeneralComponent
+    ModalInformacionGeneralComponent,
+    EdtActividadComponent,
+    ListaActividadComponent,
+    EditarActividadComponent
     
   ],
   imports: [

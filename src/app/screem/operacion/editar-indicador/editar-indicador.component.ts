@@ -28,6 +28,8 @@ export class EditarIndicadorComponent implements OnInit {
   ) {
     this.modelo.ID = this.route.snapshot.params.id;
     this.modelo.OPERACION_ID = this.route.snapshot.params.operacion;
+
+    this.menu = [{ nombre: 'Editar Inidicador', url: '/editar-indicador/' + this.modelo.ID + '/' + this.modelo.OPERACION_ID, N: true, active: 'active' }];
   }
 
   ngOnInit(): void {

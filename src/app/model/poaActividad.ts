@@ -34,7 +34,7 @@ export class poaActividad {
         public RESPONSABLE: string,
         public ANIO: number,
         public MES: number,
-        public DIA: number,
+        public DIA: number,       
         public FEANIO: number,
         public FEMES: number,
         public FEDIA: number,

@@ -36,14 +36,20 @@ export class PoaProyeccionComponent implements OnInit {
 
     this.poamodelo.ID = +this.route.snapshot.params.id;
 
-    this.menu = [{ nombre: 'Proyección', url: '/poa-proyeccion/' + this.poamodelo.ID, N: true, active: 'active' },
-    { nombre: 'Nueva Actividad de Producto de Indicador de Componente', url: '/nueva-actividad/' + this.poamodelo.ID, N: false, active: '' },
-    { nombre: 'Nueva Actividad de Producto de Indicador de Sub Componente', url: '/nueva-actividad-subcomponente/' + this.poamodelo.ID, N: false, active: '' },
-    { nombre: 'Exportar a Excell', BotonReporte: true }];
+    this.api.GetId(this.poamodelo.ID).subscribe(res => {
+      this.poamodelo = res.modelo;
+
+      this.menu = [{ nombre: 'Programación', url: '/poa-proyeccion/' + this.poamodelo.ID, N: true, active: 'active' },
+      { nombre: 'Lista de Actividades', url: '/lista-actividad/' + this.poamodelo.ID + '/' + this.poamodelo.OPERACION_ID, N: false, active: '' },
+      { nombre: 'Nueva Actividad de Producto de Indicador de Componente', url: '/nueva-actividad/' + this.poamodelo.ID, N: false, active: '' },
+      { nombre: 'Nueva Actividad de Producto de Indicador de Sub Componente', url: '/nueva-actividad-subcomponente/' + this.poamodelo.ID, N: false, active: '' },
+      { nombre: 'Exportar a Excell', BotonReporte: true }];
+    })
 
   }
 
   ngOnInit(): void {
+
     this.api.GetId(this.poamodelo.ID).subscribe(res => {
       this.poamodelo = res.modelo;
 
@@ -55,6 +61,7 @@ export class PoaProyeccionComponent implements OnInit {
         })
       })
     })
+
   }
 
   onRegresar() {
@@ -97,6 +104,7 @@ export class PoaProyeccionComponent implements OnInit {
 
     this.poaactividadmodelo.USR = localStorage.getItem('_u');
     this.poaactividadmodelo.PROYECCION_REAL = +proyeccion;
+    this.poaactividadmodelo.DIFERENCIA_PROYECCION = (this.poaactividadmodelo.PROYECCION - this.poaactividadmodelo.PROYECCION_REAL);
 
     this.apipoadetalle.editarProyeccion(this.poadetalleseleccionadamodelo).subscribe(res => {
       this.apiactividad.Patch(this.poaactividadmodelo.ID, this.poaactividadmodelo).subscribe(res => {

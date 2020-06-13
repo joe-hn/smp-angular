@@ -18,13 +18,13 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <p class="card-title"><strong>Año: {{a.ANIO}}</strong></p>
-                            <p class="card-text">Proyectado: {{a.PROYECTADO | currency}}</p>
-                            <p class="card-text">Proyectado: {{a.EJECUTADO | currency}}</p>
+                            <p class="card-text">Programado: {{a.PROYECTADO | currency:'$'}}</p>
+                            <p class="card-text">Ejecutado: {{a.EJECUTADO | currency:'$'}}</p>
 
                             <div class="btn-toolbar mb-2 mb-md-0">
                                 <div class="btn-group mr-2">
                                     <button type="button" class="btn btn-sm btn-outline-secondary"
-                                        [routerLink]="['/poa-proyeccion', a.ID]">Proyección</button>
+                                        [routerLink]="['/poa-proyeccion', a.ID]">Programación</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary"
                                         [routerLink]="['/poa-ejecucion', a.ID]">ejecución</button>                                    
                                 </div>

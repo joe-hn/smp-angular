@@ -12,6 +12,7 @@ import { ApiComponenteService } from 'src/app/service/api-componente.service';
 import { ApiIndicadorService } from 'src/app/service/api-indicador.service';
 import { ApiPoaProductoService } from 'src/app/service/api-poa-producto.service';
 import * as moment from 'moment';
+import { _global } from 'src/app/_global';
 
 @Component({
   selector: 'app-nueva-actividad-subcomponente',
@@ -32,14 +33,19 @@ export class NuevaActividadSubcomponenteComponent implements OnInit {
   productolista: poaProducto[];
 
   componenteid: number = 0;
+
   dateInicio: Date = new Date();
   dateFinal: Date = new Date();
-  dateValidador: Date = new Date();
+  dateMin: Date = new Date();
+  dateMax: Date = new Date();
   value: number = 0;
-  vMonto: boolean = false;
 
   responsable: boolean = false;
   alert: boolean = false;
+  vdateigual: boolean = false;
+  vdatemayor: boolean = false;
+  vMonto: boolean = false;
+
   edt: number = 0;
 
   constructor(
@@ -60,6 +66,9 @@ export class NuevaActividadSubcomponenteComponent implements OnInit {
   ngOnInit(): void {
     this.apipoa.GetId(this.poamodelo.ID).subscribe(res => {
       this.poamodelo = res.modelo;
+
+      this.dateMax = new Date((this.poamodelo.ANIO + 1).toString() + '-1-1');
+      this.dateMin = new Date(this.poamodelo.ANIO.toString() + '-1-2');
 
       this.apicomponente.GetOperacion(this.poamodelo.OPERACION_ID).subscribe(res => {
         this.componentelista = res.modelo;
@@ -102,9 +111,6 @@ export class NuevaActividadSubcomponenteComponent implements OnInit {
       this.api.GetProducto(this.modelo.PRODUCTO_ID, this.poamodelo.ID, this.poamodelo.OPERACION_ID).subscribe(res => {
         this.lista = res.modelo;
 
-        console.log(this.modelo);
-        console.log(this.lista);
-
         this.apiproducto.GetId(this.modelo.PRODUCTO_ID).subscribe(res => {
           this.productomodelo = res.modelo;
         })
@@ -120,10 +126,24 @@ export class NuevaActividadSubcomponenteComponent implements OnInit {
     if (this.modelo.NOMBRE) {
       let flag = true;
 
-      if (this.responsable) {
-        if (this.modelo.RESPONSABLE_ID == 0) {
-          flag = false;
-        }
+      if (this.modelo.RESPONSABLE_ID == 0) {
+        flag = false;
+        this.alert = true;
+      }
+
+      if (this.dateInicio == this.dateFinal) {
+        flag = false;
+        this.vdateigual = true;
+      }
+
+      if (this.dateInicio > this.dateFinal) {
+        flag = false;
+        this.vdatemayor = true;
+      }
+
+      if (this.value == 0) {
+        flag = false;
+        this.vMonto = true;
       }
 
       if (flag) {
@@ -131,7 +151,9 @@ export class NuevaActividadSubcomponenteComponent implements OnInit {
 
         this.modelo.USR = localStorage.getItem('_u');
         this.modelo.PROYECCION = this.value;
+        this.modelo.DIFERENCIA_PROYECCION = this.modelo.PROYECCION;
         this.modelo.EDT_DESCRIPCION = this.productomodelo.EDT_DESCRIPCION + '.' + this.modelo.EDT.toString();
+        this.modelo.DESCRIPCION = this.modelo.DESCRIPCION.replace(_global.fstring, '');
 
         this.modelo.POA_ID = this.poamodelo.ID;
         this.modelo.OPERACION_ID = this.poamodelo.OPERACION_ID;
@@ -161,8 +183,6 @@ export class NuevaActividadSubcomponenteComponent implements OnInit {
           this.GET();
         })
 
-      } else {
-        this.alert = true;
       }
 
     }

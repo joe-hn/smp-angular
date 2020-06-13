@@ -33,6 +33,8 @@ export class EditarProductoComponent implements OnInit {
   ) {
     this.modelo.ID = +this.route.snapshot.params.id;
     this.modelo.OPERACION_ID = +this.route.snapshot.params.operacion;
+
+    this.menu = [{ nombre: 'Editar Producto', url: '/editar-producto/' + this.modelo.ID + '/' + this.modelo.OPERACION_ID, N: true, active: 'active' }];
   }
 
   ngOnInit(): void {
@@ -41,12 +43,12 @@ export class EditarProductoComponent implements OnInit {
 
   GET() {
     this.api.GetId(this.modelo.ID).subscribe(res => {
-      this.modelo = res.modelo;     
+      this.modelo = res.modelo;
     })
   }
 
   onRegresar() {
-    this.router.navigate(['/lista-componente', this.modelo.OPERACION_ID]);
+    this.router.navigate(['/lista-producto', this.modelo.OPERACION_ID]);
   }
 
   onGuardar() {

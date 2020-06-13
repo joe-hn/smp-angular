@@ -5,6 +5,8 @@ import { anio } from 'src/app/model/anio';
 import { ApiPoaService } from 'src/app/service/api-poa.service';
 import { ApiAnioService } from 'src/app/service/api-anio.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { operacion } from 'src/app/model/operacion';
+import { ApiOperacionService } from 'src/app/service/api-operacion.service';
 
 @Component({
   selector: 'app-nuevo-poa',
@@ -15,12 +17,14 @@ export class NuevoPoaComponent implements OnInit {
   menu: menu[];
 
   modelo: poa = new poa(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '');
+  operacionmodelo: operacion = new operacion(0, 0, '', '', '', '', '', 0, '', '', '', 0, '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
   aniomodelo: anio[];
   lista: poa[];
 
   constructor(
     private api: ApiPoaService,
     private apianio: ApiAnioService,
+    private apioperacion: ApiOperacionService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -29,18 +33,20 @@ export class NuevoPoaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apianio.Get().subscribe(res => {
-      this.aniomodelo = res.modelo;
-
-      this.GET();
-    })
+    this.GET();
   }
 
   GET() {
-    this.api.GetOperacion(this.modelo.OPERACION_ID).subscribe(res => {
-      this.lista = res.modelo;
+    this.apioperacion.GetId(this.modelo.OPERACION_ID).subscribe(res => {
+      this.operacionmodelo = res.modelo;
 
-      console.log(this.lista);
+      this.apianio.Get(this.modelo.OPERACION_ID).subscribe(res => {
+        this.aniomodelo = res.modelo;
+
+        this.api.GetOperacion(this.modelo.OPERACION_ID).subscribe(res => {
+          this.lista = res.modelo;
+        })
+      })
     })
   }
 
@@ -55,6 +61,7 @@ export class NuevoPoaComponent implements OnInit {
 
       this.api.Post(this.modelo).subscribe(res => {
         this.onCancelar();
+        this.GET();
       })
     }
   }

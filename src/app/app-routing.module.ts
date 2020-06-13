@@ -31,6 +31,9 @@ import { PoaProyeccionComponent } from './screem/operacion/poa-proyeccion/poa-pr
 import { PoaEjecucionComponent } from './screem/operacion/poa-ejecucion/poa-ejecucion.component';
 import { NuevaActividadComponent } from './screem/operacion/nueva-actividad/nueva-actividad.component';
 import { NuevaActividadSubcomponenteComponent } from './screem/operacion/nueva-actividad-subcomponente/nueva-actividad-subcomponente.component';
+import { EdtActividadComponent } from './screem/operacion/edt-actividad/edt-actividad.component';
+import { ListaActividadComponent } from './screem/operacion/lista-actividad/lista-actividad.component';
+import { EditarActividadComponent } from './screem/operacion/editar-actividad/editar-actividad.component';
 
 /*
 import { InicioComponent } from './pantallas/inicio/inicio.component';
@@ -75,13 +78,16 @@ const routes: Routes = [
   { path: 'edt-subcomponente/:id', component: EdtSubcomponenteComponent },
   { path: 'edt-indicador/:id', component: EdtIndicadorComponent },
   { path: 'edt-producto/:id', component: EdtProductoComponent },
+  { path: 'edt-actividad/:poa/:operacion', component: EdtActividadComponent },
 
   { path: 'poa-operacion/:id', component: PoaOperacionComponent },
   { path: 'nuevo-poa/:id', component: NuevoPoaComponent },
   { path: 'poa-proyeccion/:id', component: PoaProyeccionComponent },
   { path: 'poa-ejecucion/:id', component: PoaEjecucionComponent },
+  { path: 'lista-actividad/:poa/:operacion', component: ListaActividadComponent },
   { path: 'nueva-actividad/:id', component: NuevaActividadComponent },
-  { path: 'nueva-actividad-subcomponente/:id', component: NuevaActividadSubcomponenteComponent }
+  { path: 'nueva-actividad-subcomponente/:id', component: NuevaActividadSubcomponenteComponent },
+  { path: 'editar-actividad/:id/:operacion', component: EditarActividadComponent }
 
   /*
     { path: 'iniciooperacion', component: InicioOperacionComponent },  

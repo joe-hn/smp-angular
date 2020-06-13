@@ -26,8 +26,8 @@ export class ApiAnioService {
     return body || {};
   }
 
-  Get(): Observable<any> {    
-    return this.http.get(this.url, this.httpOptions).pipe(map(this.extractData));
+  Get(id): Observable<any> {    
+    return this.http.get(this.url + '/' + id, this.httpOptions).pipe(map(this.extractData));
   }  
 
 }

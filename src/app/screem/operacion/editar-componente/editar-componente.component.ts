@@ -24,6 +24,8 @@ export class EditarComponenteComponent implements OnInit {
   ) {
     this.modelo.ID = this.route.snapshot.params.id;
     this.modelo.OPERACION_ID = this.route.snapshot.params.operacion;
+
+    this.menu = [{ nombre: 'Editar Componente', url: '/editar-componente/' + this.modelo.ID + '/' + this.modelo.OPERACION_ID, N: true, active: 'active' }];
   }
 
   ngOnInit(): void {

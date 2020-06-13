@@ -77,7 +77,7 @@
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width">
-                        <input matInput [matDatepicker]="pickerInicio" [min]="dateValidador"
+                        <input matInput [matDatepicker]="pickerInicio" [min]="dateMin" [max]="dateMax"
                             placeholder="Fecha de inicio estimada" name="fie" #fie="ngModel" [(ngModel)]="dateInicio"
                             required readonly>
                         <mat-datepicker-toggle matSuffix [for]="pickerInicio"></mat-datepicker-toggle>
@@ -85,18 +85,30 @@
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width">
-                        <input matInput [matDatepicker]="pickerEntrega" [min]="dateValidador"
+                        <input matInput [matDatepicker]="pickerEntrega" [min]="dateMin" [max]="dateMax"
                             placeholder="Fecha de entrega" name="fif" #fif="ngModel" [(ngModel)]="dateFinal" required
                             readonly>
                         <mat-datepicker-toggle matSuffix [for]="pickerEntrega"></mat-datepicker-toggle>
                         <mat-datepicker #pickerEntrega></mat-datepicker>
                     </mat-form-field>
 
-                    <div>
+                    <div class="alert alert-danger" role="alert" *ngIf="vdateigual">
+                        ! La fecha de inicio y finalización deben ser diferentes ¡
+                    </div>
+
+                    <div class="alert alert-danger" role="alert" *ngIf="vdatemayor">
+                        ! La fecha de inicio debe ser menor a la fecha de finalización ¡
+                    </div>
+
+                    <div style="padding-bottom: 10px;">
                         <p class="card-text text-muted h6">
                             <small>Monto $</small> </p>
                         <input currencyMask name="monto" #monto="ngModel" [(ngModel)]="value"
                             [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }" class="card-text" />
+                    </div>
+
+                    <div class="alert alert-danger" role="alert" *ngIf="vMonto">
+                        ! Debe de ingresar el monto de la Actividad ¡
                     </div>
 
                     <div class="col" style="padding-top: 15px;">
