@@ -39,10 +39,10 @@ export class PoaProyeccionComponent implements OnInit {
     this.api.GetId(this.poamodelo.ID).subscribe(res => {
       this.poamodelo = res.modelo;
 
-      this.menu = [{ nombre: 'Programación', url: '/poa-proyeccion/' + this.poamodelo.ID, N: true, active: 'active' },
-      { nombre: 'Lista de Actividades', url: '/lista-actividad/' + this.poamodelo.ID + '/' + this.poamodelo.OPERACION_ID, N: false, active: '' },
+      this.menu = [{ nombre: 'Programación', url: '/poa-proyeccion/' + this.poamodelo.ID, N: true, active: 'active' },      
       { nombre: 'Nueva Actividad de Producto de Indicador de Componente', url: '/nueva-actividad/' + this.poamodelo.ID, N: false, active: '' },
       { nombre: 'Nueva Actividad de Producto de Indicador de Sub Componente', url: '/nueva-actividad-subcomponente/' + this.poamodelo.ID, N: false, active: '' },
+      { nombre: 'Lista de Actividades', url: '/lista-actividad/' + this.poamodelo.ID + '/' + this.poamodelo.OPERACION_ID, N: false, active: '' },
       { nombre: 'Exportar a Excell', BotonReporte: true }];
     })
 
