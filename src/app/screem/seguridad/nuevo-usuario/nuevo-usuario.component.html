@@ -1,0 +1,104 @@
+<body>
+    <app-cabecera></app-cabecera>
+
+    <div class="container-fluid">
+        <div class="row">
+            <app-menu [lista]="menu" (regresar)="onRegresar()"></app-menu>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h6">Nuevo Usuario</h1>
+                </div>
+
+                <form class="example-form">     
+                    
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Tipo de Dirección</mat-label>
+                        <mat-select placeholder="-- Lista de Tipo de dirección --" name="componente" #componente="ngModel"
+                            [(ngModel)]="tipodireccionid" required>
+                            <mat-option *ngFor='let a of listatipodireccion' [value]='a.ID' (click)="onSeleccionTipoDireccion()">
+                                {{a.NOMBRE}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Dirección</mat-label>
+                        <mat-select placeholder="-- Lista de Tipo de dirección --" name="componente" #componente="ngModel"
+                            [(ngModel)]="empleadomodelo.DIRECCION_ID" required>
+                            <mat-option *ngFor='let a of listadireccion' [value]='a.ID' (click)="onSeleccionDireccion()">
+                                {{a.NOMBRE}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Cargo</mat-label>
+                        <mat-select placeholder="-- Lista de Cargo --" name="componente" #componente="ngModel"
+                            [(ngModel)]="empleadomodelo.CARGO_ID" required>
+                            <mat-option *ngFor='let a of listacargo' [value]='a.ID' (click)="onSeleccionCargo()">
+                                {{a.NOMBRE}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Empleado</mat-label>
+                        <mat-select placeholder="-- Lista de empleado --" name="componente" #componente="ngModel"
+                            [(ngModel)]="modelo.EMPLEADO_ID" required>
+                            <mat-option *ngFor='let a of listaempleado' [value]='a.ID' (click)="onSeleccionEmpleado()">
+                                {{a.NOMBRE}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Rol</mat-label>
+                        <mat-select placeholder="-- Lista de rol --" name="componente" #componente="ngModel"
+                            [(ngModel)]="modelo.ROL_ID" required>
+                            <mat-option *ngFor='let a of listarol' [value]='a.ID' (click)="onSeleccionEmpleado()">
+                                {{a.NOMBRE}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <section class="example-full-width">
+                        <mat-checkbox class="example-margin" name="condicion" #condicion="ngModel" [(ngModel)]="modelo.JEFE_MARCA"
+                            value={{modelo.JEFE_MARCA}}>El usuario será responsable de la dirección seleccionada </mat-checkbox>
+                    </section>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Usuario</mat-label>
+                        <input matInput placeholder="...." name="nombre"
+                            #nombre="ngModel" [(ngModel)]="modelo.USUARIO" required maxlength="150">
+                        <mat-error *ngIf="nombre.touched">
+                            Ingrese el nombre del usuario
+                        </mat-error>
+                    </mat-form-field>  
+                    
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Clave</mat-label>
+                        <input matInput placeholder="" name="pass"
+                            #pass="ngModel" [(ngModel)]="modelo.PASS" required maxlength="50">
+                        <mat-error *ngIf="nombre.touched">
+                            Ingrese el pass
+                        </mat-error>
+                    </mat-form-field>  
+
+                    <hr class="mb-4">
+
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group mr-2 btn-group-sm">
+                            <button type="button" class="btn btn-sm btn-outline-success"
+                                (click)="onGuardar()">Guardar</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                (click)="onCancelar()">Cancelar</button>
+                        </div>
+                    </div>
+                </form>
+               
+            </main>
+        </div>
+    </div>
+</body>

@@ -9,24 +9,12 @@ import localesHN from '@angular/common/locales/es-HN';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { materialModule } from './angular-material/material-module';
 import {CurrencyMaskModule} from 'ng2-currency-mask';
- 
 import { LoginComponent } from './pantallas/login/login.component';
 import { InicioComponent } from './pantallas/inicio/inicio.component';
 import { ErrorComponent } from './pantallas/error/error.component';
-import { InicioOperacionComponent } from './pantallas/operaciones/inicio-operacion/inicio-operacion.component';
-import { IniciocatalogoComponent } from './pantallas/catalogos/iniciocatalogo/iniciocatalogo.component';
 import { InicioseguridadComponent } from './pantallas/seguridad/inicioseguridad/inicioseguridad.component';
 import { CabeceraComponent } from './component/cabecera/cabecera.component';
-import { OprAComponent } from './pantallas/operaciones/pantallas/opr-a/opr-a.component';
-import { ProgramaAComponent } from './pantallas/catalogos/pantallas/programa/programa-a/programa-a.component';
-import { ProgramaEComponent } from './pantallas/catalogos/pantallas/programa/programa-e/programa-e.component';
-import { FuenteAComponent } from './pantallas/catalogos/pantallas/fuente/fuente-a/fuente-a.component';
-import { FuenteEComponent } from './pantallas/catalogos/pantallas/fuente/fuente-e/fuente-e.component';
-import { EstructuraOperacionComponent } from './pantallas/operaciones/pantallas/estructura/estructura-operacion/estructura-operacion.component';
 import { ResponsableComponent } from './component/responsable/responsable.component';
-import { ComponenteComponent } from './pantallas/operaciones/pantallas/componente/componente.component';
-import { IndicadorComponent } from './pantallas/operaciones/pantallas/indicador/indicador.component';
-import { ProductoComponent } from './pantallas/operaciones/pantallas/producto/producto.component';
 import { MenuComponent } from './component/menu/menu.component';
 import { ListaOperacionComponent } from './screem/operacion/lista-operacion/lista-operacion.component';
 import { NuevaOperacionComponent } from './screem/operacion/nueva-operacion/nueva-operacion.component';
@@ -78,6 +66,12 @@ import { EditarEmpleadoComponent } from './screem/catalogo/editar-empleado/edita
 import { EditarFuenteComponent } from './screem/catalogo/editar-fuente/editar-fuente.component';
 import { EditarProgramaComponent } from './screem/catalogo/editar-programa/editar-programa.component';
 import { EditarTipoDireccionComponent } from './screem/catalogo/editar-tipo-direccion/editar-tipo-direccion.component';
+import { ListaRolComponent } from './screem/seguridad/lista-rol/lista-rol.component';
+import { ListaUsuarioComponent } from './screem/seguridad/lista-usuario/lista-usuario.component';
+import { NuevoRolComponent } from './screem/seguridad/nuevo-rol/nuevo-rol.component';
+import { NuevoUsuarioComponent } from './screem/seguridad/nuevo-usuario/nuevo-usuario.component';
+import { EditarRolComponent } from './screem/seguridad/editar-rol/editar-rol.component';
+import { EditarUsuarioComponent } from './screem/seguridad/editar-usuario/editar-usuario.component';
 
 registerLocaleData(localesHN, 'es-HN');
 
@@ -86,21 +80,10 @@ registerLocaleData(localesHN, 'es-HN');
     AppComponent,
     LoginComponent,
     InicioComponent,
-    ErrorComponent,
-    InicioOperacionComponent,
-    IniciocatalogoComponent,
+    ErrorComponent,    
     InicioseguridadComponent,    
-    CabeceraComponent,
-    OprAComponent,    
-    ProgramaAComponent,
-    ProgramaEComponent,
-    FuenteAComponent,
-    FuenteEComponent,
-    EstructuraOperacionComponent,
-    ResponsableComponent,
-    ComponenteComponent,
-    IndicadorComponent,
-    ProductoComponent,
+    CabeceraComponent,    
+    ResponsableComponent,    
     MenuComponent,
     ListaOperacionComponent,
     NuevaOperacionComponent,
@@ -151,7 +134,7 @@ registerLocaleData(localesHN, 'es-HN');
     EditarEmpleadoComponent,
     EditarFuenteComponent,
     EditarProgramaComponent,    
-    EditarTipoDireccionComponent
+    EditarTipoDireccionComponent, ListaRolComponent, ListaUsuarioComponent, NuevoRolComponent, NuevoUsuarioComponent, EditarRolComponent, EditarUsuarioComponent
     
   ],
   imports: [

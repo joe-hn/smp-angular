@@ -52,6 +52,12 @@ import { EditarEmpleadoComponent } from './screem/catalogo/editar-empleado/edita
 import { EditarFuenteComponent } from './screem/catalogo/editar-fuente/editar-fuente.component';
 import { EditarProgramaComponent } from './screem/catalogo/editar-programa/editar-programa.component';
 import { EditarTipoDireccionComponent } from './screem/catalogo/editar-tipo-direccion/editar-tipo-direccion.component';
+import { ListaRolComponent } from './screem/seguridad/lista-rol/lista-rol.component';
+import { ListaUsuarioComponent } from './screem/seguridad/lista-usuario/lista-usuario.component';
+import { NuevoRolComponent } from './screem/seguridad/nuevo-rol/nuevo-rol.component';
+import { NuevoUsuarioComponent } from './screem/seguridad/nuevo-usuario/nuevo-usuario.component';
+import { EditarRolComponent } from './screem/seguridad/editar-rol/editar-rol.component';
+import { EditarUsuarioComponent } from './screem/seguridad/editar-usuario/editar-usuario.component';
 
 /*
 import { InicioComponent } from './pantallas/inicio/inicio.component';
@@ -114,19 +120,26 @@ const routes: Routes = [
   { path: 'lista-programa', component: ListaProgramaComponent },
   { path: 'lista-tipodireccion', component: ListaTipoDireccionComponent },
 
-  {path: 'nuevo-cargo', component: NuevoCargoComponent},
-  {path: 'nueva-direccion', component:NuevaDireccionComponent},
-  {path: 'nuevo-empleado', component: NuevoEmpleadoComponent},
-  {path: 'nueva-fuente', component: NuevaFuenteComponent},
-  {path: 'nuevo-programa', component: NuevoProgramaComponent},
-  {path: 'nuevo-tipodireccion', component: NuevoTipoDireccionComponent},
-  
-  {path: 'editar-cargo/:id', component: EditarCargoComponent},
-  {path: 'editar-direccion/:id', component:EditarDireccionComponent},
-  {path: 'editar-empleado/:id', component: EditarEmpleadoComponent},
-  {path: 'editar-fuente/:id', component: EditarFuenteComponent},
-  {path: 'editar-programa/:id', component: EditarProgramaComponent},
-  {path: 'editar-tipodireccion/:id', component: EditarTipoDireccionComponent},
+  { path: 'nuevo-cargo', component: NuevoCargoComponent },
+  { path: 'nueva-direccion', component: NuevaDireccionComponent },
+  { path: 'nuevo-empleado', component: NuevoEmpleadoComponent },
+  { path: 'nueva-fuente', component: NuevaFuenteComponent },
+  { path: 'nuevo-programa', component: NuevoProgramaComponent },
+  { path: 'nuevo-tipodireccion', component: NuevoTipoDireccionComponent },
+
+  { path: 'editar-cargo/:id', component: EditarCargoComponent },
+  { path: 'editar-direccion/:id', component: EditarDireccionComponent },
+  { path: 'editar-empleado/:id', component: EditarEmpleadoComponent },
+  { path: 'editar-fuente/:id', component: EditarFuenteComponent },
+  { path: 'editar-programa/:id', component: EditarProgramaComponent },
+  { path: 'editar-tipodireccion/:id', component: EditarTipoDireccionComponent },
+
+  { path: 'lista-rol', component: ListaRolComponent },
+  { path: 'lista-usuario', component: ListaUsuarioComponent },
+  { path: 'nuevo-rol', component: NuevoRolComponent },
+  { path: 'nuevo-usuario', component: NuevoUsuarioComponent },
+  { path: 'editar-rol/:id', component: EditarRolComponent },
+  { path: 'editar-usuario/:id', component: EditarUsuarioComponent }
 
 ];
 

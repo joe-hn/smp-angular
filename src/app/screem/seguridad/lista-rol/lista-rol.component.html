@@ -1,0 +1,34 @@
+<body>
+    <app-cabecera></app-cabecera>
+
+    <div class="container-fluid">
+        <div class="row">
+            <app-menu [lista]="menu" (regresar)="onRegresar()" (reporte)="onReporte()"></app-menu>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">     
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h6"></h1>
+                </div>
+
+                <ng-container *ngFor="let a of lista; index as i">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <p class="card-title">Nombre: {{a.NOMBRE}}</p>                            
+
+                            <div class="btn-toolbar mb-2 mb-md-0">
+                                <div class="btn-group mr-2 btn-group-sm">
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                                        [routerLink]="['/editar-rol', a.ID]">Editar</button>
+                                    <button type="button" class="btn btn-sm btn-outline-secondary"
+                                        (click)="onEliminar(lista[i])">Eliminar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>               
+
+            </main>
+        </div>
+    </div>
+</body>
