@@ -17,7 +17,7 @@ export class ListaOperacionComponent implements OnInit {
   { nombre: 'Crear Nueva Operación', url: '/nueva-operacion', N: false, active: '' },
   { nombre: 'Exportar a Excell', BotonReporte: true },
 
-  { nombre: 'Catálogos', url: '/lista-operaciones', N: true, active: '' },
+  { nombre: 'Catálogos', url: '/lista-programa', N: true, active: '' },
   { nombre: 'Seguridad', url: '/lista-operaciones', N: true, active: '' }];
 
   modelo: operacion[];

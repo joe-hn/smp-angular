@@ -1,0 +1,67 @@
+<body>
+    <app-cabecera></app-cabecera>
+
+    <div class="container-fluid">
+        <div class="row">
+            <app-menu [lista]="menu" (regresar)="onRegresar()"></app-menu>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h6">Nueva Dirección</h1>
+                </div>
+
+                <form class="example-form">     
+                    
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Tipo de Dirección</mat-label>
+                        <mat-select placeholder="-- Lista de Tipo de Dirección --" name="componente" #componente="ngModel"
+                            [(ngModel)]="modelo.TIPO_DIRECCION_ID" required>
+                            <mat-option *ngFor='let a of listatipodireccion' [value]='a.ID' (click)="onSeleccionTipoDireccion()">
+                                {{a.NOMBRE}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Nombre de la Dirección</mat-label>
+                        <input matInput placeholder="Ejem. Fortalecimiento Institucional" name="nombre"
+                            #nombre="ngModel" [(ngModel)]="modelo.NOMBRE" required maxlength="150">
+                        <mat-error *ngIf="nombre.touched">
+                            Ingrese el nombre de la Dirección
+                        </mat-error>
+                    </mat-form-field>                   
+
+                    <hr class="mb-4">
+
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group mr-2 btn-group-sm">
+                            <button type="button" class="btn btn-sm btn-outline-success"
+                                (click)="onGuardar()">Guardar</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                (click)="onCancelar()">Cancelar</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h5">Dirección</h1>
+                </div>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>                            
+                            <th scope="col">Nombre</th>                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let a of lista">                            
+                            <td>{{a.NOMBRE}}</td>                            
+                        </tr>
+                    </tbody>
+                </table>
+            </main>
+        </div>
+    </div>
+</body>

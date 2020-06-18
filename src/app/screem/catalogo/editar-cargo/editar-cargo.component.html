@@ -1,0 +1,39 @@
+<body>
+    <app-cabecera></app-cabecera>
+
+    <div class="container-fluid">
+        <div class="row">
+            <app-menu [lista]="menu" (regresar)="onRegresar()"></app-menu>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h6">Edición de Cargo</h1>
+                </div>
+
+                <form class="example-form">                    
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Nombre de la Cargo</mat-label>
+                        <input matInput placeholder="Ejem. Fortalecimiento Institucional" name="nombre"
+                            #nombre="ngModel" [(ngModel)]="modelo.NOMBRE" required maxlength="150">
+                        <mat-error *ngIf="nombre.touched">
+                            Ingrese el nombre de la Cargo
+                        </mat-error>
+                    </mat-form-field>                   
+
+                    <hr class="mb-4">
+
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group mr-2">
+                            <button type="button" class="btn btn-sm btn-outline-success"
+                                (click)="onGuardar()">Guardar</button>
+                            <button type="button" class="btn btn-sm btn-outline-secondary"
+                                (click)="onCancelar()">Cancelar</button>
+                        </div>
+                    </div>
+                </form>
+
+            </main>
+        </div>
+    </div>
+</body>

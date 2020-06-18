@@ -18,15 +18,31 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <p class="card-title"><strong>Año: {{a.ANIO}}</strong></p>
-                            <p class="card-text">Programado: {{a.PROYECTADO | currency:'$'}}</p>
-                            <p class="card-text">Ejecutado: {{a.EJECUTADO | currency:'$'}}</p>
+                            <p class="card-text">Estimado: {{a.PROYECTADO | currency:'$'}}</p>
+                            <p class="card-text">Programado: {{a.PROYECTADO_REAL | currency:'$'}}</p>
+
+                            <ng-container *ngIf="a.DIFERENCIA_PROYECCION == 0; else diferente">
+                                <p class="card-text">Diferencia entre lo Estimado y lo Programado:
+                                    {{a.DIFERENCIA_PROYECCION | currency:'$'}}</p>
+                            </ng-container>
+
+                            <ng-template #diferente>
+                                <p class="card-text" style="color:red">Diferencia entre lo Estimado y lo Programado:
+                                    {{a.DIFERENCIA_PROYECCION | currency:'$'}}</p>
+                            </ng-template>
+
+
+
+                            <p class="card-text">Ejecutado: {{a.EJECUTADO_REAL | currency:'$'}}</p>
+
+                            <p class="card-text">Porcentaje Ejecución: {{a.PORCENTAJE_EJECUCION}}%</p>
 
                             <div class="btn-toolbar mb-2 mb-md-0">
                                 <div class="btn-group mr-2">
                                     <button type="button" class="btn btn-sm btn-outline-secondary"
                                         [routerLink]="['/poa-proyeccion', a.ID]">Programación</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary"
-                                        [routerLink]="['/poa-ejecucion', a.ID]">ejecución</button>                                    
+                                        [routerLink]="['/poa-ejecucion', a.ID]">Ejecución</button>
                                 </div>
                             </div>
                         </div>

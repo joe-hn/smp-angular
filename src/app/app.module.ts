@@ -60,6 +60,24 @@ import { ModalInformacionGeneralComponent } from './component/modal-informacion-
 import { EdtActividadComponent } from './screem/operacion/edt-actividad/edt-actividad.component';
 import { ListaActividadComponent } from './screem/operacion/lista-actividad/lista-actividad.component';
 import { EditarActividadComponent } from './screem/operacion/editar-actividad/editar-actividad.component';
+import { ListaProgramaComponent } from './screem/catalogo/lista-programa/lista-programa.component';
+import { ListaCargoComponent } from './screem/catalogo/lista-cargo/lista-cargo.component';
+import { ListaDireccionComponent } from './screem/catalogo/lista-direccion/lista-direccion.component';
+import { ListaTipoDireccionComponent } from './screem/catalogo/lista-tipo-direccion/lista-tipo-direccion.component';
+import { ListaFuenteComponent } from './screem/catalogo/lista-fuente/lista-fuente.component';
+import { ListaEmpleadoComponent } from './screem/catalogo/lista-empleado/lista-empleado.component';
+import { NuevoProgramaComponent } from './screem/catalogo/nuevo-programa/nuevo-programa.component';
+import { NuevoCargoComponent } from './screem/catalogo/nuevo-cargo/nuevo-cargo.component';
+import { NuevoEmpleadoComponent } from './screem/catalogo/nuevo-empleado/nuevo-empleado.component';
+import { NuevaFuenteComponent } from './screem/catalogo/nueva-fuente/nueva-fuente.component';
+import { NuevoTipoDireccionComponent } from './screem/catalogo/nuevo-tipo-direccion/nuevo-tipo-direccion.component';
+import { NuevaDireccionComponent } from './screem/catalogo/nueva-direccion/nueva-direccion.component';
+import { EditarCargoComponent } from './screem/catalogo/editar-cargo/editar-cargo.component';
+import { EditarDireccionComponent } from './screem/catalogo/editar-direccion/editar-direccion.component';
+import { EditarEmpleadoComponent } from './screem/catalogo/editar-empleado/editar-empleado.component';
+import { EditarFuenteComponent } from './screem/catalogo/editar-fuente/editar-fuente.component';
+import { EditarProgramaComponent } from './screem/catalogo/editar-programa/editar-programa.component';
+import { EditarTipoDireccionComponent } from './screem/catalogo/editar-tipo-direccion/editar-tipo-direccion.component';
 
 registerLocaleData(localesHN, 'es-HN');
 
@@ -115,7 +133,25 @@ registerLocaleData(localesHN, 'es-HN');
     ModalInformacionGeneralComponent,
     EdtActividadComponent,
     ListaActividadComponent,
-    EditarActividadComponent
+    EditarActividadComponent,
+    ListaProgramaComponent,
+    ListaCargoComponent,
+    ListaDireccionComponent,
+    ListaTipoDireccionComponent,
+    ListaFuenteComponent,
+    ListaEmpleadoComponent,
+    NuevoProgramaComponent,
+    NuevoCargoComponent,    
+    NuevoEmpleadoComponent,
+    NuevaFuenteComponent,
+    NuevoTipoDireccionComponent,
+    NuevaDireccionComponent,
+    EditarCargoComponent,
+    EditarDireccionComponent,
+    EditarEmpleadoComponent,
+    EditarFuenteComponent,
+    EditarProgramaComponent,    
+    EditarTipoDireccionComponent
     
   ],
   imports: [

@@ -13,6 +13,7 @@ import { ApiIndicadorService } from 'src/app/service/api-indicador.service';
 import { ApiPoaProductoService } from 'src/app/service/api-poa-producto.service';
 import * as moment from 'moment';
 import { _global } from 'src/app/_global';
+import { ApiPeModificacionService } from 'src/app/service/api-pe-modificacion.service';
 
 @Component({
   selector: 'app-nueva-actividad',
@@ -51,6 +52,7 @@ export class NuevaActividadComponent implements OnInit {
     private apicomponente: ApiComponenteService,
     private apiindicador: ApiIndicadorService,
     private apiproducto: ApiPoaProductoService,
+    private apipe : ApiPeModificacionService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -169,8 +171,10 @@ export class NuevaActividadComponent implements OnInit {
         this.modelo.DIAS = contador;
 
         this.api.Post(this.modelo).subscribe(res => {
-          this.onCancelar();
-          this.GET();
+          this.apipe.PoaProyeccion(this.poamodelo.ID, this.poamodelo).subscribe(res => {
+            this.onCancelar();
+            this.GET();
+          })          
         })
 
       }

@@ -34,6 +34,24 @@ import { NuevaActividadSubcomponenteComponent } from './screem/operacion/nueva-a
 import { EdtActividadComponent } from './screem/operacion/edt-actividad/edt-actividad.component';
 import { ListaActividadComponent } from './screem/operacion/lista-actividad/lista-actividad.component';
 import { EditarActividadComponent } from './screem/operacion/editar-actividad/editar-actividad.component';
+import { ListaCargoComponent } from './screem/catalogo/lista-cargo/lista-cargo.component';
+import { ListaDireccionComponent } from './screem/catalogo/lista-direccion/lista-direccion.component';
+import { ListaEmpleadoComponent } from './screem/catalogo/lista-empleado/lista-empleado.component';
+import { ListaFuenteComponent } from './screem/catalogo/lista-fuente/lista-fuente.component';
+import { ListaProgramaComponent } from './screem/catalogo/lista-programa/lista-programa.component';
+import { ListaTipoDireccionComponent } from './screem/catalogo/lista-tipo-direccion/lista-tipo-direccion.component';
+import { NuevoCargoComponent } from './screem/catalogo/nuevo-cargo/nuevo-cargo.component';
+import { NuevaDireccionComponent } from './screem/catalogo/nueva-direccion/nueva-direccion.component';
+import { NuevoEmpleadoComponent } from './screem/catalogo/nuevo-empleado/nuevo-empleado.component';
+import { NuevaFuenteComponent } from './screem/catalogo/nueva-fuente/nueva-fuente.component';
+import { NuevoProgramaComponent } from './screem/catalogo/nuevo-programa/nuevo-programa.component';
+import { NuevoTipoDireccionComponent } from './screem/catalogo/nuevo-tipo-direccion/nuevo-tipo-direccion.component';
+import { EditarCargoComponent } from './screem/catalogo/editar-cargo/editar-cargo.component';
+import { EditarDireccionComponent } from './screem/catalogo/editar-direccion/editar-direccion.component';
+import { EditarEmpleadoComponent } from './screem/catalogo/editar-empleado/editar-empleado.component';
+import { EditarFuenteComponent } from './screem/catalogo/editar-fuente/editar-fuente.component';
+import { EditarProgramaComponent } from './screem/catalogo/editar-programa/editar-programa.component';
+import { EditarTipoDireccionComponent } from './screem/catalogo/editar-tipo-direccion/editar-tipo-direccion.component';
 
 /*
 import { InicioComponent } from './pantallas/inicio/inicio.component';
@@ -87,22 +105,28 @@ const routes: Routes = [
   { path: 'lista-actividad/:poa/:operacion', component: ListaActividadComponent },
   { path: 'nueva-actividad/:id', component: NuevaActividadComponent },
   { path: 'nueva-actividad-subcomponente/:id', component: NuevaActividadSubcomponenteComponent },
-  { path: 'editar-actividad/:id/:operacion', component: EditarActividadComponent }
+  { path: 'editar-actividad/:id/:operacion', component: EditarActividadComponent },
 
-  /*
-    { path: 'iniciooperacion', component: InicioOperacionComponent },  
-    { path: 'iniciocatalogo', component: IniciocatalogoComponent },
-    { path: 'inicioseguridad', component: InicioseguridadComponent },
-    { path: 'opr-a', component: OprAComponent },
-    { path: 'programa-a', component: ProgramaAComponent },
-    { path: 'programa-e/:id', component: ProgramaEComponent },
-    { path: 'fuente-a', component: FuenteAComponent },
-    { path: 'fuente-e/:id', component: FuenteEComponent },
-    { path: 'operacion-estructura/:id', component: EstructuraOperacionComponent },
-    { path: 'componente/:id', component: ComponenteComponent },
-    { path: 'indicador', component: IndicadorComponent },
-    { path: 'producto', component: ProductoComponent }
-  */
+  { path: 'lista-cargo', component: ListaCargoComponent },
+  { path: 'lista-direccion', component: ListaDireccionComponent },
+  { path: 'lista-empleado', component: ListaEmpleadoComponent },
+  { path: 'lista-fuente', component: ListaFuenteComponent },
+  { path: 'lista-programa', component: ListaProgramaComponent },
+  { path: 'lista-tipodireccion', component: ListaTipoDireccionComponent },
+
+  {path: 'nuevo-cargo', component: NuevoCargoComponent},
+  {path: 'nueva-direccion', component:NuevaDireccionComponent},
+  {path: 'nuevo-empleado', component: NuevoEmpleadoComponent},
+  {path: 'nueva-fuente', component: NuevaFuenteComponent},
+  {path: 'nuevo-programa', component: NuevoProgramaComponent},
+  {path: 'nuevo-tipodireccion', component: NuevoTipoDireccionComponent},
+  
+  {path: 'editar-cargo/:id', component: EditarCargoComponent},
+  {path: 'editar-direccion/:id', component:EditarDireccionComponent},
+  {path: 'editar-empleado/:id', component: EditarEmpleadoComponent},
+  {path: 'editar-fuente/:id', component: EditarFuenteComponent},
+  {path: 'editar-programa/:id', component: EditarProgramaComponent},
+  {path: 'editar-tipodireccion/:id', component: EditarTipoDireccionComponent},
 
 ];
 
