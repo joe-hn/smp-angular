@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { } from 'rxjs/operators';
-
 
 import { _global } from '../_global';
 
@@ -30,7 +28,7 @@ export class ApiLoginService {
   }
 
   Login(modelo): Observable<any> {
-    return this.http.post<any>(this.url + 'login', JSON.stringify(modelo), this.httpOptions).pipe(catchError(this.errorHandler));
+    return this.http.post<any>(this.url + 'login', JSON.stringify(modelo), this.httpOptions).pipe(catchError(error => { return this.errorHandler(error) }));
   }
 
   usuarioId(id): Observable<any> {
@@ -38,7 +36,7 @@ export class ApiLoginService {
   }
 
   errorHandler(error: HttpErrorResponse) {
-    return Observable.throw(error.message || "Server Error");
+    return throwError(error.message || "Server Error");
   }
 
 }
