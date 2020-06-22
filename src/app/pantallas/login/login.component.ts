@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
           this.noUsuario = true;
         }
       }, error => {
-        console.log(error);
+        console.log('-- ERROR ---/ ', error);
         this.router.navigate(['/error']);        
       })
 

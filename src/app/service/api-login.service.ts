@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Observable, observable } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+import { } from 'rxjs/operators';
+
+
 import { _global } from '../_global';
 
 @Injectable({
@@ -26,12 +29,16 @@ export class ApiLoginService {
     return body || {};
   }
 
-  Login(modelo): Observable<any> {            
-    return this.http.post<any>(this.url + 'login', JSON.stringify(modelo), this.httpOptions).pipe();
+  Login(modelo): Observable<any> {
+    return this.http.post<any>(this.url + 'login', JSON.stringify(modelo), this.httpOptions).pipe(catchError(this.errorHandler));
   }
 
   usuarioId(id): Observable<any> {
     return this.http.get(this.url + id, this.httpOptions).pipe(map(this.extractData));
+  }
+
+  errorHandler(error: HttpErrorResponse) {
+    return Observable.throw(error.message || "Server Error");
   }
 
 }
