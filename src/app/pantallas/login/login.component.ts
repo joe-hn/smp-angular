@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
 
           this.api.usuarioId(this.modelo.ID).subscribe(res => {
 
-            //console.log('-- PERFIL DE USUARIO --', res.modelo);
+            console.log('-- PERFIL DE USUARIO --', res.modelo);
 
             localStorage.setItem('_user', JSON.stringify(res.modelo));
 
