@@ -28,8 +28,8 @@ export class ApiLoginService {
   }
 
   Login(modelo): Observable<any> {
-    console.log('-- MODELO SERVICIO --', modelo);
-    console.log('-- URL --', this.url + 'login');
+    //console.log('-- MODELO SERVICIO --', modelo);
+    //console.log('-- URL --', this.url + 'login');
 
     const httpOpt = {
       headers: new HttpHeaders({

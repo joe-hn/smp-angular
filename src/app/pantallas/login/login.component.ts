@@ -22,16 +22,16 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log('-- MODELO --', this.modelo);
+    //console.log('-- MODELO --', this.modelo);
 
     if (this.modelo.USUARIO && this.modelo.PASS) {
       this.api.Login(this.modelo).subscribe(res => {
 
-        console.log('--PASO EL POST LOGIN');
+        //console.log('--PASO EL POST LOGIN');
 
         if (!res.error_estado) {
 
-          console.log('--PASO EL POST LOGIN SIN ERROR');
+          //console.log('--PASO EL POST LOGIN SIN ERROR');
 
           this.modelo = res.modelo;
 
@@ -39,11 +39,11 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('_u', res.modelo.USUARIO);
           localStorage.setItem('_tk', res.tk);
 
-          console.log('-- VALORES DE LOCAL STORAGE --', this.modelo);
+          //console.log('-- VALORES DE LOCAL STORAGE --', this.modelo);
 
           this.api.usuarioId(this.modelo.ID).subscribe(res => {
 
-            console.log('-- PERFIL DE USUARIO --', res.modelo);
+            //console.log('-- PERFIL DE USUARIO --', res.modelo);
 
             localStorage.setItem('_user', JSON.stringify(res.modelo));
 
