@@ -28,6 +28,8 @@ export class ApiLoginService {
   }
 
   Login(modelo): Observable<any> {
+    console.log('-- MODELO SERVICIO --', modelo);
+    console.log('-- URL --', this.url + 'login');
     return this.http.post<any>(this.url + 'login', JSON.stringify(modelo), this.httpOptions).pipe(catchError(error => { return this.errorHandler(error) }));
   }
 
