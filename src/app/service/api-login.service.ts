@@ -30,7 +30,14 @@ export class ApiLoginService {
   Login(modelo): Observable<any> {
     console.log('-- MODELO SERVICIO --', modelo);
     console.log('-- URL --', this.url + 'login');
-    return this.http.post<any>(this.url + 'login', JSON.stringify(modelo), this.httpOptions).pipe(catchError(error => { return this.errorHandler(error) }));
+
+    const httpOpt = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      })
+    };
+
+    return this.http.post<any>(this.url + 'login', JSON.stringify(modelo), httpOpt).pipe(catchError(error => { return this.errorHandler(error) }));
   }
 
   usuarioId(id): Observable<any> {
