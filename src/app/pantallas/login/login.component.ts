@@ -39,6 +39,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('_u', res.modelo.USUARIO);
           localStorage.setItem('_tk', res.tk);
 
+          console.log('-- VALORES DE LOCAL STORAGE --', this.modelo);
 
           this.api.usuarioId(this.modelo.ID).subscribe(res => {
 
