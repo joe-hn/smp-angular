@@ -144,7 +144,9 @@ export class NuevaActividadComponent implements OnInit {
         this.modelo.USR = localStorage.getItem('_u');
         this.modelo.PROYECCION = this.value;
         this.modelo.DIFERENCIA_PROYECCION = this.modelo.PROYECCION;
-        this.modelo.EDT_DESCRIPCION = this.productomodelo.EDT_DESCRIPCION + '.' + this.modelo.EDT.toString();
+
+        //this.modelo.EDT_DESCRIPCION = this.productomodelo.EDT_DESCRIPCION + '.' + this.modelo.EDT.toString();
+        
         this.modelo.DESCRIPCION = this.modelo.DESCRIPCION.replace(_global.fstring, '');
 
         this.modelo.POA_ID = this.poamodelo.ID;
@@ -190,6 +192,7 @@ export class NuevaActividadComponent implements OnInit {
     this.modelo.NOMBRE = '';
     this.modelo.EDT = this.edt;
     this.modelo.DESCRIPCION = '';
+    this.modelo.EDT_DESCRIPCION = '';
     this.value = 0;
   }
 

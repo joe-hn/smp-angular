@@ -45,7 +45,7 @@
 
                     <mat-form-field class="example-full-width">
                         <mat-label>EDT</mat-label>
-                        <input matInput name="edt" #edt="ngModel" [(ngModel)]="modelo.EDT" required maxlength="3">
+                        <input matInput name="edt" #edt="ngModel" [(ngModel)]="modelo.EDT_DESCRIPCION" required maxlength="3">
                         <mat-error *ngIf="edt.touched">
                             Ingrese el EDT
                         </mat-error>
