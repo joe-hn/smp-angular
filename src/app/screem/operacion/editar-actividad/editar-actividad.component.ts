@@ -5,6 +5,7 @@ import { ApiPoaActividadService } from 'src/app/service/api-poa-actividad.servic
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiPoaService } from 'src/app/service/api-poa.service';
 import { poa } from 'src/app/model/poa';
+import { ApiPeModificacionService } from 'src/app/service/api-pe-modificacion.service';
 
 @Component({
   selector: 'app-editar-actividad',
@@ -33,6 +34,7 @@ export class EditarActividadComponent implements OnInit {
   constructor(
     private api: ApiPoaActividadService,
     private apipoa: ApiPoaService,
+    private apipe : ApiPeModificacionService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -105,8 +107,12 @@ export class EditarActividadComponent implements OnInit {
 
         this.modelo.USR = localStorage.getItem('_u');
 
+        this.modelo.PROYECCION = this.value;
+
         this.api.Patch(this.modelo.ID, this.modelo).subscribe(res => {
-          this.onRegresar();
+          this.apipe.PoaProyeccion(this.poamodelo.ID, this.poamodelo).subscribe(res => {
+            this.onRegresar();
+          })          
         })
       } 
 
