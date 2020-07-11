@@ -26,6 +26,10 @@ export class ApiPeModificacionService {
     return body || {};
   }
 
+  Operacion(operacionid, modelo): Observable<any>{
+    return this.http.patch(this.url + '/operacion/' + operacionid, JSON.stringify(modelo), this.httpOptions).pipe();
+  }
+
   PoaProyeccion(poaid, modelo): Observable<any>{
     return this.http.patch(this.url + 'poa/proyeccion/' + poaid, JSON.stringify(modelo), this.httpOptions).pipe();
   }

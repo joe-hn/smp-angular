@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ApiPoaService } from 'src/app/service/api-poa.service';
 import { poa } from 'src/app/model/poa';
 import { ApiPeModificacionService } from 'src/app/service/api-pe-modificacion.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-editar-actividad',
@@ -68,7 +69,8 @@ export class EditarActividadComponent implements OnInit {
   }
 
   onRegresar() {
-    this.router.navigate(['/lista-actividad', this.modelo.POA_ID, this.modelo.OPERACION_ID]);
+    //this.router.navigate(['/lista-actividad', this.modelo.POA_ID, this.modelo.OPERACION_ID]);
+    this.router.navigate(['/poa-proyeccion', this.modelo.POA_ID]);
   }
 
   onGuardar() {
@@ -108,6 +110,26 @@ export class EditarActividadComponent implements OnInit {
         this.modelo.USR = localStorage.getItem('_u');
 
         this.modelo.PROYECCION = this.value;
+        
+        this.modelo.FECHA_INICIO_ESTIMADA_DESCRIPCION = moment(this.dateInicio).locale('es').format('LL');
+        this.modelo.FECHA_INICIO_ESTIMADA = moment(this.dateInicio).format('YYYYMMDD');
+
+        this.modelo.FECHA_FINAL_ESTIMADA_DESCRIPCION = moment(this.dateFinal).locale('es').format('LL');
+        this.modelo.FECHA_FINAL_ESTIMADA = moment(this.dateFinal).format('YYYYMMDD');
+
+        var contador = 0;
+        var FFDate = this.dateInicio;
+
+        while (FFDate <= this.dateFinal) {
+          if (FFDate.getDay() == 6 || FFDate.getDay() == 0) {
+          } else {
+            contador++;
+          }
+
+          FFDate.setDate(FFDate.getDate() + 1);
+        }
+
+        this.modelo.DIAS = contador;
 
         this.api.Patch(this.modelo.ID, this.modelo).subscribe(res => {
           this.apipe.PoaProyeccion(this.poamodelo.ID, this.poamodelo).subscribe(res => {

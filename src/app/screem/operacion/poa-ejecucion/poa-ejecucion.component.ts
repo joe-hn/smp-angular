@@ -80,7 +80,8 @@ export class PoaEjecucionComponent implements OnInit {
         DESCRIPCION: data.DESCRIPCION,
         RESPONSABLE: data.RESPONSABLE,
         FECHA_INICIO_ESTIMADA_DESCRIPCION: data.FECHA_INICIO_ESTIMADA_DESCRIPCION,
-        FECHA_FINAL_ESTIMADA_DESCRIPCION: data.FECHA_FINAL_ESTIMADA_DESCRIPCION
+        FECHA_FINAL_ESTIMADA_DESCRIPCION: data.FECHA_FINAL_ESTIMADA_DESCRIPCION,
+        mostrarEdicion: false
       }
     });
 
@@ -97,17 +98,21 @@ export class PoaEjecucionComponent implements OnInit {
     this.apipoadetalle.editarEjecucion(this.poadetalleseleccionadamodelo).subscribe(res => {
       this.apipe.ActividadEjecucion(this.poaactividadmodelo.ID, this.poaactividadmodelo).subscribe(res => {
         this.apipe.PoaEjecucionReal(this.poamodelo.ID, this.poamodelo).subscribe(res => {
-          this.apiactividad.GetOperacion(this.poamodelo.OPERACION_ID).subscribe(res => {
-            this.lista = res.modelo;
 
-            this.apipoadetalle.GetPoa(this.poamodelo.ID).subscribe(res => {
-              this.poadetallemodelo = res.modelo;
+          this.apipe.Operacion(this.poamodelo.OPERACION_ID, this.poamodelo).subscribe(res => {
+            this.apiactividad.GetOperacion(this.poamodelo.OPERACION_ID).subscribe(res => {
+              this.lista = res.modelo;
+
+              this.apipoadetalle.GetPoa(this.poamodelo.ID).subscribe(res => {
+                this.poadetallemodelo = res.modelo;
+              })
             })
           })
+
         })
       })
     })
-   
+
   }
 
 }

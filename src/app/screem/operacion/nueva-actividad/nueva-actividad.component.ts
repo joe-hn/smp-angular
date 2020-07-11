@@ -137,7 +137,7 @@ export class NuevaActividadComponent implements OnInit {
         flag = false;
         this.vMonto = true;
       }
-
+ 
       if (flag) {
         this.alert = false;
 

@@ -14,10 +14,23 @@
                     <h1 class="h5">Lista de Planes Operativos Anual de la Operacion {{operacionmodelo.OPERACION}}</h1>
                 </div>
 
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Resumen de la Operación
+                    </div>
+                    <div class="card-body">
+                        <p class="card-title">Valor de la Operación: {{operacionmodelo.MONTO | currency:'$'}}</p>                        
+                        <p class="card-title">Ejecutado: {{operacionmodelo.COSTO_REAL | currency:'$'}}</p>
+                        <p class="card-title">Disponible: {{operacionmodelo.COSTO_RESTANTE | currency:'$'}}</p>
+                    </div>
+                </div>
+
                 <ng-container *ngFor="let a of lista; index as i">
                     <div class="card mb-3">
-                        <div class="card-body">
-                            <p class="card-title"><strong>Año: {{a.ANIO}}</strong></p>
+                        <div class="card-header">
+                            Año: {{a.ANIO}}
+                        </div>
+                        <div class="card-body">                            
                             <p class="card-text">Estimado: {{a.PROYECTADO | currency:'$'}}</p>
                             <p class="card-text">Programado: {{a.PROYECTADO_REAL | currency:'$'}}</p>
 
@@ -40,9 +53,9 @@
                             <div class="btn-toolbar mb-2 mb-md-0">
                                 <div class="btn-group mr-2">
                                     <button type="button" class="btn btn-sm btn-outline-secondary"
-                                        [routerLink]="['/poa-proyeccion', a.ID]">Programación</button>
+                                        [routerLink]="['/poa-proyeccion', a.ID]">Programación Financiera</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary"
-                                        [routerLink]="['/poa-ejecucion', a.ID]">Ejecución</button>
+                                        [routerLink]="['/poa-ejecucion', a.ID]">Ejecución Financiera</button>
                                 </div>
                             </div>
                         </div>

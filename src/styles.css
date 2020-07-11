@@ -161,9 +161,9 @@ body { margin: 0;
 
   /* TABLAS DE PROYECCION */
 .celda-proyeccion{
-  width: 56px;
+  width: 64px;
   height: 26px;
-  font-size: 11px;  
+  font-size: 10px;  
   border-style: none;
   background-color: whitesmoke;
 }

@@ -13,6 +13,9 @@
             <p><strong>Responsable: </strong>{{data.RESPONSABLE}}</p>
             <p><strong>Fecha de Inicio Estimada: </strong>{{data.FECHA_INICIO_ESTIMADA_DESCRIPCION}}</p>
             <p><strong>Fecha de Finalización Estimada: </strong>{{data.FECHA_FINAL_ESTIMADA_DESCRIPCION}}</p>
+
+            <a *ngIf="data.mostrarEdicion" [routerLink]="['/editar-actividad', data.ID, data.OPERACION_ID]" class="btn btn-primary btn-sm active"
+                [mat-dialog-close]="true">Realizar Ajustes en la Actividad</a>
         </div>
     </div>
 

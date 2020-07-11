@@ -14,6 +14,31 @@
                     <h1 class="h5">Programación {{poamodelo.OPERACION}}</h1>
                 </div>
 
+                <div class="btn-toolbar mb-2 mb-md-0" style="padding: 20px;">
+                    <div class="btn-group mr-2">
+                        <ng-container *ngIf="estadoEdicion; else noedicion">
+                            <button type="button" class="btn btn-sm btn-success" (click)="onGuardar()">Actualizar
+                                Valores de la Programación</button>
+                        </ng-container>
+
+                        <ng-template #noedicion>
+                            <button type="button" class="btn btn-sm btn-outline-success"
+                                (click)="onGuardar()">Actualizar
+                                Valores de la Programación</button>
+                        </ng-template>
+
+                        <button type="button" class="btn btn-sm btn-outline-secondary" (click)="onCancelar()">Deshacer
+                            Cambios</button>
+                    </div>
+                </div>
+
+                <div *ngIf="barraestado" style="padding-bottom: 20px; padding-left: 10px;">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+                            aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                    </div>
+                </div>
+
                 <table class="table" style="font-size:smaller;">
                     <thead style="text-align: center;">
                         <th scope="col">EDT</th>
@@ -32,24 +57,26 @@
                         <th scope="col">Nov</th>
                         <th scope="col">Dic</th>
                         <th scope="col">Programación</th>
+                        <!--
                         <th scope="col"></th>
+                         -->
                     </thead>
 
                     <tbody>
                         <ng-container *ngFor="let A of lista; index as x">
                             <tr>
                                 <td>
-                                    <p style="width: 30px; text-align: center; font-size: 10px;">{{A.EDT_DESCRIPCION}}
+                                    <p style="width: 32px; text-align: center; font-size: 10px;">{{A.EDT_DESCRIPCION}}
                                     </p>
                                 </td>
 
                                 <td>
-                                    <a style="width: 150px; text-align: justify; cursor: pointer;"
+                                    <a style="width: 150px; text-align: justify; cursor: pointer; font-size: 10px;"
                                         (click)="onInformacionGeneral(lista[x])">{{A.NOMBRE}}</a>
                                 </td>
 
                                 <td>
-                                    <p style="width: 50px; text-align: right; font-size: 11px;">
+                                    <p style="width: 56px; text-align: right; font-size: 10px;">
                                         {{A.PROYECCION | currency:'$'}}</p>
                                 </td>
 
@@ -63,7 +90,8 @@
                                                         <input currencyMask name="monto" #monto="ngModel"
                                                             [(ngModel)]="poadetallemodelo[i].PROYECCION"
                                                             [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
-                                                            class="celda-proyeccion" style="background-color: white;" />
+                                                            class="celda-proyeccion" style="background-color: white;"
+                                                            (keyup)="onSumatoria(A.ID)" />
                                                     </td>
                                                 </ng-container>
 
@@ -83,21 +111,23 @@
 
                                 <td>
                                     <ng-container *ngIf="A.PROYECCION_REAL == A.PROYECCION; else noigual">
-                                        <p style="width: 50px; text-align: right; font-size: 11px;">
+                                        <p style="width: 50px; text-align: right; font-size: 10px;">
                                             {{A.PROYECCION_REAL | currency:'$'}}</p>
                                     </ng-container>
 
                                     <ng-template #noigual>
-                                        <p style="width: 50px; text-align: right; font-size: 11px;  color:red;">
+                                        <p style="width: 50px; text-align: right; font-size: 10px;  color:red;">
                                             {{A.PROYECCION_REAL | currency:'$'}}</p>
                                     </ng-template>
 
                                 </td>
 
+                                <!--
                                 <td>
                                     <button class="btn btn-sm btn-outline-secondary" style="font-size: 11px;"
                                         (click)="onGuardar(lista[x])">Actualizar</button>
                                 </td>
+                                -->
 
                             </tr>
 
@@ -105,9 +135,9 @@
                     </tbody>
 
                 </table>
-
-
             </main>
         </div>
+
     </div>
+
 </body>
