@@ -1,0 +1,130 @@
+<body>
+    <app-cabecera></app-cabecera>
+
+    <div class="container-fluid">
+        <div class="row">
+            <app-menu [lista]="menu" (regresar)="onRegresar()"></app-menu>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h6">Dirección acumulado y mensual</h1>
+                </div>
+
+                <form class="example-form">
+                    <div class="row">
+                        <div class="col-sm">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Lista de Operaciones</mat-label>
+                                <mat-select placeholder="-- Lista de Operaciones --" name="operacion" #name="ngModel"
+                                    [(ngModel)]="filtro.OPERACION_ID" required>
+                                    <mat-option *ngFor='let a of listaOperaciones' [value]='a.ID'
+                                        (click)="onSeleccionOperacion()">
+                                        {{a.OPERACION}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-sm">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Lista de POA</mat-label>
+                                <mat-select placeholder="-- Lista de POA --" name="poa" #name="ngModel"
+                                    [(ngModel)]="filtro.POA_ID" required>
+                                    <mat-option *ngFor='let a of listaPoa' [value]='a.ID'>
+                                        {{a.ANIO}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Mes Inicio</mat-label>
+                                <mat-select placeholder="-- Mes --" name="mesI" #name="ngModel"
+                                    [(ngModel)]="filtro.MES_I" required>
+                                    <mat-option *ngFor='let a of listaMesInicio' [value]='a.ID'>
+                                        {{a.MES}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-sm">
+                            <mat-form-field class="example-full-width">
+                                <mat-label>Mes Final</mat-label>
+                                <mat-select placeholder="-- Mes --" name="mesF" #name="ngModel"
+                                    [(ngModel)]="filtro.MES_F" required>
+                                    <mat-option *ngFor='let a of listaMesFinal' [value]='a.ID'>
+                                        {{a.MES}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+
+                    </div>
+
+                    <hr class="mb-4">
+
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group mr-2">
+                            <button type="button" class="btn btn-sm btn-outline-success"
+                                (click)="onGenerarReporte()">Generar Reporte</button>
+                        </div>
+                    </div>
+
+                </form>
+
+                <div>
+                    <table class="table" style="font-size:smaller;">
+                        <thead style="text-align: center;">
+                            <th scope="col">Dirección</th>
+                            <th scope="col">Programado</th>
+                            <th scope="col">Ejecutado</th>
+                            <th scope="col">% Ejecucion</th>
+
+                        </thead>
+
+                        <tbody>
+                            <ng-container *ngFor="let A of modelo">
+                                <tr>
+                                    <td>
+                                        <p style="width: 32px; text-align: center; font-size: 10px;">{{A.NOMBRE}}
+                                        </p>
+                                    </td>
+
+                                    <td>
+                                        <input currencyMask name="monto" #monto="ngModel"
+                                            [(ngModel)]="A.PROGRAMADO"
+                                            [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
+                                            class="celda-proyeccion" style="background-color: white;" />
+                                    </td>
+
+                                    <td>
+                                        <input currencyMask name="monto" #monto="ngModel"
+                                            [(ngModel)]="A.EJECUCION"
+                                            [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
+                                            class="celda-proyeccion" style="background-color: white;" />
+                                    </td>
+
+                                    <td>
+                                        <input currencyMask name="monto" #monto="ngModel"
+                                            [(ngModel)]="A.PE"
+                                            [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
+                                            class="celda-proyeccion" style="background-color: white;" />
+                                    </td>
+                                </tr>
+                            </ng-container>
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+            </main>
+        </div>
+    </div>
+</body>

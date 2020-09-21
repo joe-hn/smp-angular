@@ -18,7 +18,8 @@ export class ListaOperacionComponent implements OnInit {
   { nombre: 'Exportar a Excell', BotonReporte: true },
 
   { nombre: 'Catálogos', url: '/lista-programa', N: true, active: '' },
-  { nombre: 'Seguridad', url: '/lista-rol', N: true, active: '' }];
+  { nombre: 'Seguridad', url: '/lista-rol', N: true, active: '' },
+  { nombre: 'Reportes', url: '/reporte-direccion', N: true, active: '' },];
 
   modelo: operacion[];
   reporte: operacion[];

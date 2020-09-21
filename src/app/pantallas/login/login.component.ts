@@ -24,6 +24,8 @@ export class LoginComponent implements OnInit {
   login() {
     //console.log('-- MODELO --', this.modelo);
 
+    console.log('INICIO DE LOGIN');
+
     if (this.modelo.USUARIO && this.modelo.PASS) {
       this.api.Login(this.modelo).subscribe(res => {
 
