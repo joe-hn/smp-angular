@@ -12,6 +12,7 @@ import { mes } from "src/app/model/mes";
 import { ApiReportesService } from "src/app/service/api-reportes.service";
 import { reporteDireccionAcumulado } from "src/app/model/reporteDireccionAcumulado";
 import { reporteFiltro } from "src/app/model/reporteFiltro";
+import { ApiXlsxService } from 'src/app/service/api-xlsx.service';
 
 
 @Component({
@@ -37,6 +38,7 @@ export class ReporteDireccionComponent implements OnInit {
     private apipoa: ApiPoaService,
     private apimes: ApiMesService,
     private apireporte: ApiReportesService,
+    private apixlsx: ApiXlsxService,
     private dialog: MatDialog,
     private route: ActivatedRoute,
     private router: Router
@@ -48,6 +50,7 @@ export class ReporteDireccionComponent implements OnInit {
         N: true,
         active: "active",
       },
+      { nombre: 'Exportar a Excell', BotonReporte: true },
     ];
   }
 
@@ -213,7 +216,7 @@ export class ReporteDireccionComponent implements OnInit {
           var tr = document.createElement("tr");
 
           for (let index = 0; index < 5; index++) {
-            var td = document.createElement("td");            
+            var td = document.createElement("td");
 
             switch (index) {
               case 0:
@@ -513,5 +516,15 @@ export class ReporteDireccionComponent implements OnInit {
     // Obtener la referencia del elemento body
 
 
+  }
+
+  onReporte() {
+    if (this.modelo != null) {
+
+      
+
+
+      this.apixlsx.exportToExcel(this.modelo, 'Dirección');
+    }
   }
 }
