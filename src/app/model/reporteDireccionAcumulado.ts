@@ -1,6 +1,7 @@
-export class reporteDireccionAcumulado{
+export class reporteDireccionAcumulado {
     constructor(
         public ID: number,
+        public NOMBRE: string,
         public PROGRAMADO: number,
         public EJECUCION: number,
         public POR_EJECUTAR: number,
@@ -29,5 +30,5 @@ export class reporteDireccionAcumulado{
         public NOVIEMBRE_E: number,
         public DICIEMBRE_P: number,
         public DICIEMBRE_E: number
-    ){}
+    ) { }
 }

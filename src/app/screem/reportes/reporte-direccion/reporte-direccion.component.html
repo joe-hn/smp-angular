@@ -78,48 +78,8 @@
 
                 </form>
 
-                <div>
-                    <table class="table" style="font-size:smaller;">
-                        <thead style="text-align: center;">
-                            <th scope="col">Dirección</th>
-                            <th scope="col">Programado</th>
-                            <th scope="col">Ejecutado</th>
-                            <th scope="col">% Ejecucion</th>
-
-                        </thead>
-
-                        <tbody>
-                            <ng-container *ngFor="let A of modelo">
-                                <tr>
-                                    <td>
-                                        <p style="width: 32px; text-align: center; font-size: 10px;">{{A.NOMBRE}}
-                                        </p>
-                                    </td>
-
-                                    <td>
-                                        <input currencyMask name="monto" #monto="ngModel"
-                                            [(ngModel)]="A.PROGRAMADO"
-                                            [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
-                                            class="celda-proyeccion" style="background-color: white;" />
-                                    </td>
-
-                                    <td>
-                                        <input currencyMask name="monto" #monto="ngModel"
-                                            [(ngModel)]="A.EJECUCION"
-                                            [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
-                                            class="celda-proyeccion" style="background-color: white;" />
-                                    </td>
-
-                                    <td>
-                                        <input currencyMask name="monto" #monto="ngModel"
-                                            [(ngModel)]="A.PE"
-                                            [options]="{prefix: '', thousands: ',', align:'left', precision:'0' }"
-                                            class="celda-proyeccion" style="background-color: white;" />
-                                    </td>
-                                </tr>
-                            </ng-container>
-                        </tbody>
-                    </table>
+                <div id="tabla-reporte">
+                   
                 </div>
 
 
