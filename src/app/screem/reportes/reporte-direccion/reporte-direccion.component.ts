@@ -13,6 +13,8 @@ import { ApiReportesService } from "src/app/service/api-reportes.service";
 import { reporteDireccionAcumulado } from "src/app/model/reporteDireccionAcumulado";
 import { reporteFiltro } from "src/app/model/reporteFiltro";
 import { ApiXlsxService } from 'src/app/service/api-xlsx.service';
+import { table } from 'console';
+import { findLast } from '@angular/compiler/src/directive_resolver';
 
 
 @Component({
@@ -310,7 +312,7 @@ export class ReporteDireccionComponent implements OnInit {
               case 3:
                 var trp = document.createElement("tr");
                 var pp = document.createElement("p");
-                var pptexto = document.createTextNode(formatC.format(item.MARZO_p, { code: 'USD' }));
+                var pptexto = document.createTextNode(formatC.format(item.MARZO_P, { code: 'USD' }));
                 pp.appendChild(pptexto);
                 trp.appendChild(pp);
                 td.appendChild(trp);
@@ -521,10 +523,33 @@ export class ReporteDireccionComponent implements OnInit {
   onReporte() {
     if (this.modelo != null) {
 
-      
+      var reporte = [];
+      var fila = [];
 
+      this.modelo.forEach(item => {
+        fila.push({
+          "Direccion": item.NOMBRE,
+          "Programado": item.PROGRAMADO,
+          "Ejecutado": item.EJECUCION,
+          "% Ejecucion": item.PE,
+          "Por Ejecutar": item.POR_EJECUTAR,
+          "Enero P": item.ENERO_P, "Enero E": item.ENERO_E,
+          "Febrero P": item.FEBRERO_P, "Febrero E": item.FEBRERO_E,
+          "Marzo P": item.MARZO_P, "Marzo E": item.MARZO_E,
+          "Abril P": item.ABRIL_P, "Abril E": item.ABRIL_E,
+          "Mayo P": item.MAYO_P, "Mayo E": item.MAYO_E,
+          "Junio P": item.JUNIO_P, "Junio E": item.JUNIO_E,
+          "Julio P": item.JULIO_P, "Julio E": item.JULIO_E,
+          "Agosto P": item.AGOSTO_P, "Agosto E": item.AGOSTO_E,
+          "Septiembre P": item.SEPTIEMBRE_P, "Septiembre E": item.SEPTIEMBRE_E,
+          "Octubre P": item.OCTUBRE_P, "Octubre E": item.OCTUBRE_E,
+          "Noviembre P": item.NOVIEMBRE_P, "Noviembre E": item.NOVIEMBRE_E,
+          "Diciembre P": item.DICIEMBRE_P, "Diciembre E": item.DICIEMBRE_E
+        });
+      })
 
-      this.apixlsx.exportToExcel(this.modelo, 'Dirección');
+      console.log(fila);
+      this.apixlsx.exportToExcel(fila, 'Dirección');
     }
   }
 }

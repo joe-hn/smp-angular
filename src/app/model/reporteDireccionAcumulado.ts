@@ -10,7 +10,7 @@ export class reporteDireccionAcumulado {
         public ENERO_E: number,
         public FEBRERO_P: number,
         public FEBRERO_E: number,
-        public MARZO_p: number,
+        public MARZO_P: number,
         public MARZO_E: number,
         public ABRIL_P: number,
         public ABRIL_E: number,
