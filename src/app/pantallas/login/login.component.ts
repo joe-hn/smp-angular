@@ -1,69 +1,78 @@
-import { Component, OnInit } from '@angular/core';
-import { usuario } from 'src/app/model/usuario';
-import { ApiLoginService } from 'src/app/service/api-login.service';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { usuario } from "src/app/model/usuario";
+import { ApiLoginService } from "src/app/service/api-login.service";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: "app-login",
+  templateUrl: "./login.component.html",
+  styleUrls: ["./login.component.css"],
 })
 export class LoginComponent implements OnInit {
-  modelo: usuario = new usuario(0, '', '', '', '', '', '', 0, '', 0, false, 0, 0, '', 0, '', '');
+  modelo: usuario = new usuario(
+    0,
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    0,
+    "",
+    0,
+    false,
+    0,
+    0,
+    "",
+    0,
+    "",
+    ""
+  );
   validacion: boolean = false;
   noUsuario: boolean = false;
 
-  constructor(
-    private api: ApiLoginService,
-    private router: Router
-  ) { }
+  constructor(private api: ApiLoginService, private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   login() {
     //console.log('-- MODELO --', this.modelo);
 
-    console.log('INICIO DE LOGIN');
+    console.log("INICIO DE LOGIN");
 
     if (this.modelo.USUARIO && this.modelo.PASS) {
-      this.api.Login(this.modelo).subscribe(res => {
+      this.api.Login(this.modelo).subscribe(
+        (res) => {
+          console.log("-- PASO EL POST LOGIN  --");
+          console.log("-- CONTENIDO --", res);
 
-        console.log('-- PASO EL POST LOGIN  --');
-        console.log('-- CONTENIDO --', res);
+          if (!res.error_estado) {
+            //console.log('--PASO EL POST LOGIN SIN ERROR');
 
-        if (!res.error_estado) {
+            localStorage.setItem("_usr", JSON.stringify(res.modelo));
+            localStorage.setItem("_u", res.modelo.USUARIO);
+            localStorage.setItem("_tk", res.tk);
 
-          //console.log('--PASO EL POST LOGIN SIN ERROR');
+            //console.log('-- VALORES DE LOCAL STORAGE --', this.modelo);
 
-          this.modelo = res.modelo;
+            this.api.usuarioId(res.modelo.ID).subscribe((resUsurio) => {
+              console.log("-- PERFIL DE USUARIO --", resUsurio.modelo);
 
-          localStorage.setItem('_usr', JSON.stringify(res.modelo));
-          localStorage.setItem('_u', res.modelo.USUARIO);
-          localStorage.setItem('_tk', res.tk);
+              localStorage.setItem("_user", JSON.stringify(resUsurio.modelo));
 
-          //console.log('-- VALORES DE LOCAL STORAGE --', this.modelo);
-
-          this.api.usuarioId(this.modelo.ID).subscribe(res => {
-
-            console.log('-- PERFIL DE USUARIO --', res.modelo);
-
-            localStorage.setItem('_user', JSON.stringify(res.modelo));
-
-            this.router.navigate(['/lista-operaciones']);
-          })
-
-        } else {
-          this.noUsuario = true;
+              this.router.navigate(["/lista-operaciones"]);
+            });
+          } else {
+            this.noUsuario = true;
+          }
+        },
+        (error) => {
+          console.log("-- ERROR ---/ ", error);
+          this.router.navigate(["/error"]);
         }
-      }, error => {
-        console.log('-- ERROR ---/ ', error);
-        this.router.navigate(['/error']);
-      })
-
+      );
     } else {
       this.validacion = true;
     }
   }
-
 }
