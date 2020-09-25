@@ -55,13 +55,7 @@ export class LoginComponent implements OnInit {
 
             //console.log('-- VALORES DE LOCAL STORAGE --', this.modelo);
 
-            this.api.usuarioId(res.modelo.ID).subscribe((resUsurio) => {
-              console.log("-- PERFIL DE USUARIO --", resUsurio.modelo);
-
-              localStorage.setItem("_user", JSON.stringify(resUsurio.modelo));
-
-              this.router.navigate(["/lista-operaciones"]);
-            });
+            this.router.navigate(["/lista-operaciones"]);
           } else {
             this.noUsuario = true;
           }
