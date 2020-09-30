@@ -77,6 +77,7 @@ import { NuevoUsuarioComponent } from "./screem/seguridad/nuevo-usuario/nuevo-us
 import { EditarRolComponent } from "./screem/seguridad/editar-rol/editar-rol.component";
 import { EditarUsuarioComponent } from "./screem/seguridad/editar-usuario/editar-usuario.component";
 import { ReporteDireccionComponent } from "./screem/reportes/reporte-direccion/reporte-direccion.component";
+import { ReporteDireccionGlobalComponent } from './screem/reportes/reporte-direccion-global/reporte-direccion-global.component';
 
 registerLocaleData(localesHN, "es-HN");
 
@@ -147,6 +148,7 @@ registerLocaleData(localesHN, "es-HN");
     EditarRolComponent,
     EditarUsuarioComponent,
     ReporteDireccionComponent,
+    ReporteDireccionGlobalComponent,
   ],
   imports: [
     BrowserModule,

@@ -30,4 +30,8 @@ export class ApiAnioService {
     return this.http.get(this.url + '/' + id, this.httpOptions).pipe(map(this.extractData));
   }  
 
+  GetAnio(): Observable<any> {    
+    return this.http.get(this.url + 'anio', this.httpOptions).pipe(map(this.extractData));
+  }  
+
 }

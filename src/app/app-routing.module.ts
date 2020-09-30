@@ -58,7 +58,8 @@ import { NuevoRolComponent } from "./screem/seguridad/nuevo-rol/nuevo-rol.compon
 import { NuevoUsuarioComponent } from "./screem/seguridad/nuevo-usuario/nuevo-usuario.component";
 import { EditarRolComponent } from "./screem/seguridad/editar-rol/editar-rol.component";
 import { EditarUsuarioComponent } from "./screem/seguridad/editar-usuario/editar-usuario.component";
-import { ReporteDireccionComponent } from './screem/reportes/reporte-direccion/reporte-direccion.component';
+import { ReporteDireccionComponent } from "./screem/reportes/reporte-direccion/reporte-direccion.component";
+import { ReporteDireccionGlobalComponent } from "./screem/reportes/reporte-direccion-global/reporte-direccion-global.component";
 
 /*
 import { InicioComponent } from './pantallas/inicio/inicio.component';
@@ -170,6 +171,10 @@ const routes: Routes = [
   { path: "editar-usuario/:id", component: EditarUsuarioComponent },
 
   { path: "reporte-direccion", component: ReporteDireccionComponent },
+  {
+    path: "reporte-direccion-global",
+    component: ReporteDireccionGlobalComponent,
+  },
 ];
 
 @NgModule({

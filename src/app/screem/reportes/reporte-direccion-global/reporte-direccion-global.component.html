@@ -8,34 +8,25 @@
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h6">Dirección acumulado y mensual</h1>
+                    <h1 class="h6">Dirección global acumulado y mensual</h1>
                 </div>
 
-                <form class="example-form" autocomplete="nope">                    
+                <form class="example-form" autocomplete="nope">
                     <div class="row">
                         <div class="col-sm">
                             <mat-form-field class="example-full-width">
-                                <mat-label>Lista de Operaciones</mat-label>
-                                <mat-select placeholder="-- Lista de Operaciones --" name="operacion" #name="ngModel"
-                                    [(ngModel)]="filtro.OPERACION_ID" required>
-                                    <mat-option *ngFor='let a of listaOperaciones' [value]='a.ID'
-                                        (click)="onSeleccionOperacion()">
-                                        {{a.OPERACION}}
+                                <mat-label>Lista de Años</mat-label>
+                                <mat-select placeholder="-- Lista de años --" name="anio" #name="ngModel"
+                                    [(ngModel)]="filtro.ANIO" required>
+                                    <mat-option *ngFor='let a of listaAnio' [value]='a.ANIO'>
+                                        {{a.ANIO}}
                                     </mat-option>
                                 </mat-select>
                             </mat-form-field>
                         </div>
 
                         <div class="col-sm">
-                            <mat-form-field class="example-full-width">
-                                <mat-label>Lista de POA</mat-label>
-                                <mat-select placeholder="-- Lista de POA --" name="poa" #name="ngModel"
-                                    [(ngModel)]="filtro.POA_ID" required>
-                                    <mat-option *ngFor='let a of listaPoa' [value]='a.ID'>
-                                        {{a.ANIO}}
-                                    </mat-option>
-                                </mat-select>
-                            </mat-form-field>
+
                         </div>
 
                     </div>

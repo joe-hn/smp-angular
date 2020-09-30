@@ -12,7 +12,7 @@
 
     <div class="row" *ngIf="responsable && !sinResponsable">
         <div class="col">
-            <form class="example-form">
+            <form class="example-form" autocomplete="nope">
                 <mat-form-field class="example-full-width">
                     <mat-label>Dirección</mat-label>
                     <mat-select placeholder="-- Lista de Direcciones --" name="direccion" #direccion="ngModel"

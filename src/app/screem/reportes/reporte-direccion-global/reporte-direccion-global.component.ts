@@ -1,31 +1,31 @@
 import { Component, OnInit } from "@angular/core";
-import { menu } from "src/app/model/menu";
-import { ActivatedRoute, Router } from "@angular/router";
 import { MatDialog } from "@angular/material/dialog";
-import { ModalEliminarComponent } from "src/app/component/modal-eliminar/modal-eliminar.component";
-import { ApiOperacionService } from "src/app/service/api-operacion.service";
-import { operacion } from "src/app/model/operacion";
-import { ApiPoaService } from "src/app/service/api-poa.service";
-import { poa } from "src/app/model/poa";
-import { ApiMesService } from "src/app/service/api-mes.service";
+import { ActivatedRoute, Router } from "@angular/router";
+import { anio } from "src/app/model/anio";
+import { menu } from "src/app/model/menu";
 import { mes } from "src/app/model/mes";
-import { ApiReportesService } from "src/app/service/api-reportes.service";
+import { operacion } from "src/app/model/operacion";
+import { poa } from "src/app/model/poa";
 import { reporteDireccionAcumulado } from "src/app/model/reporteDireccionAcumulado";
 import { reporteFiltro } from "src/app/model/reporteFiltro";
+import { ApiAnioService } from "src/app/service/api-anio.service";
+import { ApiMesService } from "src/app/service/api-mes.service";
+import { ApiOperacionService } from "src/app/service/api-operacion.service";
+import { ApiPoaService } from "src/app/service/api-poa.service";
+import { ApiReportesService } from "src/app/service/api-reportes.service";
 import { ApiXlsxService } from "src/app/service/api-xlsx.service";
-import { table } from "console";
-import { findLast } from "@angular/compiler/src/directive_resolver";
 
 @Component({
-  selector: "app-reporte-direccion",
-  templateUrl: "./reporte-direccion.component.html",
-  styleUrls: ["./reporte-direccion.component.css"],
+  selector: "app-reporte-direccion-global",
+  templateUrl: "./reporte-direccion-global.component.html",
+  styleUrls: ["./reporte-direccion-global.component.css"],
 })
-export class ReporteDireccionComponent implements OnInit {
+export class ReporteDireccionGlobalComponent implements OnInit {
   menu: menu[];
 
   listaOperaciones: operacion[];
   listaPoa: poa[];
+  listaAnio: anio[];
   listaMesInicio: mes[];
   listaMesFinal: mes[];
   modelo: reporteDireccionAcumulado[];
@@ -72,6 +72,7 @@ export class ReporteDireccionComponent implements OnInit {
     private apipoa: ApiPoaService,
     private apimes: ApiMesService,
     private apireporte: ApiReportesService,
+    private apianio: ApiAnioService,
     private apixlsx: ApiXlsxService,
     private dialog: MatDialog,
     private route: ActivatedRoute,
@@ -82,32 +83,26 @@ export class ReporteDireccionComponent implements OnInit {
         nombre: "Dirección por Operación",
         url: "/reporte-direccion",
         N: true,
-        active: "active",
+        active: "",
       },
-      { nombre: "Exportar a Excell", BotonReporte: true },
       {
         nombre: "Dirección Global",
         url: "/reporte-direccion-global/",
         N: true,
-        active: "",
+        active: "active",
       },
+      { nombre: "Exportar a Excell", BotonReporte: true },
     ];
   }
 
   ngOnInit(): void {
-    this.apioperacion.Get().subscribe((res) => {
-      this.listaOperaciones = res.modelo;
+    this.apianio.GetAnio().subscribe((res) => {
+      this.listaAnio = res.modelo;
 
       this.apimes.Get().subscribe((res) => {
         this.listaMesInicio = res.modelo;
         this.listaMesFinal = res.modelo;
       });
-    });
-  }
-
-  onSeleccionOperacion() {
-    this.apipoa.GetOperacion(this.filtro.OPERACION_ID).subscribe((res) => {
-      this.listaPoa = res.modelo;
     });
   }
 
@@ -117,7 +112,7 @@ export class ReporteDireccionComponent implements OnInit {
 
   onGenerarReporte() {
     this.apireporte
-      .GetReporteDireccionAcumulado(this.filtro)
+      .GetReporteDireccionGlobal(this.filtro)
       .subscribe((res) => {
         this.modelo = res.modelo;
 

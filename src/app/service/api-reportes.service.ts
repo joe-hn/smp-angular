@@ -30,4 +30,8 @@ export class ApiReportesService {
   GetReporteDireccionAcumulado(modelo): Observable<any> {    
     return this.http.post<any>(this.url + 'direccion/acumulado', JSON.stringify(modelo), this.httpOptions).pipe(map(this.extractData));
   }  
+
+  GetReporteDireccionGlobal(modelo): Observable<any> {    
+    return this.http.post<any>(this.url + 'direccion/acumulado/global', JSON.stringify(modelo), this.httpOptions).pipe(map(this.extractData));
+  }  
 }
