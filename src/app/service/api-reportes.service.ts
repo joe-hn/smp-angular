@@ -27,11 +27,24 @@ export class ApiReportesService {
     return body || {};
   }
 
-  GetReporteDireccionAcumulado(modelo): Observable<any> {    
+  GetReporteDireccion(modelo): Observable<any> {    
     return this.http.post<any>(this.url + 'direccion/acumulado', JSON.stringify(modelo), this.httpOptions).pipe(map(this.extractData));
   }  
 
-  GetReporteDireccionGlobal(modelo): Observable<any> {    
-    return this.http.post<any>(this.url + 'direccion/acumulado/global', JSON.stringify(modelo), this.httpOptions).pipe(map(this.extractData));
+  GetReporteDireccionRiesgo(modelo): Observable<any> {    
+    return this.http.post<any>(this.url + 'direccion/acumulado/riesgo', JSON.stringify(modelo), this.httpOptions).pipe(map(this.extractData));
   }  
+
+  GetReporteDireccionActividad(modelo): Observable<any> {    
+    return this.http.post<any>(this.url + '/direccion/acumulado/actividad', JSON.stringify(modelo), this.httpOptions).pipe(map(this.extractData));
+  }  
+
+  GetReporteDireccionComparativoEjecucion(modelo): Observable<any> {    
+    return this.http.post<any>(this.url + '/direccion/comparativo/ejecucion', JSON.stringify(modelo), this.httpOptions).pipe(map(this.extractData));
+  }  
+
+  GetReporteObjetoGasto(modelo): Observable<any> {    
+    return this.http.post<any>(this.url + '/direccion/objetogasto', JSON.stringify(modelo), this.httpOptions).pipe(map(this.extractData));
+  }  
+
 }

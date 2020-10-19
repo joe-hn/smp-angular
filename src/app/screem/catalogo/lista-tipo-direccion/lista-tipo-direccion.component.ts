@@ -31,7 +31,8 @@ export class ListaTipoDireccionComponent implements OnInit {
 
     { nombre: 'Dirección', url: '/lista-direccion/', N: true, active: '' },
     { nombre: 'Cargo', url: '/lista-cargo/', N: true, active: '' },
-    { nombre: 'Empleados', url: '/lista-empleado/', N: true, active: '' }];
+    { nombre: 'Empleados', url: '/lista-empleado/', N: true, active: '' },
+    { nombre: 'Objeto del Gasto', url: '/lista-objetogasto/', N: true, active: '' },];
   }
 
   ngOnInit(): void {

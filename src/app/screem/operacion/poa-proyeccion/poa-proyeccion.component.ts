@@ -20,7 +20,7 @@ export class PoaProyeccionComponent implements OnInit {
   menu: menu[];
 
   poamodelo: poa = new poa(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '');
-  poaactividadmodelo = new poaActividad(0, 0, 0, 0, 0, 0, 0, '', '', '', '', 0, '', '', 0, '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, '', '', '', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', 0, 0, '', 0);
+  poaactividadmodelo = new poaActividad(0, 0, 0, 0, 0, 0, 0, '', '', '', '', 0, '', '', 0, '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', 0, 0, '', 0, '');
   lista: poaActividad[];
   poadetallemodelo: poaDetalle[];
   poadetalleseleccionadamodelo: poaDetalle[];
@@ -89,6 +89,7 @@ export class PoaProyeccionComponent implements OnInit {
         PRODUCTO: data.PRODUCTO,
         EDT_NOMBRE: data.EDT_NOMBRE,
         DESCRIPCION: data.DESCRIPCION,
+        OBJETO_GASTO: data.OBJETO_GASTO,
         RESPONSABLE: data.RESPONSABLE,
         FECHA_INICIO_ESTIMADA_DESCRIPCION: data.FECHA_INICIO_ESTIMADA_DESCRIPCION,
         FECHA_FINAL_ESTIMADA_DESCRIPCION: data.FECHA_FINAL_ESTIMADA_DESCRIPCION,

@@ -1,0 +1,135 @@
+<body>
+    <app-cabecera></app-cabecera>
+  
+    <div class="container-fluid">
+      <div class="row">
+        <app-menu
+          [lista]="menu"
+          (regresar)="onRegresar()"
+          (reporte)="onReporte()"
+        ></app-menu>
+  
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+          >
+            <h1 class="h6">Dirección: Presupuesto en Riesgo</h1>
+          </div>
+  
+          <form class="example-form" autocomplete="nope">
+            <div class="row">
+              <div class="col-sm">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Lista de Operaciones</mat-label>
+                  <mat-select
+                    placeholder="-- Lista de Operaciones --"
+                    name="operacion"
+                    #name="ngModel"
+                    [(ngModel)]="filtro.OPERACION_ID"
+                    required
+                  >
+                    <mat-option [value]="0">Todas las Operaciones</mat-option>
+                    <mat-option *ngFor="let a of listaOperaciones" [value]="a.ID">
+                      {{ a.OPERACION }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+  
+              <div class="col-sm">
+                <div class="col-sm">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Lista de Direcciones</mat-label>
+                    <mat-select
+                      placeholder="-- Lista de Direcciones --"
+                      name="direccion"
+                      #direccion="ngModel"
+                      [(ngModel)]="filtro.DIRECCION_ID"
+                      required
+                    >
+                      <mat-option [value]="0">Todas las Direcciones</mat-option>
+                      <mat-option *ngFor="let a of listaDireccion" [value]="a.ID">
+                        {{ a.NOMBRE }}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-sm">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Año</mat-label>
+                  <mat-select
+                    placeholder="-- Año --"
+                    name="poa"
+                    #name="ngModel"
+                    [(ngModel)]="filtro.ANIO"
+                    required
+                  >
+                    <mat-option *ngFor="let a of listaAnio" [value]="a.ANIO">
+                      {{ a.ANIO }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+  
+              <div class="col-sm">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Mes Inicio</mat-label>
+                  <mat-select
+                    placeholder="-- Mes --"
+                    name="mesI"
+                    #name="ngModel"
+                    [(ngModel)]="filtro.MES_I"
+                    required
+                  >
+                    <mat-option *ngFor="let a of listaMesInicio" [value]="a.ID">
+                      {{ a.MES }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+  
+              <div class="col-sm">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Mes Final</mat-label>
+                  <mat-select
+                    placeholder="-- Mes --"
+                    name="mesF"
+                    #name="ngModel"
+                    [(ngModel)]="filtro.MES_F"
+                    required
+                  >
+                    <mat-option *ngFor="let a of listaMesFinal" [value]="a.ID">
+                      {{ a.MES }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+  
+            <hr class="mb-4" />
+  
+            <div class="btn-toolbar mb-2 mb-md-0">
+              <div class="btn-group mr-2">
+                <button
+                  type="button"
+                  class="btn btn-sm btn-outline-success"
+                  (click)="onGenerarReporte()"
+                >
+                  Generar Reporte
+                </button>
+              </div>
+            </div>
+          </form>
+  
+          <div id="tabla-reporte"></div>
+  
+         
+        </main>
+      </div>
+    </div>
+  </body>
+  

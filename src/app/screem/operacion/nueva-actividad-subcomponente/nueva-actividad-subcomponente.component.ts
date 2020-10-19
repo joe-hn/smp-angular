@@ -14,6 +14,8 @@ import { ApiPoaProductoService } from 'src/app/service/api-poa-producto.service'
 import * as moment from 'moment';
 import { _global } from 'src/app/_global';
 import { ApiPeModificacionService } from 'src/app/service/api-pe-modificacion.service';
+import { ObjetoGasto } from 'src/app/model/objetoGasto';
+import { ApiObjetogastoService } from 'src/app/service/api-objetogasto.service';
 
 @Component({
   selector: 'app-nueva-actividad-subcomponente',
@@ -24,7 +26,7 @@ export class NuevaActividadSubcomponenteComponent implements OnInit {
   menu: menu[];
 
   poamodelo: poa = new poa(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '');
-  modelo: poaActividad = new poaActividad(0, 0, 0, 0, 0, 0, 0, '', '', '', '', 0, '', '', 0, '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, '', '', '', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', 0, 0, '', 0);
+  modelo: poaActividad = new poaActividad(0, 0, 0, 0, 0, 0, 0, '', '', '', '', 0, '', '', 0, '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', 0, 0, '', 0, '');
   productomodelo: poaProducto = new poaProducto(0, 0, 0, 0, 0, '', '', 0, '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0);
 
   lista: poaActividad[];
@@ -32,6 +34,7 @@ export class NuevaActividadSubcomponenteComponent implements OnInit {
   subcomponentelista: componente[];
   indicadorlista: indicador[];
   productolista: poaProducto[];
+  listaObjetoGasto: ObjetoGasto[];
 
   componenteid: number = 0;
 
@@ -56,6 +59,7 @@ export class NuevaActividadSubcomponenteComponent implements OnInit {
     private apiindicador: ApiIndicadorService,
     private apiproducto: ApiPoaProductoService,
     private apipe: ApiPeModificacionService,
+    private apiobjetogasto: ApiObjetogastoService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -74,6 +78,11 @@ export class NuevaActividadSubcomponenteComponent implements OnInit {
 
       this.apicomponente.GetOperacion(this.poamodelo.OPERACION_ID).subscribe(res => {
         this.componentelista = res.modelo;
+
+        this.apiobjetogasto.Get().subscribe(res => {
+          this.listaObjetoGasto = res.modelo;
+        })
+
       })
     })
   }
@@ -127,6 +136,10 @@ export class NuevaActividadSubcomponenteComponent implements OnInit {
   onGuardar() {
     if (this.modelo.NOMBRE) {
       let flag = true;
+
+      if(this.modelo.OBJETO_GASTO_ID == 0){
+        flag = false;
+      }
 
       if (this.modelo.RESPONSABLE_ID == 0) {
         flag = false;

@@ -33,7 +33,8 @@ export class ListaCargoComponent implements OnInit {
     { nombre: 'Crear Nuevo Cargo', url: '/nuevo-cargo/', N: false, active: '' },
     { nombre: 'Exportar a Excell', BotonReporte: true },
 
-    { nombre: 'Empleados', url: '/lista-empleado/', N: true, active: '' }];
+    { nombre: 'Empleados', url: '/lista-empleado/', N: true, active: '' },
+    { nombre: 'Objeto del Gasto', url: '/lista-objetogasto/', N: true, active: '' },];
   }
 
   ngOnInit(): void {

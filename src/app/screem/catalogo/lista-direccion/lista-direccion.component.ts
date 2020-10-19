@@ -31,7 +31,8 @@ export class ListaDireccionComponent implements OnInit {
     { nombre: 'Exportar a Excell', BotonReporte: true },
 
     { nombre: 'Cargo', url: '/lista-cargo/', N: true, active: '' },
-    { nombre: 'Empleados', url: '/lista-empleado/', N: true, active: '' }];
+    { nombre: 'Empleados', url: '/lista-empleado/', N: true, active: '' },
+    { nombre: 'Objeto del Gasto', url: '/lista-objetogasto/', N: true, active: '' },];
   }
 
   ngOnInit(): void {

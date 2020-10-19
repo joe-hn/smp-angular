@@ -31,7 +31,8 @@ export class ListaEmpleadoComponent implements OnInit {
 
     { nombre: 'Empleados', url: '/lista-empleado/', N: true, active: 'active' },
     { nombre: 'Crear Nueva Empleado', url: '/nuevo-empleado/', N: false, active: '' },
-    { nombre: 'Exportar a Excell', BotonReporte: true },];
+    { nombre: 'Exportar a Excell', BotonReporte: true },
+    { nombre: 'Objeto del Gasto', url: '/lista-objetogasto/', N: true, active: '' },];
   }
 
   ngOnInit(): void {

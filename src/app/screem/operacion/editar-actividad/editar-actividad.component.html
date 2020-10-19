@@ -37,6 +37,16 @@
                     </mat-form-field>
 
                     <mat-form-field class="example-full-width">
+                        <mat-label>Objeto del Gasto</mat-label>
+                        <mat-select placeholder="-- Lista de objeto del gasto --" name="og" #og="ngModel"
+                            [(ngModel)]="modelo.OBJETO_GASTO_ID" required>
+                            <mat-option *ngFor='let a of listaObjetoGasto' [value]='a.ID'>
+                                {{a.NOMBRE}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
                         <input matInput [matDatepicker]="pickerInicio" [min]="dateMin" [max]="dateMax"
                             placeholder="Fecha de inicio estimada" name="fie" #fie="ngModel" [(ngModel)]="dateInicio"
                             required readonly>

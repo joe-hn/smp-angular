@@ -77,7 +77,13 @@ import { NuevoUsuarioComponent } from "./screem/seguridad/nuevo-usuario/nuevo-us
 import { EditarRolComponent } from "./screem/seguridad/editar-rol/editar-rol.component";
 import { EditarUsuarioComponent } from "./screem/seguridad/editar-usuario/editar-usuario.component";
 import { ReporteDireccionComponent } from "./screem/reportes/reporte-direccion/reporte-direccion.component";
-import { ReporteDireccionGlobalComponent } from './screem/reportes/reporte-direccion-global/reporte-direccion-global.component';
+import { ListaObjetoGastoComponent } from './screem/catalogo/lista-objeto-gasto/lista-objeto-gasto.component';
+import { NuevoObjetoGastoComponent } from './screem/catalogo/nuevo-objeto-gasto/nuevo-objeto-gasto.component';
+import { EditarObjetoGastoComponent } from './screem/catalogo/editar-objeto-gasto/editar-objeto-gasto.component';
+import { ReporteDireccionRiesgoComponent } from './screem/reportes/reporte-direccion-riesgo/reporte-direccion-riesgo.component';
+import { ReporteDireccionActividadComponent } from './screem/reportes/reporte-direccion-actividad/reporte-direccion-actividad.component';
+import { ReporteDireccionComparativoEjecucionComponent } from './screem/reportes/reporte-direccion-comparativo-ejecucion/reporte-direccion-comparativo-ejecucion.component';
+import { ReporteObjetoGastoComponent } from './screem/reportes/reporte-objeto-gasto/reporte-objeto-gasto.component';
 
 registerLocaleData(localesHN, "es-HN");
 
@@ -147,8 +153,14 @@ registerLocaleData(localesHN, "es-HN");
     NuevoUsuarioComponent,
     EditarRolComponent,
     EditarUsuarioComponent,
-    ReporteDireccionComponent,
-    ReporteDireccionGlobalComponent,
+    ReporteDireccionComponent,    
+    ListaObjetoGastoComponent,
+    NuevoObjetoGastoComponent,
+    EditarObjetoGastoComponent,
+    ReporteDireccionRiesgoComponent,
+    ReporteDireccionActividadComponent,
+    ReporteDireccionComparativoEjecucionComponent,
+    ReporteObjetoGastoComponent,
   ],
   imports: [
     BrowserModule,

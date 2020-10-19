@@ -29,6 +29,7 @@ export class poaActividad {
         public DIFERENCIA_PROYECCION: number,
         public DIFERENCIA_EJECUCION: number,
         public PORCENTAJE_EJECUCION: number,
+        public OBJETO_GASTO_ID: number,
         public ESTADO: string,
         public OPERACION: string,
         public RESPONSABLE: string,
@@ -46,7 +47,8 @@ export class poaActividad {
         public DIFERENCIA_DISTRIBUCION: number,
         public SUMA_PROYECCION: number,
         public SUB_COMPONENTE: string,
-        public EDT_M: number    
+        public EDT_M: number,
+        public OBJETO_GASTO: string
 
     ) { }
 }

@@ -1,0 +1,129 @@
+<body>
+  <app-cabecera></app-cabecera>
+
+  <div class="container-fluid">
+    <div class="row">
+      <app-menu
+        [lista]="menu"
+        (regresar)="onRegresar()"
+        (reporte)="onReporte()"
+      ></app-menu>
+
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+        >
+          <h1 class="h6">Dirección: Actividades Vencidas</h1>
+        </div>
+
+        <form class="example-form" autocomplete="nope">
+          <div class="row">
+            <div class="col-sm">
+              <mat-form-field class="example-full-width">
+                <mat-label>Lista de Operaciones</mat-label>
+                <mat-select
+                  placeholder="-- Lista de Operaciones --"
+                  name="operacion"
+                  #name="ngModel"
+                  [(ngModel)]="filtro.OPERACION_ID"
+                  required
+                >
+                  <mat-option [value]="0">Todas las Operaciones</mat-option>
+                  <mat-option *ngFor="let a of listaOperaciones" [value]="a.ID">
+                    {{ a.OPERACION }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div class="col-sm">
+              <div class="col-sm">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Lista de Direcciones</mat-label>
+                  <mat-select
+                    placeholder="-- Lista de Direcciones --"
+                    name="direccion"
+                    #direccion="ngModel"
+                    [(ngModel)]="filtro.DIRECCION_ID"
+                    required
+                  >
+                    <mat-option [value]="0">Todas las Direcciones</mat-option>
+                    <mat-option *ngFor="let a of listaDireccion" [value]="a.ID">
+                      {{ a.NOMBRE }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm">
+              <mat-form-field class="example-full-width">
+                <input
+                  matInput
+                  [matDatepicker]="pickerInicio"                  
+                  placeholder="Fecha de Finalizacion de la Actividades"
+                  name="fie"
+                  #fie="ngModel"
+                  [(ngModel)]="dateFinal"
+                  required
+                  readonly
+                />
+                <mat-datepicker-toggle
+                  matSuffix
+                  [for]="pickerInicio"
+                ></mat-datepicker-toggle>
+                <mat-datepicker #pickerInicio></mat-datepicker>
+              </mat-form-field>
+            </div>
+          </div>
+
+          <hr class="mb-4" />
+
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2">
+              <button
+                type="button"
+                class="btn btn-sm btn-outline-success"
+                (click)="onGenerarReporte()"
+              >
+                Generar Reporte
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <table class="table table-striped">
+            <thead>
+                <tr style="text-align: center;">
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Componente/Indicador/Producto</th>
+                    <th scope="col">EDT</th>
+                    <th scope="col">Actividad</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Inicio</th>
+                    <th scope="col">Finalización</th>
+                    <th scope="col">Proyección</th>
+                    <th scope="col">Ejecución</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let a of modelo" style="text-align: justify;">
+                    <td>{{a.DIRECCION}}</td>
+                    <td>{{a.ORIGEN}}</td>
+                    <td>{{a.EDT_DESCRIPCION}}</td>
+                    <td>{{a.NOMBRE}}</td>
+                    <td>{{a.DESCRIPCION}}</td>
+                    <td>{{a.FECHA_INICIO_ESTIMADA_DESCRIPCION}}</td>
+                    <td>{{a.FECHA_FINAL_ESTIMADA_DESCRIPCION}}</td>
+                    <td>{{a.PROYECCION_REAL | currency}}</td>
+                    <td>{{a.EJECUCION_REAL | currency}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+      </main>
+    </div>
+  </div>
+</body>

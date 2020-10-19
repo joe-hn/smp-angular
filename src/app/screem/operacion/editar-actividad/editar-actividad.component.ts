@@ -7,6 +7,8 @@ import { ApiPoaService } from 'src/app/service/api-poa.service';
 import { poa } from 'src/app/model/poa';
 import { ApiPeModificacionService } from 'src/app/service/api-pe-modificacion.service';
 import * as moment from 'moment';
+import { ObjetoGasto } from 'src/app/model/objetoGasto';
+import { ApiObjetogastoService } from 'src/app/service/api-objetogasto.service';
 
 @Component({
   selector: 'app-editar-actividad',
@@ -16,8 +18,9 @@ import * as moment from 'moment';
 export class EditarActividadComponent implements OnInit {
   menu: menu[];
 
-  modelo: poaActividad = new poaActividad(0, 0, 0, 0, 0, 0, 0, '', '', '', '', 0, '', '', 0, '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, '', '', '', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', 0, 0, '', 0);
+  modelo: poaActividad = new poaActividad(0, 0, 0, 0, 0, 0, 0, '', '', '', '', 0, '', '', 0, '', '', '', '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', 0, 0, 0, 0, 0, 0, '', '', 0, '', '', 0, 0, '', 0, '');
   poamodelo: poa = new poa(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', '', '', '');
+  listaObjetoGasto: ObjetoGasto[];
 
   dateInicio: Date = new Date();
   dateFinal: Date = new Date();
@@ -36,6 +39,7 @@ export class EditarActividadComponent implements OnInit {
     private api: ApiPoaActividadService,
     private apipoa: ApiPoaService,
     private apipe : ApiPeModificacionService,
+    private apiobjetogasto: ApiObjetogastoService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -54,6 +58,8 @@ export class EditarActividadComponent implements OnInit {
     this.api.GetId(this.modelo.ID, this.modelo.OPERACION_ID).subscribe(res => {
       this.modelo = res.modelo;      
 
+      console.log(this.modelo);
+
       this.dateInicio = new Date(this.modelo.ANIO, this.modelo.MES - 1, this.modelo.DIA)
       this.dateFinal = new Date(this.modelo.FEANIO, this.modelo.FEMES - 1, this.modelo.FEDIA);
       this.value = this.modelo.PROYECCION;
@@ -63,6 +69,11 @@ export class EditarActividadComponent implements OnInit {
 
         this.dateMax = new Date((this.poamodelo.ANIO + 1).toString() + '-1-1');
         this.dateMin = new Date(this.poamodelo.ANIO.toString() + '-1-2');
+
+        this.apiobjetogasto.Get().subscribe(res => {
+          this.listaObjetoGasto = res.modelo;
+        })
+
       })
 
     })
@@ -76,6 +87,10 @@ export class EditarActividadComponent implements OnInit {
   onGuardar() {
     if (this.modelo.NOMBRE) {
       let flag = true;
+
+      if(this.modelo.OBJETO_GASTO_ID == 0){
+        flag = false;
+      }
 
       if (this.sinResponsable) {
         this.modelo.TIPO_RESPONSABLE = '';
