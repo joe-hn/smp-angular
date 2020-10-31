@@ -65,8 +65,11 @@ import { EditarObjetoGastoComponent } from "./screem/catalogo/editar-objeto-gast
 import { ReporteDireccionRiesgoComponent } from "./screem/reportes/reporte-direccion-riesgo/reporte-direccion-riesgo.component";
 import { reporteDireccionAcumulado } from "./model/reporteDireccionAcumulado";
 import { ReporteDireccionActividadComponent } from "./screem/reportes/reporte-direccion-actividad/reporte-direccion-actividad.component";
-import { ReporteDireccionComparativoEjecucionComponent } from './screem/reportes/reporte-direccion-comparativo-ejecucion/reporte-direccion-comparativo-ejecucion.component';
-import { ReporteObjetoGastoComponent } from './screem/reportes/reporte-objeto-gasto/reporte-objeto-gasto.component';
+import { ReporteDireccionComparativoEjecucionComponent } from "./screem/reportes/reporte-direccion-comparativo-ejecucion/reporte-direccion-comparativo-ejecucion.component";
+import { ReporteObjetoGastoComponent } from "./screem/reportes/reporte-objeto-gasto/reporte-objeto-gasto.component";
+import { PoaFisicoProyeccionComponent } from "./screem/operacion/poa-fisico-proyeccion/poa-fisico-proyeccion.component";
+import { PoaFisicoEjecucionComponent } from "./screem/operacion/poa-fisico-ejecucion/poa-fisico-ejecucion.component";
+import { PoaFisicoIndicadorComponent } from "./screem/operacion/poa-fisico-indicador/poa-fisico-indicador.component";
 
 /*
 import { InicioComponent } from './pantallas/inicio/inicio.component';
@@ -136,6 +139,12 @@ const routes: Routes = [
   { path: "poa-proyeccion/:id", component: PoaProyeccionComponent },
   { path: "poa-ejecucion/:id", component: PoaEjecucionComponent },
   {
+    path: "poa-fisico-proyeccion/:id",
+    component: PoaFisicoProyeccionComponent,
+  },
+  { path: "poa-fisico-ejecucion/:id", component: PoaFisicoEjecucionComponent },
+  { path: "poa-fisico-indicador/:poa", component: PoaFisicoIndicadorComponent },
+  {
     path: "lista-actividad/:poa/:operacion",
     component: ListaActividadComponent,
   },
@@ -189,8 +198,11 @@ const routes: Routes = [
     path: "reporte-direccion-actividades",
     component: ReporteDireccionActividadComponent,
   },
-  {path:'reporte-direccion-comparativa-ejecucion', component: ReporteDireccionComparativoEjecucionComponent},
-  {path: 'reporte-objeto-gasto', component: ReporteObjetoGastoComponent},
+  {
+    path: "reporte-direccion-comparativa-ejecucion",
+    component: ReporteDireccionComparativoEjecucionComponent,
+  },
+  { path: "reporte-objeto-gasto", component: ReporteObjetoGastoComponent },
 ];
 
 @NgModule({

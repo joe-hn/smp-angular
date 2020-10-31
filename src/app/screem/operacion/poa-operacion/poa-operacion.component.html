@@ -1,68 +1,110 @@
 <body>
+  <app-cabecera></app-cabecera>
 
-    <app-cabecera></app-cabecera>
+  <div class="container-fluid">
+    <div class="row">
+      <app-menu
+        [lista]="menu"
+        (regresar)="onRegresar()"
+        (reporte)="onReporte()"
+      ></app-menu>
 
-
-    <div class="container-fluid">
-        <div class="row">
-
-            <app-menu [lista]="menu" (regresar)="onRegresar()" (reporte)="onReporte()"></app-menu>
-
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-                <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h5">Lista de Planes Operativos Anual de la Operacion {{operacionmodelo.OPERACION}}</h1>
-                </div>
-
-                <div class="card mb-3">
-                    <div class="card-header">
-                        Resumen de la Operación
-                    </div>
-                    <div class="card-body">
-                        <p class="card-title">Valor de la Operación: {{operacionmodelo.MONTO | currency:'$'}}</p>                        
-                        <p class="card-title">Ejecutado: {{operacionmodelo.COSTO_REAL | currency:'$'}}</p>
-                        <p class="card-title">Disponible: {{operacionmodelo.COSTO_RESTANTE | currency:'$'}}</p>
-                    </div>
-                </div>
-
-                <ng-container *ngFor="let a of lista; index as i">
-                    <div class="card mb-3">
-                        <div class="card-header">
-                            Año: {{a.ANIO}}
-                        </div>
-                        <div class="card-body">                            
-                            <p class="card-text">Estimado: {{a.PROYECTADO | currency:'$'}}</p>
-                            <p class="card-text">Programado: {{a.PROYECTADO_REAL | currency:'$'}}</p>
-
-                            <ng-container *ngIf="a.DIFERENCIA_PROYECCION == 0; else diferente">
-                                <p class="card-text">Diferencia entre lo Estimado y lo Programado:
-                                    {{a.DIFERENCIA_PROYECCION | currency:'$'}}</p>
-                            </ng-container>
-
-                            <ng-template #diferente>
-                                <p class="card-text" style="color:red">Diferencia entre lo Estimado y lo Programado:
-                                    {{a.DIFERENCIA_PROYECCION | currency:'$'}}</p>
-                            </ng-template>
-
-
-
-                            <p class="card-text">Ejecutado: {{a.EJECUTADO_REAL | currency:'$'}}</p>
-
-                            <p class="card-text">Porcentaje Ejecución: {{a.PORCENTAJE_EJECUCION}}%</p>
-
-                            <div class="btn-toolbar mb-2 mb-md-0">
-                                <div class="btn-group mr-2">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"
-                                        [routerLink]="['/poa-proyeccion', a.ID]">Programación Financiera</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary"
-                                        [routerLink]="['/poa-ejecucion', a.ID]">Ejecución Financiera</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </ng-container>
-
-            </main>
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+        >
+          <h1 class="h5">
+            Lista de Planes Operativos Anual de la Operacion
+            {{ operacionmodelo.OPERACION }}
+          </h1>
         </div>
+
+        <div class="card mb-3">
+          <div class="card-header">Resumen de la Operación</div>
+          <div class="card-body">
+            <p class="card-title">
+              Valor de la Operación: {{ operacionmodelo.MONTO | currency: "$" }}
+            </p>
+            <p class="card-title">
+              Ejecutado: {{ operacionmodelo.COSTO_REAL | currency: "$" }}
+            </p>
+            <p class="card-title">
+              Disponible: {{ operacionmodelo.COSTO_RESTANTE | currency: "$" }}
+            </p>
+          </div>
+        </div>
+
+        <ng-container *ngFor="let a of lista; index as i">
+          <div class="card mb-3">
+            <div class="card-header">Año: {{ a.ANIO }}</div>
+            <div class="card-body">
+              <p class="card-text">
+                Estimado: {{ a.PROYECTADO | currency: "$" }}
+              </p>
+              <p class="card-text">
+                Programado: {{ a.PROYECTADO_REAL | currency: "$" }}
+              </p>
+
+              <p class="card-text">
+                Ejecutado: {{ a.EJECUTADO_REAL | currency: "$" }}
+              </p>
+
+              <ng-container
+                *ngIf="a.DIFERENCIA_PROYECCION == 0; else diferente"
+              >
+                <p class="card-text">
+                  Diferencia entre lo Programado y Ejecutado:
+                  {{ a.DIFERENCIA_PROYECCION | currency: "$" }}
+                </p>
+              </ng-container>
+
+              <ng-template #diferente>
+                <p class="card-text" style="color: red">
+                  Diferencia entre lo Programado y Ejecutado:
+                  {{ a.DIFERENCIA_PROYECCION | currency: "$" }}
+                </p>
+              </ng-template>
+
+              <p class="card-text">
+                Porcentaje Ejecución: {{ a.PORCENTAJE_EJECUCION }}%
+              </p>
+
+              <div class="btn-toolbar mb-2 mb-md-0">
+                <div class="btn-group mr-2">
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-primary"
+                    [routerLink]="['/poa-proyeccion', a.ID]"
+                  >
+                    Programación Financiera
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-success"
+                    [routerLink]="['/poa-ejecucion', a.ID]"
+                  >
+                    Ejecución Financiera
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-primary"
+                    [routerLink]="['/poa-fisico-proyeccion', a.ID]"
+                  >
+                    Programación Física
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-outline-success"
+                    [routerLink]="['/poa-fisico-ejecucion', a.ID]"
+                  >
+                    Ejecución Física
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </main>
     </div>
+  </div>
 </body>

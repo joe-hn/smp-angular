@@ -1,0 +1,28 @@
+<mat-dialog-content class="mat-typography">
+    <div class="card">
+        <div class="card-header">
+            Información General del Indicador
+        </div>
+        <div class="card-body">
+            <p><strong>Componente: </strong>{{data.COMPONENTE}}</p>
+            <p><strong>Sub Componente: </strong>{{data.SUB_COMPONENTE}}</p>
+            <p><strong>Indicador: </strong>{{data.INDICADOR}}</p>                                    
+            <p><strong>Descripción Conceptual: </strong>{{data.DESCRIPCION_CONCEPTUAL}}</p>            
+            <p><strong>Descripción Técnica: </strong>{{data.DESCRIPCION_TECNICA}}</p>            
+            <p><strong>Descripción Formula: </strong>{{data.DESCRIPCION_FORMULA}}</p>            
+            <p><strong>Base de Datos: </strong>{{data.BASE_DATOS}}</p>            
+            <p><strong>Frecuencia Medición: </strong>{{data.FRECUENCIA_MEDICION}}</p>            
+            <p><strong>Fecha Reporte: </strong>{{data.FECHA_REPORTE}}</p>            
+            <p><strong>Comentarios: </strong>{{data.COMENTARIOS}}</p>            
+
+            <p><strong>Responsable: </strong>{{data.RESPONSABLE}}</p>
+                        
+        </div>
+    </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <!--  <button mat-button mat-dialog-close>Cerrar</button> -->
+    <button mat-button [mat-dialog-close]="true">Regresar</button>
+</mat-dialog-actions>

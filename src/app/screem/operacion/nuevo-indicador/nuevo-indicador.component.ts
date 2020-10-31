@@ -13,7 +13,7 @@ import { componente } from 'src/app/model/componente';
 })
 export class NuevoIndicadorComponent implements OnInit {
   menu: menu[];
-  modelo: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0);
+  modelo: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0, 0);
   modelocomponente = new componente(0, 0, 0, '', '', 0, 0, '', '', 0, 0, 0, '', '', '', 0, '', '', 0, 0);
   listacomponente: componente[];
   lista: indicador[];

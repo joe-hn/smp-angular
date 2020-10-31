@@ -39,7 +39,7 @@ export class PoaEjecucionComponent implements OnInit {
     this.api.GetId(this.poamodelo.ID).subscribe(res => {
       this.poamodelo = res.modelo;
 
-      this.menu = [{ nombre: 'Ejecución', url: '/poa-ejecución/' + this.poamodelo.ID, N: true, active: 'active' },
+      this.menu = [{ nombre: 'Ejecución Financiera', url: '/poa-ejecución/' + this.poamodelo.ID, N: true, active: 'active' },
       { nombre: 'Exportar a Excell', BotonReporte: true }];
     })
   }

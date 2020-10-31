@@ -16,7 +16,7 @@ import { ApiXlsxService } from 'src/app/service/api-xlsx.service';
 export class ListaIndicadorComponent implements OnInit {
   menu: menu[];
 
-  modelo: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0);
+  modelo: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0, 0);
   lista: indicador[];
   reporte: indicador[];
   modelooperacion: operacion = new operacion(0, 0, '', '', '', '', '', 0, '', '', '', 0, '', '', '', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);

@@ -84,6 +84,10 @@ import { ReporteDireccionRiesgoComponent } from './screem/reportes/reporte-direc
 import { ReporteDireccionActividadComponent } from './screem/reportes/reporte-direccion-actividad/reporte-direccion-actividad.component';
 import { ReporteDireccionComparativoEjecucionComponent } from './screem/reportes/reporte-direccion-comparativo-ejecucion/reporte-direccion-comparativo-ejecucion.component';
 import { ReporteObjetoGastoComponent } from './screem/reportes/reporte-objeto-gasto/reporte-objeto-gasto.component';
+import { PoaFisicoProyeccionComponent } from './screem/operacion/poa-fisico-proyeccion/poa-fisico-proyeccion.component';
+import { PoaFisicoEjecucionComponent } from './screem/operacion/poa-fisico-ejecucion/poa-fisico-ejecucion.component';
+import { PoaFisicoIndicadorComponent } from './screem/operacion/poa-fisico-indicador/poa-fisico-indicador.component';
+import { ModalInformacionIndicadorGeneralComponent } from './component/modal-informacion-indicador-general/modal-informacion-indicador-general.component';
 
 registerLocaleData(localesHN, "es-HN");
 
@@ -161,6 +165,10 @@ registerLocaleData(localesHN, "es-HN");
     ReporteDireccionActividadComponent,
     ReporteDireccionComparativoEjecucionComponent,
     ReporteObjetoGastoComponent,
+    PoaFisicoProyeccionComponent,
+    PoaFisicoEjecucionComponent,
+    PoaFisicoIndicadorComponent,
+    ModalInformacionIndicadorGeneralComponent,
   ],
   imports: [
     BrowserModule,

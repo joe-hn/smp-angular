@@ -14,7 +14,7 @@ export class EdtIndicadorComponent implements OnInit {
   menu: menu[];
 
   lista: indicador[];
-  modelo: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0);
+  modelo: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0, 0);
   validacion: boolean = false;
 
   constructor(
