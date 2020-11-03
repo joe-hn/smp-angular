@@ -88,6 +88,7 @@ import { PoaFisicoProyeccionComponent } from './screem/operacion/poa-fisico-proy
 import { PoaFisicoEjecucionComponent } from './screem/operacion/poa-fisico-ejecucion/poa-fisico-ejecucion.component';
 import { PoaFisicoIndicadorComponent } from './screem/operacion/poa-fisico-indicador/poa-fisico-indicador.component';
 import { ModalInformacionIndicadorGeneralComponent } from './component/modal-informacion-indicador-general/modal-informacion-indicador-general.component';
+import { ReporteIndicadorFisicoComponent } from './screem/reportes/reporte-indicador-fisico/reporte-indicador-fisico.component';
 
 registerLocaleData(localesHN, "es-HN");
 
@@ -169,6 +170,7 @@ registerLocaleData(localesHN, "es-HN");
     PoaFisicoEjecucionComponent,
     PoaFisicoIndicadorComponent,
     ModalInformacionIndicadorGeneralComponent,
+    ReporteIndicadorFisicoComponent,
   ],
   imports: [
     BrowserModule,

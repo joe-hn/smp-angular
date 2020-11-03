@@ -75,6 +75,12 @@ export class ReporteObjetoGastoComponent implements OnInit {
         active: "active",
       },
       { nombre: "Exportar a Excell", BotonReporte: true },
+      {
+        nombre: "Dirección: Ejecución Indicadores",
+        url: "/reporte-indicador-fisico/",
+        N: true,
+        active: "",
+      },
     ];
   }
 

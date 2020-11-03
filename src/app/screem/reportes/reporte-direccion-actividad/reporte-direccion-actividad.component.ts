@@ -70,6 +70,12 @@ export class ReporteDireccionActividadComponent implements OnInit {
         N: true,
         active: "",
       },
+      {
+        nombre: "Dirección: Ejecución Indicadores",
+        url: "/reporte-indicador-fisico/",
+        N: true,
+        active: "",
+      },
     ];
   }
 

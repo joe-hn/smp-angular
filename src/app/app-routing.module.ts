@@ -70,6 +70,7 @@ import { ReporteObjetoGastoComponent } from "./screem/reportes/reporte-objeto-ga
 import { PoaFisicoProyeccionComponent } from "./screem/operacion/poa-fisico-proyeccion/poa-fisico-proyeccion.component";
 import { PoaFisicoEjecucionComponent } from "./screem/operacion/poa-fisico-ejecucion/poa-fisico-ejecucion.component";
 import { PoaFisicoIndicadorComponent } from "./screem/operacion/poa-fisico-indicador/poa-fisico-indicador.component";
+import { ReporteIndicadorFisicoComponent } from "./screem/reportes/reporte-indicador-fisico/reporte-indicador-fisico.component";
 
 /*
 import { InicioComponent } from './pantallas/inicio/inicio.component';
@@ -203,6 +204,10 @@ const routes: Routes = [
     component: ReporteDireccionComparativoEjecucionComponent,
   },
   { path: "reporte-objeto-gasto", component: ReporteObjetoGastoComponent },
+  {
+    path: "reporte-indicador-fisico",
+    component: ReporteIndicadorFisicoComponent,
+  },
 ];
 
 @NgModule({
