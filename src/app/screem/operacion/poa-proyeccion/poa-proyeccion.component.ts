@@ -61,10 +61,10 @@ export class PoaProyeccionComponent implements OnInit {
       this.poamodelo = res.modelo;
 
       this.apiactividad.GetOperacion(this.poamodelo.OPERACION_ID).subscribe(res => {
-        this.lista = res.modelo;
+        this.lista = res.modelo;        
 
         this.apipoadetalle.GetPoa(this.poamodelo.ID).subscribe(res => {
-          this.poadetallemodelo = res.modelo;
+          this.poadetallemodelo = res.modelo;          
         })
       })
     })

@@ -81,19 +81,25 @@ export class PoaFisicoEjecucionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.apiIndicadorFisico
-      .GetValidacionIndicador(this.poamodelo.ID, this.poamodelo.OPERACION_ID)
-      .subscribe((res) => {
-        this.listaIndiadorValidacion = res.modelo;
+    this.poamodelo.ID = +this.route.snapshot.params.id;
 
-        if (this.listaIndiadorValidacion == null) {
-          this.indicadorasociado = true;
+    this.api.GetId(this.poamodelo.ID).subscribe((res) => {
+      this.poamodelo = res.modelo;
 
-          if (this.indicadorasociado) {
-            this.GET();
+      this.apiIndicadorFisico
+        .GetValidacionIndicador(this.poamodelo.ID, this.poamodelo.OPERACION_ID)
+        .subscribe((res) => {
+          this.listaIndiadorValidacion = res.modelo;
+
+          if (this.listaIndiadorValidacion == null) {
+            this.indicadorasociado = true;
+
+            if (this.indicadorasociado) {
+              this.GET();
+            }
           }
-        }
-      });
+        });
+    });
   }
 
   GET() {
@@ -148,14 +154,18 @@ export class PoaFisicoEjecucionComponent implements OnInit {
       (c) => c.INDICADOR_ID == this.indicadormodelo.ID
     );
 
-    for (let index = 0; index < this.indicadordetallefisicomodelo.length; index++) {
-      this.indicadordetallefisicomodelo[index].USR = localStorage.getItem('_u');
+    for (
+      let index = 0;
+      index < this.indicadordetallefisicomodelo.length;
+      index++
+    ) {
+      this.indicadordetallefisicomodelo[index].USR = localStorage.getItem("_u");
     }
-    
-    this.apiIndicadorFisico.editarEjecucion(this.indicadordetallefisicomodelo).subscribe(res => {
-      this.GET();
-    })
-        
-  }
 
+    this.apiIndicadorFisico
+      .editarEjecucion(this.indicadordetallefisicomodelo)
+      .subscribe((res) => {
+        this.GET();
+      });
+  }
 }
