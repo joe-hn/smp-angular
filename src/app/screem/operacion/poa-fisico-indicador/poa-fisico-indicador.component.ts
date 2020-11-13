@@ -54,7 +54,29 @@ export class PoaFisicoIndicadorComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.GET();
+  }
+
+  GET(){
+    this.poamodelo.ID = +this.route.snapshot.params.poa;
+
+    this.api.GetId(this.poamodelo.ID).subscribe((res) =>{
+      this.poamodelo = res.modelo;
+
+      this.apiIndicadorFisico
+      .GetValidacionIndicador(this.poamodelo.ID, this.poamodelo.OPERACION_ID)
+      .subscribe((res) => {
+        this.listaIndiador = res.modelo;
+
+        if (this.listaIndiador != null) {
+          this.indicadorAsociado = true;
+        } else {
+          this.indicadorAsociado = false;
+        }
+      });
+    })
+  }
 
   onRegresar() {
     this.router.navigate([
@@ -66,6 +88,10 @@ export class PoaFisicoIndicadorComponent implements OnInit {
   onReporte() {}
 
   onGuardar() {
+
+    this.indicadorAsociado = false;
+
+
     for (let index = 0; index < this.listaIndiador.length; index++) {
       let indicadorPoa: indicador = new indicador(
         0,
@@ -103,19 +129,8 @@ export class PoaFisicoIndicadorComponent implements OnInit {
       indicadorPoa.USR = localStorage.getItem("_u");
 
       this.apiIndicadorFisico.Post(indicadorPoa).subscribe();
-    }
 
-    this.apiIndicadorFisico
-      .GetValidacionIndicador(this.poamodelo.ID, this.poamodelo.OPERACION_ID)
-      .subscribe((res) => {
-        this.listaIndiador = res.modelo;
-
-        if (this.listaIndiador != null) {
-          this.indicadorAsociado = true;
-        } else {
-          this.indicadorAsociado = false;
-        }
-      });
+    }    
   }
 
   onCancelar() {}
