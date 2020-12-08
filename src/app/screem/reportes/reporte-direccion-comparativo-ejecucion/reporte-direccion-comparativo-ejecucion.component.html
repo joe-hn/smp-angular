@@ -109,7 +109,7 @@
           </div>
         </form>
 
-        <table id="tabla" class="table table-striped" style="font-size:smaller;">
+        <table id="reporte" class="table table-striped" style="font-size:smaller;">
           <thead style="text-align: center;">
             <tr style="text-align: center">
               <th scope="col">Año</th>
@@ -129,7 +129,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let a of listaAnioA" style="text-align: justify">
+            <tr *ngFor="let a of listaAnioA" style="text-align: justify; font-weight: bold;">
               <td>{{ a.ID }}</td>
 
               <td>
@@ -211,7 +211,89 @@
               </td>
             </tr>
 
-            <tr *ngFor="let a of listaAnioB" style="text-align: justify">
+            <tr *ngFor="let a of listaAnioAOperacion" style="text-align: justify">
+              <td>{{ a.CODIGO }}</td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.EJECUCION | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.ENERO_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.FEBRERO_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.MARZO_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.ABRIL_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.MAYO_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.JUNIO_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.JULIO_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.AGOSTO_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.SEPTIEMBRE_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.OCTUBRE_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.NOVIEMBRE_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.DICIEMBRE_E | currency: "$" }}
+                </p>
+              </td>
+            </tr>
+
+            <tr *ngFor="let a of listaAnioB" style="text-align: justify; font-weight: bold;">
               <td>{{ a.ID }}</td>
 
               <td>
@@ -292,6 +374,89 @@
                 </p>
               </td>
             </tr>
+
+            <tr *ngFor="let a of listaAnioBOperacion" style="text-align: justify">
+              <td>{{ a.CODIGO }}</td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.EJECUCION | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.ENERO_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.FEBRERO_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.MARZO_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.ABRIL_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.MAYO_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.JUNIO_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.JULIO_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.AGOSTO_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.SEPTIEMBRE_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.OCTUBRE_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.NOVIEMBRE_E | currency: "$" }}
+                </p>
+              </td>
+
+              <td>
+                <p style="width: 50px; text-align: right; font-size: 10px">
+                  {{ a.DICIEMBRE_E | currency: "$" }}
+                </p>
+              </td>
+            </tr>
+
           </tbody>
         </table>
       </main>

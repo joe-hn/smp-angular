@@ -14,7 +14,7 @@
 
                 <ng-template #nivel2>
                     <ng-container *ngIf="i.BotonReporte else link">
-                        <li class="nav-item" style="padding-left: 12px;">
+                        <li class="nav-item" style="padding-left: 16px; background-color: white;">
                             <a class="nav-link h5" style="font-style: italic; cursor:pointer;" (click)="onReporte()">
                                 {{i.nombre}}
                             </a>
@@ -22,7 +22,7 @@
                     </ng-container>
 
                     <ng-template #link>
-                        <li class="nav-item" style="padding-left: 12px;">
+                        <li class="nav-item" style="padding-left: 16px; background-color: white;">
                             <a class="nav-link h5 {{i.active}}" style="font-style: italic;" [routerLink]="[i.url]">
                                 {{i.nombre}}
                             </a>

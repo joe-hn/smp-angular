@@ -1,7 +1,10 @@
 export class reporteDireccionAcumulado {
     constructor(
         public ID: number,
+        public DIRECCION_ID: number,
+        public OPERACION_ID: number,
         public NOMBRE: string,
+        public CODIGO: string,
         public PROGRAMADO: number,
         public EJECUCION: number,
         public POR_EJECUTAR: number,

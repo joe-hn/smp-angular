@@ -31,6 +31,9 @@ export class ReporteIndicadorFisicoComponent implements OnInit {
   modelo: reporteDireccionAcumulado[];
   modelosuma: reporteDireccionAcumulado = new reporteDireccionAcumulado(
     0,
+    0,
+    0,
+    "",
     "",
     0,
     0,
@@ -93,38 +96,38 @@ export class ReporteIndicadorFisicoComponent implements OnInit {
   ) {
     this.menu = [
       {
-        nombre: "Dirección: Proyeccion Vs Ejecucion",
+        nombre: "Reporte Proyeccion Vs Ejecucion",
         url: "/reporte-direccion",
         N: true,
         active: "",
       },
       
       {
-        nombre: "Dirección: Presupuesto en Riesgo",
+        nombre: "Reporte Presupuesto en Riesgo",
         url: "/reporte-direccion-riesgo/",
         N: true,
         active: "",
       },
       {
-        nombre: "Dirección: Actividades Vencidas",
+        nombre: "Reporte Actividades Vencidas",
         url: "/reporte-direccion-actividades/",
         N: true,
         active: "",
       },
       {
-        nombre: "Dirección: Comparativo Ejecución",
+        nombre: "Reporte Comparativo Ejecución",
         url: "/reporte-direccion-comparativa-ejecucion/",
         N: true,
         active: "",
       },
       {
-        nombre: "Ejecución Por Grupo de Gasto",
+        nombre: "Reporte Por Grupo de Gasto",
         url: "/reporte-objeto-gasto/",
         N: true,
         active: "",
       },
       {
-        nombre: "Dirección: Ejecución Indicadores",
+        nombre: "Reporte Ejecución Indicadores",
         url: "/reporte-indicador-fisico/",
         N: true,
         active: "active",

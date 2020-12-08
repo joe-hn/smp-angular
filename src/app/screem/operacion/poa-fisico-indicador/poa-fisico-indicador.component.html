@@ -23,11 +23,16 @@
             <thead>
               <tr>
                 <th scope="col">Nombre del Indicador</th>
-              </tr>
+                <th scope="col">Seleccionar Indicador</th>
+              </tr>              
             </thead>
             <tbody>
-              <tr *ngFor="let a of listaIndiador">
+              <tr *ngFor="let a of listaIndiador; index as i">
                 <td>{{ a.EDT_NOMBRE }}</td>
+                <td>
+                  <mat-checkbox name="chk" #chk="ngModel" [(ngModel)]="listaIndiador[i]._S">
+                  </mat-checkbox>
+                </td>
               </tr>
             </tbody>
           </table>

@@ -16,7 +16,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class NuevoProductoSubcomponenteComponent implements OnInit {
   menu: menu[];
   modelo: poaProducto = new poaProducto(0, 0, 0, 0, 0, '', '', 0, '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0);
-  indicadormodelo: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0, 0);
+  indicadormodelo: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0, 0, false);
   listacomponente: componente[];
   listasubcomponente: componente[];
   listaindicador: indicador[];

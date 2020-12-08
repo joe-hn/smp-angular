@@ -24,7 +24,7 @@ export class indicador{
         public RESPONSABLE: string,
         public SUB_COMPONENTE: string,
         public EDT_M: number,
-        public POA_ID: number        
-       
+        public POA_ID: number,
+        public _S : boolean       
     ){}
 }

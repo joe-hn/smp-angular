@@ -95,8 +95,428 @@
           </div>
         </form>
 
-        <div id="tabla-reporte"></div>
+        <table
+          id="reporte"
+          class="table"
+          style="font-size: smaller"
+        >
+          <thead style="text-align: center">
+            <tr style="text-align: center">
+              <th scope="col">Descripción</th>
+              <th scope="col">Totales</th>
 
+              <th scope="col">Enero</th>
+              <th scope="col">Febrero</th>
+              <th scope="col">Marzo</th>
+
+              <th scope="col">Trimestr I</th>
+
+              <th scope="col">Abril</th>
+              <th scope="col">Mayo</th>
+              <th scope="col">Junio</th>
+
+              <th scope="col">Trimestr II</th>
+
+              <th scope="col">Julio</th>
+              <th scope="col">Agosto</th>
+              <th scope="col">Septiembre</th>
+
+              <th scope="col">Trimestr III</th>
+
+              <th scope="col">Octubre</th>
+              <th scope="col">Noviembre</th>
+              <th scope="col">Diciembre</th>
+
+              <th scope="col">Trimestr IV</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ng-container *ngFor="let A of modeloComponente">
+
+              <tr style="font-weight: bold;">
+                <td>
+                  <p style="width: 50px; text-align: left; font-size: 11px">
+                    {{ A.COMPONENTE }}
+                  </p>
+                </td>
+
+                <td>
+                  <p style="width: 50px; text-align: right; font-size: 11px">
+                    {{ A.EJECUCION | currency: "$" }}
+                  </p>
+                </td>
+
+                <td>
+                  <p style="width: 50px; text-align: right; font-size: 11px">
+                    {{ A.ENERO_E | currency: "$" }}
+                  </p>
+                </td>
+
+                <td>
+                  <p style="width: 50px; text-align: right; font-size: 11px">
+                    {{ A.FEBRERO_E | currency: "$" }}
+                  </p>
+                </td>
+
+                <td>
+                  <p style="width: 50px; text-align: right; font-size: 11px">
+                    {{ A.MARZO_E | currency: "$" }}
+                  </p>
+                </td>
+
+                <td>
+                  <p style="width: 50px; text-align: right; font-size: 11px; color: blue;">
+                    {{ A.TRIMESTRE_I | currency: "$" }}
+                  </p>
+                </td>
+
+                <td>
+                  <p style="width: 50px; text-align: right; font-size: 11px">
+                    {{ A.ABRIL_E | currency: "$" }}
+                  </p>
+                </td>
+
+                <td>
+                  <p style="width: 50px; text-align: right; font-size: 11px">
+                    {{ A.MAYO_E | currency: "$" }}
+                  </p>
+                </td>
+
+                <td>
+                  <p style="width: 50px; text-align: right; font-size: 11px">
+                    {{ A.JUNIO_E | currency: "$" }}
+                  </p>
+                </td>
+
+                <td>
+                  <p style="width: 50px; text-align: right; font-size: 11px; color: blue;">
+                    {{ A.TRIMESTRE_II | currency: "$" }}
+                  </p>
+                </td>
+
+                <td>
+                  <p style="width: 50px; text-align: right; font-size: 11px">
+                    {{ A.JULIO_E | currency: "$" }}
+                  </p>
+                </td>
+
+                <td>
+                  <p style="width: 50px; text-align: right; font-size: 11px">
+                    {{ A.AGOSTO_E | currency: "$" }}
+                  </p>
+                </td>
+
+                <td>
+                  <p style="width: 50px; text-align: right; font-size: 11px">
+                    {{ A.SEPTIEMBRE_E | currency: "$" }}
+                  </p>
+                </td>
+
+                <td>
+                  <p style="width: 50px; text-align: right; font-size: 11px; color: blue;">
+                    {{ A.TRIMESTRE_III | currency: "$" }}
+                  </p>
+                </td>
+
+                <td>
+                  <p style="width: 50px; text-align: right; font-size: 11px">
+                    {{ A.OCTUBRE_E | currency: "$" }}
+                  </p>
+                </td>
+
+                <td>
+                  <p style="width: 50px; text-align: right; font-size: 11px">
+                    {{ A.NOVIEMBRE_E | currency: "$" }}
+                  </p>
+                </td>
+
+                <td>
+                  <p style="width: 50px; text-align: right; font-size: 11px">
+                    {{ A.DICIEMBRE_E | currency: "$" }}
+                  </p>
+                </td>
+
+                <td>
+                  <p style="width: 50px; text-align: right; font-size: 11px; color: blue;">
+                    {{ A.TRIMESTRE_IV | currency: "$" }}
+                  </p>
+                </td>
+              </tr>
+
+
+              <ng-container *ngFor="let B of modeloObjetoGasto">
+
+                <ng-container *ngIf="A.COMPONENTE_ID == B.COMPONENTE_ID">
+                  <tr>
+                    <td>
+                      <p style="width: 50px; text-align: left; font-size: 11px">
+                        {{ B.OBJETO_GASTO }}
+                      </p>
+                    </td>
+  
+                    <td>
+                      <p style="width: 50px; text-align: right; font-size: 11px">
+                        {{ B.EJECUCION | currency: "$" }}
+                      </p>
+                    </td>
+  
+                    <td>
+                      <p style="width: 50px; text-align: right; font-size: 11px">
+                        {{ B.ENERO_E | currency: "$" }}
+                      </p>
+                    </td>
+  
+                    <td>
+                      <p style="width: 50px; text-align: right; font-size: 11px">
+                        {{ B.FEBRERO_E | currency: "$" }}
+                      </p>
+                    </td>
+  
+                    <td>
+                      <p style="width: 50px; text-align: right; font-size: 11px">
+                        {{ B.MARZO_E | currency: "$" }}
+                      </p>
+                    </td>
+  
+                    <td>
+                      <p style="width: 50px; text-align: right; font-size: 11px; color: blue;">
+                        {{ B.TRIMESTRE_I | currency: "$" }}
+                      </p>
+                    </td>
+  
+                    <td>
+                      <p style="width: 50px; text-align: right; font-size: 11px">
+                        {{ B.ABRIL_E | currency: "$" }}
+                      </p>
+                    </td>
+  
+                    <td>
+                      <p style="width: 50px; text-align: right; font-size: 11px">
+                        {{ B.MAYO_E | currency: "$" }}
+                      </p>
+                    </td>
+  
+                    <td>
+                      <p style="width: 50px; text-align: right; font-size: 11px">
+                        {{ B.JUNIO_E | currency: "$" }}
+                      </p>
+                    </td>
+  
+                    <td>
+                      <p style="width: 50px; text-align: right; font-size: 11px; color: blue;">
+                        {{ B.TRIMESTRE_II | currency: "$" }}
+                      </p>
+                    </td>
+  
+                    <td>
+                      <p style="width: 50px; text-align: right; font-size: 11px">
+                        {{ B.JULIO_E | currency: "$" }}
+                      </p>
+                    </td>
+  
+                    <td>
+                      <p style="width: 50px; text-align: right; font-size: 11px">
+                        {{ B.AGOSTO_E | currency: "$" }}
+                      </p>
+                    </td>
+  
+                    <td>
+                      <p style="width: 50px; text-align: right; font-size: 11px">
+                        {{ B.SEPTIEMBRE_E | currency: "$" }}
+                      </p>
+                    </td>
+  
+                    <td>
+                      <p style="width: 50px; text-align: right; font-size: 11px; color: blue;">
+                        {{ B.TRIMESTRE_III | currency: "$" }}
+                      </p>
+                    </td>
+  
+                    <td>
+                      <p style="width: 50px; text-align: right; font-size: 11px">
+                        {{ B.OCTUBRE_E | currency: "$" }}
+                      </p>
+                    </td>
+  
+                    <td>
+                      <p style="width: 50px; text-align: right; font-size: 11px">
+                        {{ B.NOVIEMBRE_E | currency: "$" }}
+                      </p>
+                    </td>
+  
+                    <td>
+                      <p style="width: 50px; text-align: right; font-size: 11px">
+                        {{ B.DICIEMBRE_E | currency: "$" }}
+                      </p>
+                    </td>
+  
+                    <td>
+                      <p style="width: 50px; text-align: right; font-size: 11px; color: blue;">
+                        {{ B.TRIMESTRE_IV | currency: "$" }}
+                      </p>
+                    </td>
+                  </tr>
+
+                  <ng-container *ngFor="let C of modeloOperacion">
+                    <ng-container *ngIf="B.COMPONENTE_ID == C.COMPONENTE_ID && B.OBJETO_GASTO_ID == C.OBJETO_GASTO_ID">
+                      <tr style="font-style: italic;">
+                        <td>
+                          <p
+                            style="width: 50px; text-align: left; font-size: 10px"
+                          >
+                            {{ C.OPERACION_CODIGO }}
+                          </p>
+                        </td>
+    
+                        <td>
+                          <p
+                            style="width: 50px; text-align: right; font-size: 10px"
+                          >
+                            {{ C.EJECUCION | currency: "$" }}
+                          </p>
+                        </td>
+    
+                        <td>
+                          <p
+                            style="width: 50px; text-align: right; font-size: 10px"
+                          >
+                            {{ C.ENERO_E | currency: "$" }}
+                          </p>
+                        </td>
+    
+                        <td>
+                          <p
+                            style="width: 50px; text-align: right; font-size: 10px"
+                          >
+                            {{ C.FEBRERO_E | currency: "$" }}
+                          </p>
+                        </td>
+    
+                        <td>
+                          <p
+                            style="width: 50px; text-align: right; font-size: 10px"
+                          >
+                            {{ C.MARZO_E | currency: "$" }}
+                          </p>
+                        </td>
+    
+                        <td>
+                          <p
+                            style="width: 50px; text-align: right; font-size: 10px; color: blue;"
+                          >
+                            {{ C.TRIMESTRE_I | currency: "$" }}
+                          </p>
+                        </td>
+    
+                        <td>
+                          <p
+                            style="width: 50px; text-align: right; font-size: 10px"
+                          >
+                            {{ C.ABRIL_E | currency: "$" }}
+                          </p>
+                        </td>
+    
+                        <td>
+                          <p
+                            style="width: 50px; text-align: right; font-size: 10px"
+                          >
+                            {{ C.MAYO_E | currency: "$" }}
+                          </p>
+                        </td>
+    
+                        <td>
+                          <p
+                            style="width: 50px; text-align: right; font-size: 10px"
+                          >
+                            {{ C.JUNIO_E | currency: "$" }}
+                          </p>
+                        </td>
+    
+                        <td>
+                          <p
+                            style="width: 50px; text-align: right; font-size: 10px; color: blue;"
+                          >
+                            {{ C.TRIMESTRE_II | currency: "$" }}
+                          </p>
+                        </td>
+    
+                        <td>
+                          <p
+                            style="width: 50px; text-align: right; font-size: 10px"
+                          >
+                            {{ C.JULIO_E | currency: "$" }}
+                          </p>
+                        </td>
+    
+                        <td>
+                          <p
+                            style="width: 50px; text-align: right; font-size: 10px"
+                          >
+                            {{ C.AGOSTO_E | currency: "$" }}
+                          </p>
+                        </td>
+    
+                        <td>
+                          <p
+                            style="width: 50px; text-align: right; font-size: 10px"
+                          >
+                            {{ C.SEPTIEMBRE_E | currency: "$" }}
+                          </p>
+                        </td>
+    
+                        <td>
+                          <p
+                            style="width: 50px; text-align: right; font-size: 10px; color: blue;"
+                          >
+                            {{ C.TRIMESTRE_III | currency: "$" }}
+                          </p>
+                        </td>
+    
+                        <td>
+                          <p
+                            style="width: 50px; text-align: right; font-size: 10px"
+                          >
+                            {{ C.OCTUBRE_E | currency: "$" }}
+                          </p>
+                        </td>
+    
+                        <td>
+                          <p
+                            style="width: 50px; text-align: right; font-size: 10px"
+                          >
+                            {{ C.NOVIEMBRE_E | currency: "$" }}
+                          </p>
+                        </td>
+    
+                        <td>
+                          <p
+                            style="width: 50px; text-align: right; font-size: 10px"
+                          >
+                            {{ C.DICIEMBRE_E | currency: "$" }}
+                          </p>
+                        </td>
+    
+                        <td>
+                          <p
+                            style="width: 50px; text-align: right; font-size: 10px; color: blue;"
+                          >
+                            {{ C.TRIMESTRE_IV | currency: "$" }}
+                          </p>
+                        </td>
+                      </tr>
+                    </ng-container>
+                  </ng-container>
+
+                </ng-container>
+                                            
+              </ng-container>
+            </ng-container>
+
+
+
+            
+          </tbody>
+        </table>
       </main>
     </div>
   </div>

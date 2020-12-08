@@ -16,7 +16,7 @@
           <h1 class="h5">Programación Física {{ poamodelo.OPERACION }}</h1>
         </div>
 
-        <ng-container *ngIf="indicadorasociado; else planificacion">
+        <ng-container *ngIf="poadetallemodelo">
           <div class="btn-toolbar mb-2 mb-md-0" style="padding: 20px">
             <div class="btn-group mr-2">
               <ng-container *ngIf="estadoEdicion; else noedicion">
@@ -68,7 +68,7 @@
           <table class="table" style="font-size: smaller">
             <thead style="text-align: center">
               <th scope="col">EDT</th>
-              <th scope="col">Indicador</th>              
+              <th scope="col">Indicador</th>
               <th scope="col">Ene</th>
               <th scope="col">Feb</th>
               <th scope="col">Mar</th>
@@ -80,7 +80,7 @@
               <th scope="col">Sep</th>
               <th scope="col">Oct</th>
               <th scope="col">Nov</th>
-              <th scope="col">Dic</th>              
+              <th scope="col">Dic</th>
               <!--
                 <th scope="col"></th>
                  -->
@@ -91,7 +91,7 @@
                 <tr>
                   <td>
                     <p style="width: 32px; text-align: center; font-size: 10px">
-                      {{ A.EDT_DESCRIPCION }}
+                      {{ A.EDT }}
                     </p>
                   </td>
 
@@ -104,10 +104,9 @@
                         font-size: 10px;
                       "
                       (click)="onInformacionGeneral(lista[x])"
-                      >{{ A.NOMBRE }}</a
+                      >{{ A.EDT_NOMBRE }}</a
                     >
                   </td>
-                  
 
                   <ng-container *ngFor="let B of poadetallemodelo; index as i">
                     <ng-container *ngIf="B.INDICADOR_ID == A.ID">
@@ -134,7 +133,6 @@
                               (keyup)="onSumatoria(A.ID)"
                             />
                           </td>
-                         
                         </ng-container>
                       </ng-container>
                     </ng-container>
@@ -151,31 +149,6 @@
             </tbody>
           </table>
         </ng-container>
-
-        <ng-template #planificacion>
-          <div class="card border-danger mb-3">
-            <div class="card-body">
-              <p class="card-text">
-                La matriz de planificación física debe de contener todos los
-                indicadores de los componentes de la operación, en este momento
-                existen indicadores que no están asociados al POA que está
-                programando.
-              </p>
-
-              <div class="btn-toolbar mb-2 mb-md-0">
-                <div class="btn-group mr-2">
-                  <button
-                    type="button"
-                    class="btn btn-sm btn-outline-danger"
-                    [routerLink]="['/poa-fisico-indicador', this.poamodelo.ID]"
-                  >
-                    Asociar indicadores al POA
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </ng-template>
       </main>
     </div>
   </div>

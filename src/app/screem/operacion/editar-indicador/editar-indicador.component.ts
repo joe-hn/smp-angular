@@ -14,7 +14,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class EditarIndicadorComponent implements OnInit {
   menu: menu[];
 
-  modelo: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0, 0);
+  modelo: indicador = new indicador(0, 0, 0, '', '', '', '', '', '', '', '', '', '', '', '', 0, '', 0, '', '', 0, '', '', 0, 0, false);
 
   responsable: boolean = false;
   sinResponsable: boolean = false;

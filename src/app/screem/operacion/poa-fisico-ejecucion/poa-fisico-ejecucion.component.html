@@ -16,7 +16,7 @@
           <h1 class="h5">Ejecución Física {{ poamodelo.OPERACION }}</h1>
         </div>
 
-        <ng-container *ngIf="indicadorasociado; else planificacion">
+        <ng-container *ngIf="poadetallemodelo">
           <div
             *ngIf="barraestado"
             style="padding-bottom: 20px; padding-left: 10px"
@@ -58,7 +58,7 @@
                 <tr>
                   <td>
                     <p style="width: 30px; text-align: center; font-size: 10px">
-                      {{ A.EDT_DESCRIPCION }}
+                      {{ A.EDT }}
                     </p>
                   </td>
 
@@ -66,7 +66,7 @@
                     <a
                       style="width: 150px; text-align: justify; cursor: pointer"
                       (click)="onInformacionGeneral(lista[x])"
-                      >{{ A.NOMBRE }}</a
+                      >{{ A.EDT_NOMBRE }}</a
                     >
                   </td>
 
@@ -149,31 +149,7 @@
             </tbody>
           </table>
         </ng-container>
-
-        <ng-template #planificacion>
-          <div class="card border-danger mb-3">
-            <div class="card-body">
-              <p class="card-text">
-                La matriz de planificación física debe de contener todos los
-                indicadores de los componentes de la operación, en este momento
-                existen indicadores que no están asociados al POA que está
-                programando.
-              </p>
-
-              <div class="btn-toolbar mb-2 mb-md-0">
-                <div class="btn-group mr-2">
-                  <button
-                    type="button"
-                    class="btn btn-sm btn-outline-danger"
-                    [routerLink]="['/poa-fisico-indicador', this.poamodelo.ID]"
-                  >
-                    Asociar indicadores al POA
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </ng-template>
+       
       </main>
     </div>
   </div>

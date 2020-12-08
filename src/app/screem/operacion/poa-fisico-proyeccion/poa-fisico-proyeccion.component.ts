@@ -44,7 +44,8 @@ export class PoaFisicoProyeccionComponent implements OnInit {
     "",
     "",
     0,
-    0
+    0,
+    false
   );
   listaIndiadorValidacion: indicador[];
   lista: indicador[];
@@ -75,6 +76,12 @@ export class PoaFisicoProyeccionComponent implements OnInit {
           N: true,
           active: "active",
         },
+        {
+          nombre: "Agregar Indicador a POA " + this.poamodelo.ANIO,
+          url: "/poa-fisico-indicador/" + this.poamodelo.ID,
+          N: false,
+          active: "",
+        },
         { nombre: "Exportar a Excell", BotonReporte: true },
       ];
     });
@@ -85,28 +92,13 @@ export class PoaFisicoProyeccionComponent implements OnInit {
 
     this.api.GetId(this.poamodelo.ID).subscribe((res) => {
       this.poamodelo = res.modelo;
-      
-      this.apiIndicadorFisico
-        .GetValidacionIndicador(this.poamodelo.ID, this.poamodelo.OPERACION_ID)
-        .subscribe((res) => {
-          this.listaIndiadorValidacion = res.modelo;
-
-          console.log(this.listaIndiadorValidacion);
-
-          if (this.listaIndiadorValidacion == null) {
-            this.indicadorasociado = true;
-
-            if (this.indicadorasociado) {
-              this.GET();
-            }
-          }
-        })
+      this.GET();
     });
   }
 
   GET() {
     this.apiindicador
-      .GetOperacion(this.poamodelo.OPERACION_ID)
+      .GetOperacionPoa(this.poamodelo.OPERACION_ID, this.poamodelo.ID)
       .subscribe((res) => {
         this.lista = res.modelo;
 

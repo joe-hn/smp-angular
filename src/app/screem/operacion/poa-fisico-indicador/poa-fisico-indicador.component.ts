@@ -58,24 +58,24 @@ export class PoaFisicoIndicadorComponent implements OnInit {
     this.GET();
   }
 
-  GET(){
+  GET() {
     this.poamodelo.ID = +this.route.snapshot.params.poa;
 
-    this.api.GetId(this.poamodelo.ID).subscribe((res) =>{
+    this.api.GetId(this.poamodelo.ID).subscribe((res) => {
       this.poamodelo = res.modelo;
 
       this.apiIndicadorFisico
-      .GetValidacionIndicador(this.poamodelo.ID, this.poamodelo.OPERACION_ID)
-      .subscribe((res) => {
-        this.listaIndiador = res.modelo;
+        .GetValidacionIndicador(this.poamodelo.ID, this.poamodelo.OPERACION_ID)
+        .subscribe((res) => {
+          this.listaIndiador = res.modelo;
 
-        if (this.listaIndiador != null) {
-          this.indicadorAsociado = true;
-        } else {
-          this.indicadorAsociado = false;
-        }
-      });
-    })
+          if (this.listaIndiador != null) {
+            this.indicadorAsociado = true;
+          } else {
+            this.indicadorAsociado = false;
+          }
+        });
+    });
   }
 
   onRegresar() {
@@ -88,49 +88,49 @@ export class PoaFisicoIndicadorComponent implements OnInit {
   onReporte() {}
 
   onGuardar() {
-
-    this.indicadorAsociado = false;
-
-
     for (let index = 0; index < this.listaIndiador.length; index++) {
-      let indicadorPoa: indicador = new indicador(
-        0,
-        0,
-        0,
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        0,
-        "",
-        0,
-        "",
-        "",
-        0,
-        "",
-        "",
-        0,
-        0
-      );
+      if (this.listaIndiador[index]._S) {
+        let indicadorPoa: indicador = new indicador(
+          0,
+          0,
+          0,
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          0,
+          "",
+          0,
+          "",
+          "",
+          0,
+          "",
+          "",
+          0,
+          0,
+          false
+        );
 
-      indicadorPoa.POA_ID = this.poamodelo.ID;
-      indicadorPoa.COMPONENTE_ID = this.listaIndiador[index].COMPONENTE_ID;
-      indicadorPoa.OPERACION_ID = this.poamodelo.OPERACION_ID;
-      indicadorPoa.ID = this.listaIndiador[index].ID;
+        indicadorPoa.POA_ID = this.poamodelo.ID;
+        indicadorPoa.COMPONENTE_ID = this.listaIndiador[index].COMPONENTE_ID;
+        indicadorPoa.OPERACION_ID = this.poamodelo.OPERACION_ID;
+        indicadorPoa.ID = this.listaIndiador[index].ID;
 
-      indicadorPoa.USR = localStorage.getItem("_u");
+        indicadorPoa.USR = localStorage.getItem("_u");
 
-      this.apiIndicadorFisico.Post(indicadorPoa).subscribe();
-
-    }    
+        this.apiIndicadorFisico.Post(indicadorPoa).subscribe((res) => {
+          this.GET();
+        });
+      }
+    }
   }
 
   onCancelar() {}

@@ -39,39 +39,39 @@ export class ReporteDireccionActividadComponent implements OnInit {
   ) {
     this.menu = [
       {
-        nombre: "Dirección: Proyeccion Vs Ejecucion",
+        nombre: "Reporte Proyeccion Vs Ejecucion",
         url: "/reporte-direccion",
         N: true,
         active: "",
       },
 
       {
-        nombre: "Dirección: Presupuesto en Riesgo",
+        nombre: "Reporte Presupuesto en Riesgo",
         url: "/reporte-direccion-riesgo/",
         N: true,
         active: "",
       },
       {
-        nombre: "Dirección: Actividades Vencidas",
+        nombre: "Reporte Actividades Vencidas",
         url: "/reporte-direccion-actividades/",
         N: true,
         active: "active",
       },
       { nombre: "Exportar a Excell", BotonReporte: true },
       {
-        nombre: "Dirección: Comparativo Ejecución",
+        nombre: "Reporte Comparativo Ejecución",
         url: "/reporte-direccion-comparativa-ejecucion/",
         N: true,
         active: "",
       },
       {
-        nombre: "Ejecución Por Grupo de Gasto",
+        nombre: "Reporte Por Grupo de Gasto",
         url: "/reporte-objeto-gasto/",
         N: true,
         active: "",
       },
       {
-        nombre: "Dirección: Ejecución Indicadores",
+        nombre: "Reporte Ejecución Indicadores",
         url: "/reporte-indicador-fisico/",
         N: true,
         active: "",
@@ -104,8 +104,33 @@ export class ReporteDireccionActividadComponent implements OnInit {
   }
 
   onReporte() {
-    if(this.modelo != null){
-      this.apixlsx.exportToExcel(this.modelo, "Dirección");
+    var downloadLink;
+    var dataType = "application/vnd.ms-excel;charset=utf-8;";
+    var tableSelect = document.getElementById("reporte");
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, "%20");
+    var nombre =
+      "Actividades Vencidas - fecha generacion " +
+      moment(new Date()).locale("es").format("LLLL");
+
+    // referencia agregada
+    downloadLink = document.createElement("a");
+
+    document.body.appendChild(downloadLink);
+
+    if (navigator.msSaveOrOpenBlob) {
+      var blob = new Blob(["\ufeff", tableHTML], {
+        type: dataType,
+      });
+      navigator.msSaveOrOpenBlob(blob, nombre + ".xls");
+    } else {
+      // link de archivo
+      downloadLink.href = "data:" + dataType + ", " + tableHTML;
+
+      //el nombre archivo a link
+      downloadLink.download = nombre + ".xls";
+
+      //ejecutando la descarga
+      downloadLink.click();
     }
   }
 }

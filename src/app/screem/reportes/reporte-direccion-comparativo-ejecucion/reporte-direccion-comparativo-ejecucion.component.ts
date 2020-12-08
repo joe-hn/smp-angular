@@ -14,6 +14,7 @@ import { anio } from "src/app/model/anio";
 import { ApiAnioService } from "src/app/service/api-anio.service";
 import { direccion } from "src/app/model/direccion";
 import { ApiDireccionService } from "src/app/service/api-direccion.service";
+import * as moment from 'moment';
 
 @Component({
   selector: "app-reporte-direccion-comparativo-ejecucion",
@@ -28,7 +29,9 @@ export class ReporteDireccionComparativoEjecucionComponent implements OnInit {
   listaAnio: anio[];
 
   listaAnioA: reporteDireccionAcumulado[];
+  listaAnioAOperacion: reporteDireccionAcumulado[];
   listaAnioB: reporteDireccionAcumulado[];
+  listaAnioBOperacion: reporteDireccionAcumulado[];
 
   anioA: number;
   anioB: number;
@@ -48,40 +51,40 @@ export class ReporteDireccionComparativoEjecucionComponent implements OnInit {
   ) {
     this.menu = [
       {
-        nombre: "Dirección: Proyeccion Vs Ejecucion",
+        nombre: "Reporte Proyeccion Vs Ejecucion",
         url: "/reporte-direccion",
         N: true,
         active: "",
       },
 
       {
-        nombre: "Dirección: Presupuesto en Riesgo",
+        nombre: "Reporte Presupuesto en Riesgo",
         url: "/reporte-direccion-riesgo/",
         N: true,
         active: "",
       },
 
       {
-        nombre: "Dirección: Actividades Vencidas",
+        nombre: "Reporte Actividades Vencidas",
         url: "/reporte-direccion-actividades/",
         N: true,
         active: "",
       },
       {
-        nombre: "Dirección: Comparativo Ejecución",
+        nombre: "Reporte Comparativo Ejecución",
         url: "/reporte-direccion-comparativa-ejecucion/",
         N: true,
         active: "active",
       },
       { nombre: "Exportar a Excell", BotonReporte: true },
       {
-        nombre: "Ejecución Por Grupo de Gasto",
+        nombre: "Reporte Por Grupo de Gasto",
         url: "/reporte-objeto-gasto/",
         N: true,
         active: "",
       },
       {
-        nombre: "Dirección: Ejecución Indicadores",
+        nombre: "Reporte Ejecución Indicadores",
         url: "/reporte-indicador-fisico/",
         N: true,
         active: "",
@@ -109,25 +112,40 @@ export class ReporteDireccionComparativoEjecucionComponent implements OnInit {
 
   onGenerarReporte() {
     this.filtro.ANIO = this.anioA;
+
     this.apireporte
       .GetReporteDireccionComparativoEjecucion(this.filtro)
       .subscribe((res) => {
         this.listaAnioA = res.modelo;
 
-        this.filtro.ANIO = this.anioB;
         this.apireporte
-          .GetReporteDireccionComparativoEjecucion(this.filtro)
+          .GetReporteDireccionOperacionComparativoEjecucion(this.filtro)
           .subscribe((res) => {
-            this.listaAnioB = res.modelo;
+            this.listaAnioAOperacion = res.modelo;
+
+            this.filtro.ANIO = this.anioB;
+            this.apireporte
+              .GetReporteDireccionComparativoEjecucion(this.filtro)
+              .subscribe((res) => {
+                this.listaAnioB = res.modelo;
+
+                this.apireporte.GetReporteDireccionOperacionComparativoEjecucion(this.filtro).subscribe((res) => {
+                  this.listaAnioBOperacion = res.modelo;
+
+                })
+              });
           });
       });
   }
 
   onReporte() {
     var downloadLink;
-    var dataType = "application/vnd.ms-excel";
-    var tableSelect = document.getElementById("tabla");
+    var dataType = "application/vnd.ms-excel;charset=utf-8;";
+    var tableSelect = document.getElementById("reporte");
     var tableHTML = tableSelect.outerHTML.replace(/ /g, "%20");
+    var nombre =
+      "Comparativo Ejecucion - fecha generacion " +
+      moment(new Date()).locale("es").format("LLLL");
 
     // referencia agregada
     downloadLink = document.createElement("a");
@@ -138,17 +156,16 @@ export class ReporteDireccionComparativoEjecucionComponent implements OnInit {
       var blob = new Blob(["\ufeff", tableHTML], {
         type: dataType,
       });
-      navigator.msSaveOrOpenBlob(blob, "Nombre.xls");
+      navigator.msSaveOrOpenBlob(blob, nombre + ".xls");
     } else {
       // link de archivo
       downloadLink.href = "data:" + dataType + ", " + tableHTML;
 
       //el nombre archivo a link
-      downloadLink.download = "Nombre.xls";
+      downloadLink.download = nombre + ".xls";
 
       //ejecutando la descarga
       downloadLink.click();
     }
   }
-  
 }

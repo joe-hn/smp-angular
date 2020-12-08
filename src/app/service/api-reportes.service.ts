@@ -34,10 +34,30 @@ export class ApiReportesService {
       .pipe(map(this.extractData));
   }
 
+  GetReporteDireccionOperacion(modelo): Observable<any> {
+    return this.http
+      .post<any>(
+        this.url + "direccion/operacion/acumulado",
+        JSON.stringify(modelo),
+        this.httpOptions
+      )
+      .pipe(map(this.extractData));
+  }
+
   GetReporteDireccionRiesgo(modelo): Observable<any> {
     return this.http
       .post<any>(
         this.url + "direccion/acumulado/riesgo",
+        JSON.stringify(modelo),
+        this.httpOptions
+      )
+      .pipe(map(this.extractData));
+  }
+
+  GetReporteDireccionOperacionRiesgo(modelo): Observable<any> {
+    return this.http
+      .post<any>(
+        this.url + "direccion/operacion/acumulado/riesgo",
         JSON.stringify(modelo),
         this.httpOptions
       )
@@ -64,10 +84,40 @@ export class ApiReportesService {
       .pipe(map(this.extractData));
   }
 
+  GetReporteDireccionOperacionComparativoEjecucion(modelo): Observable<any> {
+    return this.http
+      .post<any>(
+        this.url + "/direccion/operacion/comparativo/ejecucion",
+        JSON.stringify(modelo),
+        this.httpOptions
+      )
+      .pipe(map(this.extractData));
+  }
+
+  GetReporteObjetoGastoComponente(modelo): Observable<any> {
+    return this.http
+      .post<any>(
+        this.url + "/direccion/objetogasto/componente",
+        JSON.stringify(modelo),
+        this.httpOptions
+      )
+      .pipe(map(this.extractData));
+  }
+
   GetReporteObjetoGasto(modelo): Observable<any> {
     return this.http
       .post<any>(
         this.url + "/direccion/objetogasto",
+        JSON.stringify(modelo),
+        this.httpOptions
+      )
+      .pipe(map(this.extractData));
+  }
+
+  GetReporteObjetoGastoOperacion(modelo): Observable<any> {
+    return this.http
+      .post<any>(
+        this.url + "/direccion/objetogasto/componente/operacion",
         JSON.stringify(modelo),
         this.httpOptions
       )

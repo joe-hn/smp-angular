@@ -9,6 +9,7 @@ export class reporteDireccionActividades {
         public FECHA_FINAL_ESTIMADA_DESCRIPCION: string,
         public PROYECCION_REAL: number,
         public EJECUCION_REAL: number,
-        public ESTADO: string
+        public ESTADO: string,
+        public CODIGO: string
     ) { }
 }

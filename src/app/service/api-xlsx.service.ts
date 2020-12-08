@@ -9,7 +9,7 @@ const EXCEL_EXT = '.xlsx';
 @Injectable({
   providedIn: 'root'
 })
-
+ 
 export class ApiXlsxService {
   headerStyle: {
     fill: { fgColor: { rgb: "D3D3D3" } },
@@ -20,11 +20,11 @@ export class ApiXlsxService {
   constructor() { }
 
   exportToExcel(json: any[], excelFileName: string): void {
-    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);
+    const worksheet: XLSX.WorkSheet = XLSX.utils.json_to_sheet(json);    
     const workbook: XLSX.WorkBook = {
       Sheets: { 'data': worksheet },
       SheetNames: ['data']
-    };
+    };    
 
     const excelBuffer: any = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
 

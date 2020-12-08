@@ -1,6 +1,12 @@
 export class reporteObjetoGasto {
     constructor(
         public ID: number,
+        public COMPONENTE_ID: number,
+        public COMPONENTE: string,
+        public OPERACION_ID: number,
+        public OBJETO_GASTO_ID: number,
+        public OBJETO_GASTO: string,
+        public OPERACION_CODIGO: string,
         public CODIGO: string,
         public NOMBRE: string,
         public EJECUCION: number,

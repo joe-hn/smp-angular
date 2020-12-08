@@ -38,6 +38,10 @@ export class ApiIndicadorService {
     return this.http.get(this.url + 'operacion/' + id, this.httpOptions).pipe(map(this.extractData));
   }
 
+  GetOperacionPoa(operacion, poa): Observable<any> {
+    return this.http.get(this.url + 'operacion/poa/' + operacion + '/' + poa, this.httpOptions).pipe(map(this.extractData));
+  }
+
   GetId(id): Observable<any> {
     return this.http.get(this.url + id, this.httpOptions).pipe(map(this.extractData));
   }
